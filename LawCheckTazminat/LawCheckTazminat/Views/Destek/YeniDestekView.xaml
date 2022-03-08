@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" x:Class="LawCheckTazminat.Views.Destek.YeniDestekView">
+     <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Yeni  Destek Oluştur"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+            <StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="16,24">
+                    <Button Text="İptal" BackgroundColor="Transparent"
+                            HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}" 
+                        TextColor="Red" HorizontalOptions="End"></Button>
+
+                             <!--      Konu       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="16"
+                        Text=" Konu "
+                        TextColor="{StaticResource Gray-800}" />
+                    <border:SfBorder
+                        Padding="6,0,0,0"
+                        BorderColor="{Binding Source={x:Reference txtKonu}, Path=IsFocused}"
+                        HeightRequest="50" BackgroundColor="WhiteSmoke"
+                        Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtKonu" Placeholder=""
+                                   TextColor="Black"
+                                   WidthRequest="120"          HeightRequest="45"
+                                 Text="{Binding  Konu, Mode=TwoWay}">
+
+                        </controls:BorderlessEntry>
+                    </border:SfBorder>
+
+                <!--      Eposta       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Eposta(Opsiyonel)"
+                        TextColor="{StaticResource Gray-800}" />
+                    <border:SfBorder
+                        Padding="6,0,0,0"
+                        BorderColor="{Binding Source={x:Reference txtKonu}, Path=IsFocused}"
+                        HeightRequest="50" BackgroundColor="WhiteSmoke"
+                        Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtEposta" Placeholder=""
+                                   WidthRequest="120"       TextColor="Black"
+                                 Text="{Binding  Eposta, Mode=TwoWay}">
+
+                        </controls:BorderlessEntry>
+                        
+                        </border:SfBorder>
+
+                    <!--      Telefon       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Telefon(Opsiyonel)"
+                        TextColor="{StaticResource Gray-800}" />
+                    <border:SfBorder
+                        Padding="6,0,0,0"
+                        BorderColor="{Binding Source={x:Reference txtKonu}, Path=IsFocused}"
+                        HeightRequest="50"  BackgroundColor="WhiteSmoke"
+                        Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtTelefon" Placeholder="" 
+                                   WidthRequest="120"       TextColor="Black"
+                                 Text="{Binding  Telefon, Mode=TwoWay}">
+                        </controls:BorderlessEntry>
+                        </border:SfBorder>
+
+
+
+                             <!--      Mesaj       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="16"
+                        Text="Soru"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                        <border:SfBorder HeightRequest="120" Style="{StaticResource SfBorderStyle}">
+
+                            <Editor
+                                HeightRequest="120"
+                                Placeholder="Mesaj"
+                                PlaceholderColor="LightGray"
+                                BackgroundColor="WhiteSmoke"
+                                TextColor="Black"
+                                Text="{Binding Mesaj, Mode=TwoWay} ">
+                     
+                    </Editor>
+
+                </border:SfBorder>
+
+
+                    <Button Padding="0,20,0,0" Text="   GÖNDER   " BackgroundColor="Transparent"
+                            Command="{Binding KaydetCommand}" FontSize="Large">
+                        <Button.TextColor>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                            </OnPlatform>
+                        </Button.TextColor>
+                    </Button>
+
+            
+                    </StackLayout>
+                </ScrollView>
+                </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

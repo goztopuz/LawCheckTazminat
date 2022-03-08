@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors"
+             x:Class="LawCheckTazminat.Views.KayipOranV.Basamak5KH">
+
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="İşgücü Kayıp Oran Hesaplama -Meslek Grubu (5/X)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large" LineBreakMode="WordWrap"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout>
+                <StackLayout BackgroundColor="{StaticResource Gray-100}" Spacing="0" Padding="16,10">
+                    <Button BackgroundColor="Transparent" Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+                    <Label Text="{Binding Baslik1}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                    <Label Text="{Binding Baslik2}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                    <Label Text="{Binding Baslik3}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                    <Label Text="{Binding Baslik4}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+
+
+                    <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Meslek Grubunu Seçin "
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <ListView x:Name="lstMeslekGrup1"
+                         ItemsSource="{Binding Liste}"
+                         SeparatorVisibility="Default"
+                     MinimumHeightRequest="60"
+                           
+                         HasUnevenRows="True">
+
+                        <ListView.Behaviors>
+                            <behaviors:EventToCommandBehavior 
+                        EventName="ItemTapped"  
+                        Command="{Binding }" 
+                        EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                            </behaviors:EventToCommandBehavior>
+                        </ListView.Behaviors>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="5,15,5,15">
+                                        <Label   LineBreakMode="WordWrap" Text="{Binding Meslek}" VerticalOptions="CenterAndExpand" ></Label>
+
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

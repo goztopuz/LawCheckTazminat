@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors" x:Class="LawCheckTazminat.Views.Destek.DestekListeView">
+
+       <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Destek -Soru"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+                <ScrollView>
+
+          <StackLayout  Spacing="0" Padding="16,20">
+                
+        <Button Text="İptal" BackgroundColor="Transparent"
+                HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+                 TextColor="Red"       HorizontalOptions="End">
+        </Button>
+              
+        <Button Text="Yeni Destek "  BackgroundColor="Transparent"
+                HeightRequest="48" FontSize="Large"
+           Command="{Binding YeniDestekCommand}" 
+           TranslationY="-45"         HorizontalOptions="Start">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+        <tabView:SfTabView  Margin="0,0,0,0"  VisibleHeaderCount="2" TranslationY="-10" >
+
+                    <tabView:SfTabItem Title="Gelen Yanıtlar" TitleFontSize="Medium">
+                        <tabView:SfTabItem.Content>
+                            <StackLayout>
+
+                            <ListView
+                                  RowHeight="85"
+                                   ItemsSource="{Binding Yanitlar}"
+                                   HasUnevenRows="True"
+                                   SeparatorVisibility="Default">
+
+                                <ListView.Behaviors>
+                                    <behaviors:EventToCommandBehavior 
+                                        EventName="ItemTapped"  
+                                        Command="{Binding YanitTappedCommand}" 
+                                        EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                                    </behaviors:EventToCommandBehavior>
+                                </ListView.Behaviors>
+
+                                              <ListView.ItemTemplate>
+                                     <DataTemplate>
+                                        <ViewCell>
+
+                                           <Grid Padding="0,10,0,5">
+                                               <Grid.RowDefinitions>
+                                                   <RowDefinition Height="*"></RowDefinition>
+                                                   <RowDefinition Height="*"></RowDefinition>
+                                               </Grid.RowDefinitions>
+                                               <Grid.ColumnDefinitions>
+                                                  <ColumnDefinition Width="*"></ColumnDefinition>
+                                               </Grid.ColumnDefinitions>
+
+                                               <StackLayout  Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+
+                                               <Label x:Name="lblTarih"  TextColor="Gray"
+                                                   Text="{Binding yanitTarihi, Converter={StaticResource DateTosStringConverter}}" ></Label>
+
+                                                   <Label Text="  -  (YANIT) " TextColor="Red"> </Label>
+                                                   
+                                               <Label x:Name="lblKonu"  TextColor="Gray"
+                                                      Text="{Binding yanitBaslik}">
+                                               </Label>
+
+                                               </StackLayout>
+                                               <Label x:Name="lblMesaj" Grid.Column="0" Grid.Row="1"
+                                                      Text="{Binding yanit}"> 
+
+                                               </Label>
+
+
+                                           </Grid>
+
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+
+                            </ListView>
+                        </StackLayout>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                    <tabView:SfTabItem Title="Sorularım" TitleFontSize="Medium">
+                        <tabView:SfTabItem.Content>
+                            <StackLayout>
+
+                         
+                                <ListView   ItemsSource="{Binding Sorularim}"
+                                    
+                                    RowHeight="85"
+                                    SeparatorVisibility="Default"
+                                    HasUnevenRows="True">
+
+                                 <ListView.Behaviors>
+                                    <behaviors:EventToCommandBehavior 
+                                        EventName="ItemTapped"  
+                                        Command="{Binding SoruTappedCommand}" 
+                                        EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                                    </behaviors:EventToCommandBehavior>
+                                </ListView.Behaviors>
+
+                                    <ListView.ItemTemplate>
+                                     <DataTemplate>
+                                        <ViewCell>
+
+                                           <Grid Padding="0,10,0,5">
+                                               <Grid.RowDefinitions>
+                                                   <RowDefinition Height="*"></RowDefinition>
+                                                   <RowDefinition Height="*"></RowDefinition>
+                                               </Grid.RowDefinitions>
+                                               <Grid.ColumnDefinitions>
+                                                  <ColumnDefinition Width="*"></ColumnDefinition>
+                                               </Grid.ColumnDefinitions>
+
+                                               <StackLayout  Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+
+                                               <Label x:Name="lblTarih"  TextColor="Gray"
+                                                   Text="{Binding tarih, Converter={StaticResource DateTosStringConverter}}" ></Label>
+
+                                                   <Label Text="  -  " TextColor="Gray"> </Label>
+                                                   
+                                               <Label x:Name="lblKonu"  TextColor="Gray"
+                                                      Text="{Binding konu}">
+                                               </Label>
+
+                                               </StackLayout>
+                                               <Label x:Name="lblMesaj" Grid.Column="0" Grid.Row="1"
+                                                      Text="{Binding soru}"> 
+
+                                               </Label>
+
+
+                                           </Grid>
+
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
+                            </StackLayout>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                 
+        </tabView:SfTabView>
+</StackLayout>
+                    </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

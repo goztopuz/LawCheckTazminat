@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.IzinBilgiView">
+        <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Rapor - İzin Bilgi"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        
+            <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+
+                <Button  BackgroundColor="Transparent"
+                    Text="İptal" HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"      HorizontalOptions="End"></Button>
+
+                    <!--      Başlangıç Tarihi       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Başlangıç Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <DatePicker x:Name="startDatePicker"
+                            Format="D" FontSize="Medium"
+                            BackgroundColor="WhiteSmoke" HeightRequest="50"
+                            Margin="0, 0, 0, 30" TextColor="Black"
+                            Date="{Binding IzinBas, Mode=TwoWay}"
+                            />
+
+                       <!--      Bitiş Tarihi       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30"
+                        FontSize="Medium"
+                        Text="Bitiş Tarih(Son Günü)"
+                        TextColor="{StaticResource Gray-800}" />
+                 <DatePicker x:Name="endDatePicker"
+                             BackgroundColor="WhiteSmoke" HeightRequest="50"
+                            Format="D" FontSize="Medium" TextColor="Black"
+                            Margin="0, 0, 0, 30"
+                            Date="{Binding IzinBit, Mode=TwoWay}"
+                            />
+
+                       <!--      Açıklama       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Açıklama"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                   <controls:BorderlessEditor
+                                HeightRequest="120"
+                                 BackgroundColor="WhiteSmoke" 
+                                Placeholder="Açıklama"
+                                PlaceholderColor="LightGray"
+                         
+                                TextColor="{DynamicResource Gray-900}" 
+                        Text="{Binding  Aciklama, Mode=TwoWay} ">
+                        <controls:BorderlessEditor.Margin>
+                            <OnPlatform
+                                        x:TypeArguments="Thickness"
+                                        Android="0,0,5,0"
+                                        Default="0,0,5,0"
+                                        iOS="-5,0,5,0" />
+                        </controls:BorderlessEditor.Margin>
+                    </controls:BorderlessEditor>
+
+                 <Label x:Name="lblHata"  Padding="0,15,0,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>       
+
+           <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+               HeightRequest="55"
+                        WidthRequest="200" />
+
+
+
+                </StackLayout>
+                </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

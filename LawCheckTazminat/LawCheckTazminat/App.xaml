@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+            xmlns:control="clr-namespace:LawCheckTazminat.Controls"
+            xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:converters="clr-namespace:LawCheckTazminat.Converters"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.App">
+    <Application.Resources>
+        
+        <Color x:Key="EntryPlaceholderColor">#A0FFFFFF</Color>
+        <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
+        <Color x:Key="GradientStartColor">#012E8B</Color>
+        <Color x:Key="GradientEndColor">#3F0041</Color>
+        <Color x:Key="GradientStart">#713d74</Color>
+        <Color x:Key="GradientEnd">#221e60</Color>
+        <Color x:Key="TwitterBlue">#55acee</Color>
+        <Color x:Key="Red">#dc4e41</Color>
+        <Color x:Key="FacebookBlue">#4267B2</Color>
+        <Color x:Key="LightGreen">#35c659</Color>
+        <Color x:Key="FacebookLogin">#3b5998</Color>
+
+        <Color x:Key="TappedBackgroundColor">#eaeaea</Color>
+        
+        <Color x:Key="PrimaryColor">#327345</Color>
+        <Color x:Key="PrimaryDarkColor">#d0424f</Color>
+        <Color x:Key="PrimaryDarkenColor">#ab3641</Color>
+        <Color x:Key="PrimaryLighterColor">#edcacd</Color>
+        <Color x:Key="PrimaryGradient">#329f52</Color>
+        <Color x:Key="PrimaryLight">#ffe8f4</Color>
+        <Color x:Key="SecondaryGradient">#7644ad</Color>
+        <Color x:Key="Secondary">#d54381</Color>
+        <Color x:Key="Green">#7ed321</Color>
+        <Color x:Key="Red2">#ff4a4a</Color>
+        <Color x:Key="Orange">#ff844a</Color>
+        <Color x:Key="Blue">#4acaff</Color>
+        <Color x:Key="HyperLink">#567cd7</Color>
+
+        <Color x:Key="Gray-100">#f6f7f8</Color>
+        <Color x:Key="Gray-200">#ebecef</Color>
+        <Color x:Key="Gray-300">#ced2d9</Color>
+        <Color x:Key="Gray-400">#b2b8c2</Color>
+        <Color x:Key="Gray-500">#959eac</Color>
+        <Color x:Key="Gray-600">#788396</Color>
+        <Color x:Key="Gray-700">#606a7b</Color>
+        <Color x:Key="Gray-800">#4a515e</Color>
+        <Color x:Key="Gray-900">#333942</Color>
+        <Color x:Key="Gray-Black">#000000</Color>
+        <Color x:Key="Gray-White">#ffffff</Color>
+
+        <!--<x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
+        <x:String x:Key="AvatarIcon">&#xe723;</x:String>
+        <x:String x:Key="FaceBook">&#xe70f;</x:String>
+        <x:String x:Key="Google">&#xe74d;</x:String>
+        <x:String x:Key="Twitter">&#xe749;</x:String>-->
+
+        <!--  Common style for labels  -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource Gray-White}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="LineHeight" Value="1.25" />
+        </Style>
+
+        <!--  Common style for entries  -->
+        <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
+            <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource Gray-White}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="15,0" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="ReturnType" Value="Done" />
+        </Style>
+
+        <!--  Common style for buttons  -->
+        <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="BackgroundGradient">
+                <Setter.Value>
+                    <graphics:SfLinearGradientBrush>
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
+                            <graphics:SfGradientStop Offset="1" Color="{StaticResource PrimaryGradient}" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TextColor" Value="{StaticResource Gray-White}" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />-->
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        <!--  Common style for flat buttons  -->
+        <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />-->
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        <!--  Common style for borders  -->
+        <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderWidth" Value="1" />
+        </Style>
+
+        <!--  Common style for gradient view  -->
+        <Style x:Key="SfGradientViewStyle" TargetType="graphics:SfGradientView">
+            <Setter Property="Opacity" Value="0.82" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundBrush">
+                <Setter.Value>
+                    <graphics:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Offset="0.0" Color="{StaticResource GradientEndColor}" />
+                            <graphics:SfGradientStop Offset="1.0" Color="{StaticResource GradientStartColor}" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SfGradientStyle" TargetType="graphics:SfGradientView">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundBrush">
+                <Setter.Value>
+                    <graphics:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <graphics:SfLinearGradientBrush.GradientStops>
+
+                            <graphics:SfGradientStop Offset="0.0" Color="{StaticResource GradientStart}" />
+                            <graphics:SfGradientStop Offset="1.0" Color="{StaticResource GradientEnd}" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}"/>-->
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="LineHeight" Value="1.5"/>
+            <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
+        </Style>
+
+        <Style x:Key="FormBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="BorderColor" Value="{StaticResource Gray-300}"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray-White}"/>
+        </Style>
+
+        <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
+            <Setter Property="BorderColor" Value="{StaticResource Gray-300}"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray-White}"/>
+        </Style>
+
+        <Style x:Key="EntryTextStyle" TargetType="control:BorderlessEntry">
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>-->
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="{StaticResource Gray-900}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource Gray-700}"/>
+        </Style>
+
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>-->
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="{StaticResource Gray-700}"/>
+        </Style>
+
+        <Style x:Key="ComboBoxStyle" TargetType="combobox:SfComboBox">
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}"/>-->
+            <Setter Property="TextSize" Value="16"/>
+            <Setter Property="TextColor" Value="{StaticResource Gray-700}"/>
+            <Setter Property="ShowBorder" Value="False"/>
+            <Setter Property="WatermarkColor" Value="{StaticResource Gray-700}"/>
+            <Setter Property="Margin" Value="15,0" />
+            <Setter Property="HeightRequest" Value="40"/>
+        </Style>
+
+        <!-- Common style for contact labels -->
+        <Style x:Key="ContactsLabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="16,0" />
+            <Setter Property="TextColor" Value="{StaticResource Gray-900}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+
+        <!--<Style x:Key="SfAvatarStyle" TargetType="sfavatar:SfAvatarView">
+            <Setter Property="ContentType" Value="Initials" />
+            <Setter Property="InitialsType" Value="DoubleCharacter" />
+            <Setter Property="InitialsColor" Value="#ffffff" />
+            <Setter Property="AvatarShape" Value="Circle" />
+            <Setter Property="AvatarSize" Value="Medium" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BorderWidth" Value="0" />
+        </Style>-->
+
+        <!-- Common style for seperators -->
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Gray-200}" />
+        </Style>
+
+
+
+        <converters:CinsiyetToBoolConverter  x:Key="CinsiyetToBoolConverter"/>
+        <converters:AyToIntConverter x:Key="AyToIntConverter" />
+        <converters:IntToAyConverter x:Key="IntToAyConverter"/>
+        <converters:TrafikToTabloConverter x:Key="TrafikToTabloConverter" />
+        <converters:YasiYuavarlaToString x:Key="YasiYuavarlaToString" />
+        <converters:YakinToCocukStackConverter x:Key="YakinToCocukStackConverter"/>
+        <converters:YakinToEsStackConverter x:Key="YakinToEsStackConverter" />
+        <converters:YakinToAnneBabaStackConverter x:Key="YakinToAnneBabaStackConverter" />
+
+        <converters:TrafikToBoolNormalConverter x:Key="TrafikToBoolNormalConverter"/>
+        <converters:TrafikToBoolTrafikConverter x:Key="TrafikToBoolTrafikConverter"/>
+
+        <converters:DateTosStringConverter x:Key="DateTosStringConverter" />
+
+        <converters:IntStringConverter x:Key="IntStringConverter" />
+
+        <converters:AciklamaToBackGroudColor x:Key="AciklamaToBackGroudColor"/>
+
+        <converters:HastaneVisibleConverter  x:Key ="HastaneVisibleConverter" />
+
+        <converters:HastaneVisibleConverter2 x:Key="HastaneVisibleConverter2"/>
+
+        <converters:FMHaftaOpacityConverter x:Key="FMHaftaOpacityConverter"/>
+        <converters:FmAciklama1RenkConverter x:Key="FmAciklama1RenkConverter"/>
+
+        <converters:FMHaftalikIzinOpacityConverter x:Key="FMHaftalikIzinOpacityConverter"/>
+
+        <converters:TrafiktoVisibleConverter  x:Key="TrafiktoVisibleConverter"/>
+        <converters:TrafikToTersVisibleConverter x:Key="TrafikToTersVisibleConverter"/>
+
+        <converters:CalisiyorReverseConverter x:Key="CalisiyorReverseConverter"/>
+
+
+        <converters:ItemTappedConverter x:Key="LocalItemTappedConverter">
+
+        </converters:ItemTappedConverter>
+
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
+             x:Class="LawCheckTazminat.Views.Destek.YanitGoruntuleView">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Yanıt Görüntüle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="47" FontSize="Large"
+                        Command="{Binding IptalCommand}" 
+                        TextColor="Red" HorizontalOptions="End"></Button>
+
+
+
+                <!--   Yanıt   Tarih       -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="27" 
+                        FontSize="Medium"
+                        Text=" Tarih"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                        Padding="6,0,0,0"
+                        BorderColor="{Binding Source={x:Reference txtKonu}, Path=IsFocused}"
+                        HeightRequest="50"
+                        Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtTarih" Placeholder=""
+                                   WidthRequest="120"          HeightRequest="45" TextColor="Black"
+                                 Text="{Binding YanitTarihi  , Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+
+                <!--   Yanıt   Konu       -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="27" 
+                        FontSize="Medium"
+                        Text=" Konu "
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                        Padding="6,0,0,0"
+                        BorderColor="{Binding Source={x:Reference txtKonu}, Path=IsFocused}"
+                        HeightRequest="50" 
+                        Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtKonu" Placeholder=""
+                                   WidthRequest="120"          HeightRequest="45" TextColor="Black"
+                                 Text="{Binding YanitKonu, Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+
+                <!--   Yanıt   Mesaj       -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Yanıt"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder HeightRequest="120" Style="{StaticResource SfBorderStyle}">
+                    <Editor
+                                HeightRequest="120"
+                                Placeholder="Mesaj"
+                                PlaceholderColor="LightGray"
+                                TextColor="Black"
+                                Text="{Binding Yanit, Mode=TwoWay} ">
+                    </Editor>
+
+                </border:SfBorder>
+
+
+                <BoxView HeightRequest="2" Margin="0,10,0,0" BackgroundColor="{StaticResource Gray-200}"/>
+               
+                <!--   Orjinal Soru       -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Yanıtlanan Soru"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder HeightRequest="120" Style="{StaticResource SfBorderStyle}">
+                    <Editor
+                                HeightRequest="120"
+                                Placeholder="Mesaj"
+                                PlaceholderColor="LightGray"
+                                TextColor="{DynamicResource Gray-900}" 
+                                Text="{Binding Soru, Mode=TwoWay} ">
+                    </Editor>
+
+                </border:SfBorder>
+
+                <Button Padding="0,20,0,0" Text="   Tamam   " BackgroundColor="Transparent"
+                            Command="{Binding IptalCommand}" FontSize="Large">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+            </StackLayout>
+
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

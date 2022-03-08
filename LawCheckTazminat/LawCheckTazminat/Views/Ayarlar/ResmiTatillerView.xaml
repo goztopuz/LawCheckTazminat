@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+                          xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors"
+
+             x:Class="LawCheckTazminat.Views.Ayarlar.ResmiTatillerView">
+
+     <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Resmi Tatiller"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+         <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,15">
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"   TranslationY="-12"       HorizontalOptions="End"></Button>
+
+
+                <Button Text="Yeni Kayıt" BackgroundColor="Transparent"
+                        Grid.Column="0" Padding="0,0,0,0" HeightRequest="48"
+                       FontSize="Large"  HorizontalOptions="Start"
+                       TranslationY="-60"   Command="{Binding YeniKayitCommand}">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                <Label
+                        Margin="0,8,0,4" TranslationY="-40"
+                        HeightRequest="30" 
+                        FontSize="16"
+                        Text="Yıl"
+                        TextColor="{StaticResource Gray-800}"
+                    />
+
+
+
+                <!--<Picker
+                    ItemsSource="{Binding YillarListe}"
+                    ItemDisplayBinding="{Binding Yill}"
+                    SelectedItem="{Binding Yil, Mode=TwoWay}"
+                    x:Name="drpYil"
+                    SelectedIndexChanged="drpYil_SelectedIndexChanged">
+                </Picker>-->
+
+              <combobox:SfComboBox HeightRequest="50" x:Name="comboBox"
+                             TextSize="Large" BackgroundColor="WhiteSmoke" TextColor="Black"
+                            ComboBoxSource="{Binding YillarListe}"   TranslationY="-40"
+                                DataSource="{Binding YillarListe}" SelectedItem="{Binding Secili}"
+                             DisplayMemberPath="{Binding Yill, Mode=TwoWay}"/>
+
+
+                <Button Text="Seç" FontSize="Large"   BackgroundColor="Transparent"
+                        Command="{Binding SecCommand}"
+                       TranslationY="-15" Padding="10,0,20,3">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+
+                <ListView RowHeight="70"
+                    ItemsSource="{Binding YildakiTatiller}"
+                    HasUnevenRows="True">
+
+                     <!--<ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding TatilTappedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                    </behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>-->
+
+
+                  <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                  <ViewCell.ContextActions>
+                                    
+                                    <MenuItem x:Name="menuItemCikar" Text="Sil" IsDestructive="True" 
+                                         Clicked="menuItemCikar_Clicked"   CommandParameter="{Binding}">
+                                    </MenuItem>
+                                    
+                                </ViewCell.ContextActions>
+
+                                <StackLayout>
+                                    <Label TextColor="Black" Padding="0,15,0,0"
+                                           FontSize="Medium"
+                                        Text="{Binding tarih,Converter={StaticResource DateTosStringConverter}}"></Label>
+                                    <Label Text="{Binding aciklama}" Padding="0,0,0,10"></Label>
+                                </StackLayout>
+
+                            </ViewCell>
+                    </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                </StackLayout>
+             </ScrollView>
+
+
+   </ContentPage.Content>
+</ContentPage>

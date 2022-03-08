@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
+             x:Class="LawCheckTazminat.Views.IsgucuKayipV.MasrafEkleIsgucu">
+
+        <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text=" Masraf Ekle-Düzenle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,0" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+                <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        FontSize="Large"  Command="{Binding IptalCommand}" 
+                  TextColor="Red"      HorizontalOptions="End"></Button>
+
+
+                <!-- Masraf Türü -->
+                <Label Padding="0,0,0,0"
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Masraf Türü"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder BackgroundColor="WhiteSmoke" HeightRequest="50"
+                        BorderColor="{Binding Source={x:Reference txtMasraf}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry x:Name="txtMasraf"   Placeholder="Masraf Açıklama"
+                                           FontSize="Large" TextColor="Black"
+                                          Text="{Binding MasrafBilgi.masraftur2, Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                
+                
+
+             
+
+
+
+                <!-- Masraf Tarih -->
+                <Label Padding="0,0,0,0"
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="16"
+                        Text="Masraf Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                <DatePicker x:Name="dtMasraf" HeightRequest="50"
+                      BackgroundColor="WhiteSmoke"      FontSize="Large" TextColor="Black"
+                            Date="{Binding MasrafBilgi.tarihBas}">
+                    
+                </DatePicker>
+
+                <!-- Masraf Miktarı -->
+                <Label Padding="0,0,0,0"
+                        Margin="0,15,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Miktar"
+                        TextColor="{StaticResource Gray-800}" />
+                <!--<border:SfBorder
+                        BorderColor="{Binding Source={x:Reference txtMiktar}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry x:Name="txtMiktar"   Placeholder="Miktar"
+                                      Keyboard="Numeric"     Text="{Binding MasrafBilgi.miktar, Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>-->
+
+                  <syncfusion1:SfNumericTextBox x:Name="txtMiktar" 
+                        FontSize="Large" TextAlignment="Start" HeightRequest="50"
+                       BackgroundColor="WhiteSmoke" Margin="0,3,3,0"   Value="{Binding MasrafBilgi.miktar,  
+                        Mode=TwoWay}"  FormatString="c">
+                    </syncfusion1:SfNumericTextBox>
+
+
+                <Label x:Name="lblHata" Padding="0,10,0,10" Text="{Binding HataMesaji}"
+                       TextColor="DarkRed"></Label>
+
+                <Button Text="Kaydet" Padding="0,10,0,0" FontSize="Large"
+                    IsVisible="false"    Command="{Binding KaydetCommand}"></Button>
+
+                
+                        <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+                        HeightRequest="50"
+                        WidthRequest="200" />
+
+
+            </StackLayout>
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

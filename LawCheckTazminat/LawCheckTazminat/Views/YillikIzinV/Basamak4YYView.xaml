@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak4YYView">
+
+
+         <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hesaplama Bilgileri (5/6)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+            <ScrollView>
+            <StackLayout  Spacing="0" Padding="0,20">
+
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="End"></Button>
+
+                 <!--    Hak Edilen İzin Toplamı       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Tarih Aralığındaki Hak Edilen İzin Toplamları"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtHakEdileGun}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtHakEdileGun"    FontSize="Large"
+                          WidthRequest="70"    Keyboard="Numeric" IsReadOnly="False"
+                           Text="{Binding YY.Gun , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                 <!--    Kullanılan  İzin Toplamı       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text=" Kullanılan İzin Gün Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtHakEdileGun}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtBrutIzin"   FontSize="Large"
+                          WidthRequest="70"    Keyboard="Numeric" IsReadOnly="True"
+                           Text="{Binding YY.Kullanilan, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                    <!--      İzindeki Resmi Tatiller Toplamı       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İzindeki Resmi Tatil Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtResmiIzin}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtResmiIzin"   Placeholder="İzindeki Raporlar"
+                       FontSize="Large"   WidthRequest="70"    Keyboard="Numeric" IsReadOnly="True"
+                           Text="{Binding ResmiTatilToplam, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+
+                     <!--      İzindeki Haftalık İzinler Toplamı       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İzindeki  Haftalık TatilGünü Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtIzinHaftalikTatil}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtIzinHaftalikTatil"   Placeholder="İzindeki Raporlar"
+                       FontSize="Large"   WidthRequest="70"    Keyboard="Numeric" IsReadOnly="True"
+                           Text="{Binding HaftalikIzinToplam , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="25" 
+                        FontSize="Medium"
+                        Text="Hafta İzni -Resmi İzin Çakışması"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtCakisma}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtCakisma"   Placeholder="Çakışan Gün Sayısı"
+                       FontSize="Large"   WidthRequest="70"    Keyboard="Numeric" IsReadOnly="True"
+                           Text="{Binding CakisanGunToplam , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+
+                <!--Net İzinler Toplamı-->       
+                <!--<Label
+                        Margin="0,8,0,4"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Net Hesaplanacak İzin Gün Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtNetIzin}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtNetIzin"   Placeholder=""
+                          WidthRequest="70"    Keyboard="Numeric"
+                           Text="{Binding , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>-->
+
+         <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+           <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+            </StackLayout>
+
+
+
+          </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

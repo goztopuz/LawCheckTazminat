@@ -1,0 +1,220 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.22" />
+    <PackageReference Include="Plugin.InAppBilling" Version="4.0.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.DocIO" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.4.0.55" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Syncfusion.Xamarin.DocIORenderer" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="19.4.0.55" />
+    <PackageReference Include="Xamarin.Forms.Svg" Version="1.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Boots\" />
+    <Folder Include="Contracts\Contracts\" />
+    <Folder Include="Enumerations\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Validation\" />
+    <Folder Include="ViewModels\KidemIhbarB\" />
+    <Folder Include="ViewModels\NetBrut\" />
+    <Folder Include="ViewModels\Gorev\" />
+    <Folder Include="ViewModels\Kasa\" />
+    <Folder Include="ViewModels\NewFolder\" />
+    <Folder Include="ViewModels\Takvim\" />
+    <Folder Include="ViewModels\Randevu\" />
+    <Folder Include="ViewModels\Yedek\" />
+    <Folder Include="ViewModels\Tanimlamalar\" />
+    <Folder Include="Utility\" />
+    <Folder Include="Templates\" />
+    <Folder Include="Views\KidemIhbarV\" />
+    <Folder Include="Views\KasaV\" />
+    <Folder Include="Views\NetBrutV\" />
+    <Folder Include="Views\Hakkimizda\" />
+    <Folder Include="ViewModels\Hakkimizda\" />
+    <Folder Include="Views\Destek\" />
+    <Folder Include="ViewModels\Destek\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Ayarlar\AsgariUcretYeni.xaml.cs">
+      <DependentUpon>AsgariUcretYeni.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\AnaSayfa\Anasayfa.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AracDegerKaybi\AracDegerKaybiFormul.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AracDegerKaybi\AracDegerKayipView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AracDegerKaybi\KaskoDegerinden.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ayarlar\AsgariUcretDuzenle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ayarlar\AsgariUcretYeni.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ayarlar\AyarlarListe.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ayarlar\HakkimizdaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Ayarlar\KidemTavanYeni.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Contacts\AdresDefteri.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Contacts\KisiAramaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak2DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak3DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak4BekarCocukDY.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak4DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak5DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak6DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Basamak7DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\BasamakDY1View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\DestekSon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\KisiKayitlariDYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\MaasOranlaBrutView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\MaasOranlaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\MasrafEkle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Wiz1DYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\Wiz2DYKazaKisiView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DestektenYoksunlukV\YakinKisiEkle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FazlaMesaiV\Basamak5aFMView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\GeceCalisma\Basamak5aGCView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\Basamak1IGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\Basamak2IGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\Basamak3IGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\Basamak5IGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\Basamk4IGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IsgucuKayipV\KisiKayitlariIGView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak2KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak3KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak4KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak5KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak6KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak7KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\Basamak8KH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KayipOranV\BasamakSonKH.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PdfV\PdfView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Test\RaporTest1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UyelikV\UyeBilgi.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YillikIzinV\Basamak3BYYView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YillikIzinV\YillikIzinNetBrutView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

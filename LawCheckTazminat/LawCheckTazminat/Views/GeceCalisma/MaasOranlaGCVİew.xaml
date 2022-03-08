@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.MaasOranlaGCVİew">
+      <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Net Maaş - Asgari Ücrete Oranla"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+
+
+        <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="40" FontSize="Large"
+                        Padding="0,5,15,0" TextColor="Red"
+                        Command="{Binding IptalCommand}" 
+                        HorizontalOptions="End"></Button>
+
+
+                    <!-- Maaş -->
+
+                     <Label
+                        Margin="0,5,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        HorizontalOptions="Start"
+                        Text=" Net  Ücret "
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtNetUcret"
+                        BackgroundColor="WhiteSmoke" HeightRequest="50"  FontSize="Large"
+                    Margin="0,3,3,10"   Value="{Binding NetMaas, 
+                        Mode=TwoWay}" FormatString="c"></syncfusion1:SfNumericTextBox>
+
+                <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+                    <Label Text="AGİ Net Ücrete Dahil" VerticalOptions="Center" FontSize="Medium"></Label>
+                    <CheckBox x:Name="chkAgi" IsChecked="{Binding AgiDahil}" HeightRequest="60"></CheckBox>
+
+                </StackLayout>
+
+                     <!-- Ücret Yıl-->
+                    <Label
+                        Margin="0,12,0,4"
+                        HeightRequest="28" 
+                        FontSize="Medium"
+                        HorizontalOptions="Start"
+                        Text=" Ücret Yılı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                  <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtUcretYil}, Path=IsFocused}"
+                    BackgroundColor="WhiteSmoke" HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+                 <controls:BorderlessEntry  x:Name="txtUcretYil"   
+                          WidthRequest="70"    Keyboard="Numeric"
+                   FontSize="Large"            Text="{Binding Yil, Mode=TwoWay}"
+                                            >
+
+
+                    </controls:BorderlessEntry>
+               </border:SfBorder>
+                   <!-- Ücret Ay -->
+
+                  <Label
+                        Margin="0,12,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        HorizontalOptions="Start"
+                        Text=" Ücret Ay"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <Picker x:Name="drpAy"  FontSize="Large"
+                            BackgroundColor="WhiteSmoke" HeightRequest="50"
+                            SelectedItem="{Binding UcretAy, Mode=TwoWay,Converter={StaticResource AyToIntConverter}}">
+                        <Picker.Items>
+                            <x:String>Ocak</x:String>
+                            <x:String>Şubat</x:String>
+                            <x:String>Mart</x:String>
+                            <x:String>Nisan</x:String>
+                            <x:String>Mayıs</x:String>
+                            <x:String>Haziran</x:String>
+                            <x:String>Temmuz</x:String>
+                            <x:String>Ağustos</x:String>
+                            <x:String>Eylül</x:String>
+                            <x:String>Ekim</x:String>
+                            <x:String>Kasım</x:String>
+                            <x:String>Aralık</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+
+                <Button  BackgroundColor="Transparent"
+                    Text="Oranla"  FontSize="Large" Padding="0,30,0,30"
+                        Command="{Binding OranlaCommand}">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Tarihteki Asgari Brüt :" Grid.Row="0" Grid.Column="0" FontSize="Medium"></Label>
+                        <Label x:Name="lblAsgariUcret" FontSize="Large" TextColor="Black"
+                               Text="{Binding OAykiAsgari, StringFormat='{0:C}'}" Grid.Row="0" Grid.Column="1" ></Label>
+
+                        <Label Text="AGİ :" Grid.Row="1" Grid.Column="0" FontSize="Medium"></Label>
+                        <Label FontSize="Large" TextColor="Black"
+                            Text="{Binding AgiDegeri, StringFormat='{0:C}'}" Grid.Row="1" Grid.Column="1"></Label>
+
+                        <Label Text="AGi'siz Net :"   Grid.Row="2" Grid.Column="0" FontSize="Medium"></Label>
+                        <Label FontSize="Large" TextColor="Black"
+                            Text="{Binding OlayTarihiAgisiz, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="1"></Label>
+
+                        <Label Text="Brüt  :"   Grid.Row="3" Grid.Column="0" FontSize="Medium"></Label>
+                        <Label FontSize="Large" TextColor="Black"
+                            Text="{Binding BrutUcret, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"></Label>
+
+                    </Grid>
+                </StackLayout>
+
+               
+
+                 <Label Text="Oran " HorizontalOptions="Center" FontSize="Large" Padding="0,10,0,0"></Label>
+                <Label TextColor="Red" x:Name="lblOran" HorizontalOptions="Center"
+                    FontSize="Large"   Text="{Binding Oran}" ></Label>
+
+           <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+            <StackLayout Padding="0,10,0,0">
+
+                <buttons:SfButton Padding="0,0,0,0"
+                        Command="{Binding KullanCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Tamam-Kullan"
+                        WidthRequest="200" />
+            </StackLayout>
+
+
+
+                </StackLayout>
+            </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

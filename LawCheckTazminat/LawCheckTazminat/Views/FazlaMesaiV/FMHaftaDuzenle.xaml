@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="LawCheckTazminat.Views.FazlaMesaiV.FMHaftaDuzenle">
+         <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hafta Bilgilerini Düzenle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+            <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"      HorizontalOptions="End"></Button>
+
+       <!--      Tarihler     -->
+            <StackLayout Padding="5,15,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"
+                           Text="Başlangıç Tarihi :" >
+                  </Label>
+                    <Label Grid.Row="0" Grid.Column="1" FontSize="Medium"  HorizontalOptions="Start"
+                           TextColor="Black"
+                         Text="{Binding Hafta.BasTarih, Converter={StaticResource DateTosStringConverter}}"></Label>
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Bitiş Tarihi  :"></Label>
+                    <Label Grid.Column="1" Grid.Row="1" FontSize="Medium"  TextColor="Black"
+                           Text="{Binding Hafta.BitTarih, Converter={StaticResource DateTosStringConverter}}"></Label>
+                </Grid>
+
+            </StackLayout>
+
+       <!--      İzin     -->
+
+       <Label Padding="10,0,0,0"
+              TextColor="Red" Text="{Binding IzinYazi}">
+
+       </Label>
+
+
+       <!--      Sözleşme Mesai Saati       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="35" 
+                        FontSize="16" Padding="0,15,0,0"
+                        Text="Sözleşme Mesai Saati"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSozlesmeSaati}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtSozlesmeSaati"   Placeholder="Sözleşme Saati"
+                          WidthRequest="70"    Keyboard="Numeric"
+                                               Text="{Binding Hafta.FazlaMesaiSozlesme , Mode=TwoWay}">
+
+
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+        <!--      Haftalık Çalışma Saati       -->
+                    <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="35" 
+                        FontSize="16"
+                        Text="Haftadaki Çalışma Saati"
+                        TextColor="{StaticResource Gray-800}" />
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSozlesmeSaati}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtCalismaSaati"   Placeholder="Haftalık Çalışma Saati"
+                          WidthRequest="70"    Keyboard="Numeric"
+                           Text="{Binding Hafta.FazlaMesaiOHaftadaki, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+                        <!--      Brüt Ücret      -->
+
+                 <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="35" 
+                        FontSize="16"
+                        Text="Haftadaki Brüt Ücret"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtBrutMaas" 
+                               HeightRequest="50"     BackgroundColor="WhiteSmoke"
+                       Value="{Binding Hafta.BrutUcret, Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+
+                <Label x:Name="lblIzinYazi"  Padding="0,15,0,10" Text="{Binding IzinYazi}" TextColor="DarkRed"></Label>       
+
+
+                <Label x:Name="lblHata"  Padding="0,15,0,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>       
+
+
+
+                 <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+                 <busyindicator:SfBusyIndicator x:Name="busyindicator" 
+                                       Title="İşlem Yapılıyor..."
+                                       AnimationType="DoubleCircle"
+                                       ViewBoxHeight="100"
+                                       ViewBoxWidth="100"
+                                        IsBusy="{Binding Islemde}"
+                         
+                                       />
+
+
+            </StackLayout>
+
+
+
+
+                </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

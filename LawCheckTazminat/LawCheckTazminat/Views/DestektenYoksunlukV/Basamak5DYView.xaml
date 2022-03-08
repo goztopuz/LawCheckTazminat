@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak5DYView">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0"  Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Eşin Evlenme İhtimali (5/7)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
+                        BackgroundColor="Transparent"
+                     TextColor="Red" Padding="0,-4,4,10"   HorizontalOptions="End"></Button>
+
+                <StackLayout x:Name="stckEsVar" Padding="0,10,0,20" IsVisible="{Binding EsVar}">
+
+                    <Label
+                        Margin="0,24,0,4"
+                        HeightRequest="26"
+                        FontSize="Medium"
+                        Text="Eşin Evlenme Durumu?"
+                        TextColor="{StaticResource Gray-800}" />
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="%" TextColor="DarkRed" FontSize="Large" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding EvlenmeYuzde, Mode=TwoWay}" FontSize="Large" TextColor="DarkRed" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+
+                    <Label
+                        Margin="0,24,0,4"
+                        HeightRequest="26"
+                        FontSize="Medium"
+                        Text="Kullanılan Tablo(Seçili Tabloların Ortalaması Hesaplanacaktır)"
+                        TextColor="{StaticResource Gray-800}" />
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="chkAyim" HeightRequest="40" IsChecked="{Binding IsEsEvlenmeA, Mode=TwoWay}"></CheckBox>
+                        <Label Text="AYİM" FontSize="16"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="chkMoser"  HeightRequest="40" IsChecked="{Binding IsEsEvlenmeM, Mode=TwoWay}"  ></CheckBox>
+                        <Label Text="Moser" FontSize="16"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="chkStaauffer"  HeightRequest="40" IsChecked="{Binding IsEsEvlenmeS, Mode=TwoWay}"  ></CheckBox>
+                        <Label FontSize="16" Text="Staauffer/Schaetzle"></Label>
+                    </StackLayout>
+
+                    <Button x:Name="btnYenidenHesapla" Text="Yeniden Hesapla" FontSize="Medium"
+                            Command="{Binding HesaplaCommand}"></Button>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        
+                    <Switch  x:Name="chkElle" IsToggled="{Binding AktifDestek.esEvlenmeElleHesapla, Mode=TwoWay}"
+                          HeightRequest="25"  Toggled="chkElle_Toggled" ></Switch>
+                    <Label
+                        Margin="0,24,0,4"
+                        HeightRequest="26"
+                        FontSize="Medium"
+                        Text="Eşin Evlenme % Yüzdesini Elle Kendiniz Girin"
+                        TextColor="{StaticResource Gray-800}" />
+                        
+                    </StackLayout>
+
+                    <StackLayout x:Name="stckEvlenme" IsVisible="{Binding AktifDestek.esEvlenmeElleHesapla}">
+
+                      
+                        <border:SfBorder
+                    Padding="6,0,0,0" BackgroundColor="WhiteSmoke"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeElle}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+                            <controls:BorderlessEntry  x:Name="txtEvlenmeElle" Placeholder="Evlenme Oranını Elle Girin %"
+                                Keyboard="Numeric"     FontSize="Large" TextColor="Black"          
+                                 Text="{Binding  Yakin.okulBitisYas , Mode=TwoWay}">
+
+                            </controls:BorderlessEntry>
+
+                        </border:SfBorder>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+                <Button x:Name="btnIlerle" Text="İlerle" FontSize="Large"
+                   IsVisible="false"       Padding="0,15,0,0"  Command="{Binding IlerleCommand}"></Button>
+
+
+                   <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                       HeightRequest="55"
+                        WidthRequest="200" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

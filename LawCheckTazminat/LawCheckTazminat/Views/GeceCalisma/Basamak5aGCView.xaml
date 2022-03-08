@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak5aGCView">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Maaş AGi Bilgi (5/11)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"      HorizontalOptions="End"></Button>
+
+
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium" HorizontalOptions="Center"
+                        Text="AGİ(Asgari Geçim İndirimi)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium" 
+                        Text="Medeni Durum"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <combobox:SfComboBox HeightRequest="50" BackgroundColor="WhiteSmoke" 
+                     SelectedItem="{Binding Bekar}" SelectionChanged="drpEvliBekar_SelectionChanged"
+                               TextSize="Large"         x:Name="drpEvliBekar">
+                    <combobox:SfComboBox.ComboBoxSource>
+                        <ListCollection:List x:TypeArguments="x:String">
+
+                            <x:String>Evli</x:String>
+                            <x:String>Bekar</x:String>
+
+
+                        </ListCollection:List>
+                    </combobox:SfComboBox.ComboBoxSource>
+                </combobox:SfComboBox>
+
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium" x:Name="lblEsCalisma"
+                        Text="Eş Çalışma Durumu"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <combobox:SfComboBox HeightRequest="50"  BackgroundColor="WhiteSmoke"
+                       Grid.Column="0" Grid.Row="0"     SelectedItem="{Binding EsCalisiyor}"
+                           TextSize="Large"             x:Name="drpEsCalisma">
+                    <combobox:SfComboBox.ComboBoxSource>
+                        <ListCollection:List x:TypeArguments="x:String">
+                            <x:String>ÇalışMIyor</x:String>
+                            <x:String>Çalışıyor</x:String>
+                        </ListCollection:List>
+                    </combobox:SfComboBox.ComboBoxSource>
+                </combobox:SfComboBox>
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Çocuk Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder  
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtCocukSayisi}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtCocukSayisi"   Placeholder="Çocuk Sayısı"
+                          WidthRequest="70"    Keyboard="Numeric" FontSize="Large"
+                          Text="{Binding CocukSayisi, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+
+                <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İlerle"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

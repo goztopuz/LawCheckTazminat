@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LawCheckTazminat.Views.UyelikV.UyeBilgi">
+
+
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Üye İşlemleri"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+
+
+        <ScrollView>
+            <StackLayout  Padding="10,5,10,40">
+
+                <Button HorizontalOptions="End" Text="Geri" BackgroundColor="Transparent"
+                        FontSize="Large"   TextColor="Red" Padding="0,0,5,0"
+                        Command="{Binding BitisCommand}" >
+                </Button>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,5,0,0">
+                    <Image Source="appicon.png" HeightRequest="50" WidthRequest="50" Opacity="0.8"></Image>
+                    <Label  
+                    Text="Tazminat Hesaplama"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Title"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                    </Label>
+                </StackLayout>
+
+                <StackLayout x:Name="Demo" IsVisible="{Binding DemoDurum}" Padding="0,10,0,10">
+
+          
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        
+                        
+                        <Label Text="Üyelik Durum : " FontSize="Large"></Label>
+                        <Label Text="{Binding StatusYazi}" FontSize="Large" TextColor="Black"></Label>
+                        
+                    </StackLayout>
+                    <Label Text="6 Aylık Abonelik Ücreti" FontSize="Large" HorizontalOptions="Center"></Label>
+                    <Label  Text="{Binding ProPrice}" HorizontalOptions="Center"
+                           TextColor="Black"  FontSize="Large"></Label>
+
+                    <StackLayout>
+                        <Button FontSize="Large" Text="Satın Al"  BackgroundColor="Transparent"
+                       TextColor="CornflowerBlue"     Command="{Binding PurchaseCommand}"></Button>
+                    </StackLayout>
+
+                    <Label x:Name="txtSureDolmus" Text="{Binding TxtOutofDate}" FontSize="Medium" HorizontalOptions="Center"></Label>
+                    
+                    <StackLayout>
+                        <Button FontSize="Large" Text="Aboneliği Geri Yükle"  BackgroundColor="Transparent"
+                       TextColor="CornflowerBlue"     Command="{Binding RestoreCommand}"></Button>
+                    </StackLayout>
+                </StackLayout>
+
+             
+
+                <StackLayout x:Name="Pro" IsVisible="{Binding ProDurum}">
+                    <Label Text="Tam Sürüm Aboneliğiniz Sürmektedir" FontSize="Large"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Abonelik  Tarihi :" FontSize="Large"></Label>
+                        <Label Text="{Binding AbonelikTarihi}" FontSize="Large" TextColor="Black"></Label>
+                    </StackLayout>
+                </StackLayout>
+                
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

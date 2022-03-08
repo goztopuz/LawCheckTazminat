@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak2DYView">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0"  Margin="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Çalışma -  Askerlik  (2/7)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+               
+
+
+                <Button Text="İptal" HeightRequest="40" FontSize="Large" 
+                        BackgroundColor="Transparent" Padding="0,-4,0,0"
+                        Command="{Binding IptalCommand}" 
+                        TextColor="Red" HorizontalOptions="End"></Button>
+
+                <!-- Tahmin Edilen Emeklilik Yaşı -->
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Tahmini Emeklilik Yaşı"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEmeklilikYas}, Path=IsFocused}"
+                    BackgroundColor="WhiteSmoke"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtEmeklilikYas"   Placeholder="Yaş" 
+                          WidthRequest="70"    FontSize="Large" TextColor="Black"
+                          Text="{Binding AktifDestek.emeklilikYasi, Mode=TwoWay}">
+
+
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <!-- Çalışma Durumu -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Çalışma Durumu"
+                        TextColor="{StaticResource Gray-800}" />
+
+             
+                <StackLayout>
+                <controls:BorderlessEntry  x:Name="txtCalisma"   Placeholder="Çalışma" 
+                 IsVisible="False"     Focused="txtCalisma_Focused"  BackgroundColor="WhiteSmoke"
+                                           Text="{Binding AktifDestek.calismaDurumu, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                    <Picker x:Name="drpCalisma" IsVisible="True"  
+                            FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                        SelectedItem="{Binding Calisma}"   Margin="5,0,0,0" HeightRequest="50"
+                        SelectedIndexChanged="drpCalisma_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Çalışıyor</x:String>
+                            <x:String>ÇalışMIyor</x:String>
+                            <x:String>Öğrenci</x:String>
+                            <x:String>Ev İşleri</x:String>
+
+
+                        </Picker.Items>
+                    </Picker>
+
+
+
+
+                </StackLayout>
+                <!--</border:SfBorder>-->
+               
+
+                <!-- Meslek Durumu -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Meslek(Opsiyonel)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtMeslek}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtMeslek"   Placeholder="Meslek"
+                         FontSize="Large" TextColor="Black"
+                       Text="{Binding AktifDestek.meslekAciklama, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+                <!-- Boşluk -->
+              
+                
+                <!-- Askerlik -->
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Askerlik"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtAskerlik}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">-->
+                    <controls:BorderlessEntry  x:Name="txtAskerlik"   Placeholder="Askerlik" HeightRequest="50"
+                      IsVisible="False"   IsEnabled="{Binding AktifDestek.cinsiyet, Converter={StaticResource CinsiyetToBoolConverter}}"
+                       FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                    Focused="txtAskerlik_Focused"    Text="{Binding AktifDestek.askerlikYapti, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                <!--</border:SfBorder>-->
+                <Picker x:Name="drpAskerlik"  Margin="0,0,0,0" 
+                  HeightRequest="50"   SelectedItem="{Binding Askerlik}"  
+                        BackgroundColor="WhiteSmoke" TextColor="Black"
+                        SelectedIndexChanged="drpAskerlik_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>Yaptı</x:String>
+                        <x:String>YapMAdı</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <StackLayout x:Name="stckAskerlik" IsVisible="False">
+                <!-- Süresi -->
+                <Label
+                        Margin="0,10,0,0"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Askerlik"
+                        TextColor="{StaticResource Gray-800}" />
+         
+
+                    <StackLayout Orientation="Horizontal">
+
+                    <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtAskerlik}, Path=IsFocused}"
+                    HeightRequest="47"
+                    Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtAskerlikSure" Placeholder="Süresi"
+                                   FontSize="Large"  TextColor="Black"               VerticalOptions="CenterAndExpand"
+                                Keyboard="Numeric"     WidthRequest="80"           HeightRequest="42"
+                                 Text="{Binding  AktifDestek.askerlikSuresi , Mode=TwoWay}">
+                            
+                        </controls:BorderlessEntry>
+                    </border:SfBorder>
+
+               
+                        <Label VerticalOptions="Center" Text="  Ay"></Label>
+
+                </StackLayout>
+                    
+                                            
+                <!-- Askere Gidiş Tarihi -->
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Askere Gidiş Tarihi(Ay-Yıl)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <StackLayout Orientation="Horizontal">
+                    <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtAskerlik}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">-->
+                        <controls:BorderlessEntry  x:Name="txtAskereGidisAy" Placeholder="Ay"
+                             IsVisible="false"     WidthRequest="120"   Focused="txtAskereGidisAy_Focused" 
+                                  FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                                 Text="{Binding  AktifDestek.askereGidisAy, Converter={StaticResource  AyToIntConverter} , Mode=TwoWay}">
+                        </controls:BorderlessEntry>
+
+                    <StackLayout>
+                        <Label Text="   "></Label>
+                    <Picker x:Name="drpAskerlikGidisAy" Title="Ay"  Margin="10,0,0,0"
+                    SelectedItem="{Binding AktifDestek.askereGidisAy, Converter={d:StaticResource AyToIntConverter}, Mode=TwoWay}"
+                    VerticalOptions="End" FontSize="Large" TextColor="Black"
+                    BackgroundColor="WhiteSmoke"    HeightRequest="45"         WidthRequest="120"
+                        SelectedIndexChanged="drpAskerlikGidisAy_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>Ocak</x:String>
+                                <x:String>Şubat</x:String>
+                                <x:String>Mart</x:String>
+                                <x:String>Nisan</x:String>
+                                <x:String>Mayıs</x:String>
+                                <x:String>Haziran</x:String>
+                                <x:String>Temmuz</x:String>
+                                <x:String>Ağustos</x:String>
+                                <x:String>Eylül</x:String>
+                                <x:String>Ekim</x:String>
+                                <x:String>Kasım</x:String>
+                                <x:String>Aralık</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                    </StackLayout>
+
+
+
+                        <!--</border:SfBorder>-->
+                        <StackLayout    Padding="10,0,0,0" >
+                            <Label Text="Yıl"></Label>
+                            <Entry  x:Name="txtAskereGidisYil" Placeholder="Yıl"
+                                    FontSize="Large"  TextColor="Black"  BackgroundColor="WhiteSmoke"
+                                Keyboard="Numeric"     WidthRequest="120"        HeightRequest="50"  
+                                 Text="{Binding  AktifDestek.askereGidisYil , Mode=TwoWay}">
+                            </Entry>
+                        </StackLayout>
+                    
+                       
+
+                 
+                </StackLayout>
+                    
+               
+                </StackLayout>
+               
+                <Button Margin="0,20,0,0"
+                       FontSize="Large"  IsVisible="false"
+                        Command="{Binding IlerleCommand}" Text=" İlerle">
+
+                </Button>
+
+     <Label x:Name="lblHata" Padding="5,15,0,5" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+
+                     <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                         HeightRequest="55"
+                        WidthRequest="200" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

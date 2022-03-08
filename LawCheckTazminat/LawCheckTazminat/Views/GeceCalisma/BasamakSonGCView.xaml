@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LawCheckTazminat.Views.GeceCalisma.BasamakSonGCView">
+         <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hesaplama Sonuçları"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+         <ScrollView>
+                <StackLayout  Padding="10,5,10,40">
+
+                <Button HorizontalOptions="End" 
+                       BackgroundColor="Transparent" Text="Bitti"
+                        FontSize="Large"   TextColor="Red" Padding="0,0,5,0"
+                        Command="{Binding BitisCommand}" >
+                </Button>
+
+            
+                    <Button HorizontalOptions="Start" BackgroundColor="Transparent" FontSize="Large" TranslationY="-45"
+                        Padding="0,0,0,10"    Command="{Binding YenidenHesaplaCommand}"
+                        Text="Yeniden Hesapla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                <Grid Padding="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                            <Label  Text="Toplam Brüt :" Grid.Column="0"  Grid.Row="0"
+                   Padding="0,5,0,0"   FontSize="Medium"  ></Label>
+                 <Label Text="{Binding GC.Toplam, StringFormat='{0:C}'}" Grid.Column="1" Grid.Row="0"
+                         Padding="0,5,0,0" FontSize="Medium" TextColor="Black"  FontAttributes="Bold"></Label>
+
+                  <Label  Text="SGK :" Grid.Column="0" Grid.Row="1"
+                          
+                      Padding="0,5,0,0"    HorizontalOptions="Start" FontSize="Medium"></Label>
+                  <Label Text="{Binding GC.SGK, StringFormat='{0:C}'}" Grid.Column="1" Grid.Row="1"
+                  FontSize="Medium" TextColor="Black"      Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                 <Label  Text="Vergi :" Grid.Row="2" Grid.Column="0"
+                     FontSize="Medium"   Padding="0,5,0,0" HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding GC.Vergi, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="1"
+                    FontSize="Medium" TextColor="Black"  Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                 <Label  Text="Damga Vergisi:" Grid.Row="3" Grid.Column="0"
+                    FontSize="Medium"   Padding="0,5,0,0"  HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding GC.DamgaV, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"
+                FontSize="Medium" TextColor="Black"    Padding="0,5,0,0"      FontAttributes="Bold"></Label>
+
+
+                 <Label  Text="İşsizlik Sigortası :" Grid.Row="4" Grid.Column="0"
+                         Padding="0,5,0,0" FontSize="Medium"
+                         HorizontalOptions="Start" ></Label>
+                    <Label Text="{Binding GC.Issizlik, StringFormat='{0:C}'}"
+                           FontSize="Medium" TextColor="Black" Padding="0,5,0,0" Grid.Row="4" Grid.Column="1"
+                             FontAttributes="Bold"></Label>
+
+                <BoxView HeightRequest="1" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,5,0,0" BackgroundColor="{StaticResource Gray-200}"/>
+
+                     <Label  Text="Net :" Grid.Row="6" Grid.Column="0"  
+                         FontSize="Medium"    HorizontalOptions="Start" Padding="0,5,0,0"></Label>
+                    <Label Text="{Binding GC.Net, StringFormat='{0:C}'}" Grid.Row="6" Grid.Column="1"
+                          FontSize="Large" TextColor="Black"
+                           Padding="0,5,0,0" FontAttributes="Bold"></Label>
+
+                </Grid>
+
+
+                <Button BackgroundColor="Transparent"
+                    Text="Rapor Al" Padding="0,20,0,5" FontSize="Large"
+                                      Command="{Binding RaporAlCommand}">
+
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                    
+                    
+
+
+                    </StackLayout>
+            </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

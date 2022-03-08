@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak5GCView">
+
+<ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Maaş Bilgi (5/8)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+          <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,14">
+
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}" 
+                Padding="0,0,0,5"   TextColor="Red"      HorizontalOptions="End"></Button>
+
+
+
+                           <Button x:Name="btnAsgariOlarakAta"  BackgroundColor="Transparent"
+                                   Command="{Binding AsgariBelirleCommand}"
+                     FontSize="Small" Padding="0,10,0,0" IsVisible="False"
+                        Text="Bu Dönemdeki Maaşları  Asgari Ücret Olarak Belirle">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+                <Button  BackgroundColor="Transparent"
+                    x:Name="btnNetOranlaDagit" Command="{Binding NetOranlaCommand}"
+                    IsVisible="False"   FontSize="Small" Text="NET Maaşını Asgari Ücrete Oranlayıp Dağıt">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+                <Button  BackgroundColor="Transparent"
+                    x:Name="btnBrutOranlaDagit" Command="{Binding BrutOranlaCommand}"
+                   IsVisible="False"  FontSize="Small"   Text="BRÜT Maaşı Asgari Ücrete Oranla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                <combobox:SfComboBox HeightRequest="50"  HorizontalOptions="FillAndExpand" 
+                     BackgroundColor="WhiteSmoke"
+            TextSize="Medium"     DropDownTextSize="Small"    IsSelectedItemsVisibleInDropDown="True"    SelectedItem="{Binding MaasSecim,  Mode=TwoWay}"    x:Name="drpSecenek" >
+                    <combobox:SfComboBox.ComboBoxSource>
+                        <ListCollection:List x:TypeArguments="x:String">
+                            <x:String>(Secim Yok)</x:String>
+                            <x:String>Asgari Ücret Olarak Belirle</x:String>
+                            <x:String>NET Maaşı Asg. Ücrete Oranla</x:String>
+                            <x:String>BRÜT Maaşı Asg. Ücrete Oranla</x:String>
+
+                        </ListCollection:List>
+                    </combobox:SfComboBox.ComboBoxSource>
+                </combobox:SfComboBox>
+                <Button x:Name="btnSecimYap"  BackgroundColor="Transparent"
+                        Command="{Binding SecimCommand}"
+                    FontSize="Medium"   Text="Seç">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                <StackLayout Padding="0,15,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0" Grid.Row="0">
+                            <Label Text="Dönemi"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Grid.Row="0">
+                            <Label Text="Brüt"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Grid.Row="0">
+                            <Label Text="Net"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>
+
+
+                </StackLayout>
+
+                <ListView x:Name="lstMaas"  RowHeight="60"
+                          ItemsSource="{Binding MaasListe2}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" Grid.Row="0">
+                                
+
+                                        <Entry IsReadOnly="True"
+                                             Text="{Binding yil, Mode=TwoWay}">
+
+                                        </Entry>
+
+                                        
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                   
+
+                                            <syncfusion1:SfNumericTextBox x:Name="numericTextBox2" Value="{Binding brutMaas, Mode=TwoWay}" FormatString="c">
+                                                
+                                            </syncfusion1:SfNumericTextBox>
+
+                                        <!--</border:SfBorder>-->
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="2" Grid.Row="0">
+                                      
+                                            <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   
+                                        Value="{Binding netMaas, Mode=TwoWay}" FormatString="c">
+                                                
+                                            </syncfusion1:SfNumericTextBox>
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </ViewCell>
+
+
+                                
+                        </DataTemplate>
+                        
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+
+                
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+          
+                <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İlerle"
+                    HeightRequest="55"
+                        WidthRequest="200" />
+
+
+
+                </StackLayout>
+
+              </ScrollView>
+
+
+
+
+
+    </ContentPage.Content>
+</ContentPage>

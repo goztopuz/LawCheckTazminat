@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak4BekarCocukDY">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text=" Muhtemel Evlenme ve İş Bilgileri (5/7)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24" >
+                <Button Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
+                         BackgroundColor="Transparent"  Padding="5,-2,0,5"
+                    TextColor="Red"    HorizontalOptions="End"></Button>
+
+
+
+
+                <StackLayout Orientation="Horizontal" Padding="-2,5,0,15">
+
+                    <CheckBox x:Name="chkCalisiyor"   
+                              IsChecked="{Binding SuAnCalisiyor, Mode=TwoWay}">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Şua an Çalışıyor" FontSize="Large" TextColor="Black"></Label>
+                </StackLayout>
+
+                <!--      Evlenme Yaşı       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Muhtemel Evlenme Yaşı"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0" BackgroundColor="WhiteSmoke"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtEvlenmeYasi" Placeholder="Evleneceği Yaş"
+                        WidthRequest="120"           Keyboard="Numeric" FontSize="Large" TextColor="Black"
+                         Text="{Binding EvlenmeYasi , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <!--      Evlenme Tarihi       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Muhtemel Evlenme Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+                <DatePicker x:Name="dtEvlenme"
+                            Format="D" HeightRequest="50"
+                            FontSize="Large" TextColor="Black"
+                            Margin="0, 0, 0, 15"  BackgroundColor="WhiteSmoke"
+                            Date="{Binding EvlenmeTarihi, Mode=TwoWay}" />
+
+
+                <StackLayout x:Name="stckCalisMiyor"  
+                             IsVisible="{Binding SuAnCalisiyor, 
+                            Converter={StaticResource CalisiyorReverseConverter}}">
+                    
+               
+
+                <!--      İşe Giriş  Yaşı       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İşe Giriş Yaşı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtIseGirisYas" Placeholder="İşe Gireceği Yaş"
+                        WidthRequest="120"           Keyboard="Numeric" FontSize="Large" TextColor="Black"
+                         Text="{Binding IseGirisYasi , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+                <!--      İşe Giriş  Tarihi       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İşe Giriş Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+                <DatePicker x:Name="dtIsGiris"
+                            Format="D" HeightRequest="50" BackgroundColor="WhiteSmoke"
+                            FontSize="Large" TextColor="Black"
+                            Margin="0, 0, 0, 15" 
+                            Date="{Binding IseGirisTarihi, Mode=TwoWay}" />
+
+                <!--      İşe Girmeden Miktar       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İşe Başlamadan Önce Ödenecek Miktar(Asgari Varsayılan)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <syncfusion1:SfNumericTextBox x:Name="numericIsOncesi"
+                   FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                HeightRequest="50" Value="{Binding IsOncesiMaas, Mode=TwoWay}" FormatString="c">
+
+                </syncfusion1:SfNumericTextBox>
+                
+                <!--      İşe Girince Miktar       -->
+                <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Çalışma Yaşında Olsaydı Ücreti"
+                        TextColor="{StaticResource Gray-800}" />
+                <syncfusion1:SfNumericTextBox x:Name="numericIs"
+                   FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                HeightRequest="50" Value="{Binding GelecekMaas, Mode=TwoWay}" FormatString="c">
+
+                </syncfusion1:SfNumericTextBox>
+
+                </StackLayout>
+
+                <StackLayout x:Name="stkCalisiyor" IsVisible="{Binding SuAnCalisiyor}">
+                    <!--      Olay Zamanı  Ücret       -->
+                    <Label
+                        Margin="0,12,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Olay Anındaki Maaşı"
+                        TextColor="{StaticResource Gray-800}" />
+                    <syncfusion1:SfNumericTextBox x:Name="numericOlayAni"
+                   FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                HeightRequest="50" Value="{Binding SuAnkiMaas, Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+                </StackLayout>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                <!--       CocukSayisi      -->
+                <!--<Label
+                        Margin="0,12,0,0"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="İleride Doğması Muhtemel Çocuk Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtCocuksayisi" Placeholder=" Çocuk Sayısı"
+                                   WidthRequest="120"          Keyboard="Numeric"
+                                 Text="{Binding CocukSayisi , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>-->
+
+                
+                <!--       Evlendikten Kaç Yıl Sonra İlk Çocuk      -->
+               
+    <!--<Label
+                        Margin="0,12,0,0"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Evlendikten Kaç Yıl Sonra İlk Çocuk "
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtIlkCocukSenesi" Placeholder="İlk Çocuk Senesi"
+                                   WidthRequest="120"          Keyboard="Numeric"
+                                 Text="{Binding IlkCocukSenesi , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>-->
+
+              
+                <!--       Çocuklar Arası Yıl      -->
+        
+                <!--<Label
+                        Margin="0,12,0,0"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Çocuklar Arasındaki Yaş Farkı "
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtCocuklarArasiYil" Placeholder="Çocuklar Arası Yaş Farkı"
+                                   WidthRequest="120"          Keyboard="Numeric"
+                                 Text="{Binding   CocuklarArasiYil , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>-->
+
+          
+
+                <!--       Çocuk Destek Çıkış Yaşı      -->
+                <!--<Label
+                        Margin="0,12,0,0"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Çocuk Destek Çıkış Yaşı "
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtEvlenmeYasi}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtDestekCikisi" Placeholder=" Destek Çıkış Yaşı "
+                                   WidthRequest="120"          Keyboard="Numeric"
+                                 Text="{Binding   CocukDestekCikisYasi , Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>-->
+
+                <Label x:Name="lblHata" Padding="5,15,0,5" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+                <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+
+            </StackLayout>
+                
+            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

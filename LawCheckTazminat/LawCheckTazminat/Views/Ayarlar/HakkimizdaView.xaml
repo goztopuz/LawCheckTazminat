@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LawCheckTazminat.Views.Ayarlar.HakkimizdaView">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0"   BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hakkımızda"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="24"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+
+        <ScrollView Padding="0,10,0,0">
+            <StackLayout>
+
+                <Button Text="İptal"  Padding="0,0,10,0"  TextColor="Red"
+                                BackgroundColor="Transparent"
+                                FontSize="Large" HorizontalOptions="End"
+                                Command="{Binding IptalCommand}"></Button>
+
+                
+                <ImageButton  Padding="0,70,0,0" Clicked="ImageButton_Clicked"
+                    BackgroundColor="Transparent" Source="bulutlogo1.png"></ImageButton>
+                
+                <Button Padding="0,20,0,0" BackgroundColor="Transparent" Clicked="Button_Clicked"
+                        Text="Web Sayfamıızı Ziyaret Edin">
+                    
+                </Button>
+                
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" x:Class="LawCheckTazminat.Views.FazlaMesaiV.Basamak10FMView">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text=" İzin- Tarih  Çakışmaları (10/11) "
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+         <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+                 TranslationY="-10"  TextColor="Red"      HorizontalOptions="End"></Button>
+
+                <buttons:SfButton Padding="0,5,0,10"
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center" HeightRequest="55"
+                       Margin="0,24,0,0" TranslationY="-25"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        WidthRequest="200" />
+
+                <Label Text="Seçim Yapılması Halinde Birden Fazla Ücret Hesaplaması Yapılacaktır."></Label>
+
+                <!--<Label Text="Çakışan Resmi Tatiller" 
+                       FontSize="Large" HorizontalOptions="Center"/>-->
+                <Label IsVisible="{Binding ResmiTatilYazi}" Text="İzinle Çakışan Resmi Tatil Yok" TextColor="Red"
+                       HorizontalOptions="CenterAndExpand" ></Label>
+
+                   <tabView:SfTabView  Margin="0,0,0,0"
+                                      TabHeaderPosition="Top" VisibleHeaderCount="3" >
+
+                       <tabView:SfTabItem Title="Resmi Tatil ">
+                        <tabView:SfTabItem.Content>
+
+                            <ListView ItemsSource="{Binding ListeResmi}"
+                                          RowHeight="70" >
+                                        <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0,15,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<Switch x:Name="chkEkle" Grid.RowSpan="2"
+                                        IsToggled="{Binding Secili}"    Grid.Row="0" Grid.Column="0"/>-->
+
+                                    <CheckBox x:Name="chkEkle" Grid.RowSpan="2" Grid.Row="0" Grid.Column="0"
+                                              IsChecked="{Binding Secili}" >
+
+                                                    <CheckBox.Color>
+
+                                                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                                                        </OnPlatform>
+
+                                                    </CheckBox.Color>
+
+                                                </CheckBox>
+
+                                    <Label Text="{Binding TarihBilgi}" Grid.Column="1" Grid.Row="0"></Label>
+                                    <Label Text="{Binding Aciklama}" Grid.Column="1" Grid.Row="1"></Label>
+
+
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                             </ListView>
+
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+
+
+                       <tabView:SfTabItem Title="Haftasonu Tatili">
+                        <tabView:SfTabItem.Content>
+
+                            <StackLayout>
+
+                    <ListView ItemsSource="{Binding ListeHaftalik}"
+                            RowHeight="70">
+                         <ListView.ItemTemplate>
+                             <DataTemplate>
+                            <ViewCell>
+                             <Grid Padding="0,15,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<Switch x:Name="chkEkle2" Grid.RowSpan="2"
+                                        IsToggled="{Binding Secili}"    Grid.Row="0" Grid.Column="0"/>-->
+
+                                 <CheckBox  x:Name="chkEkle2" Grid.RowSpan="2"
+                                     IsChecked="{Binding Secili}"    Grid.Row="0" Grid.Column="0">
+                                                        <CheckBox.Color>
+
+                                                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                                                            </OnPlatform>
+
+                                                        </CheckBox.Color>
+
+                                                    </CheckBox>
+                                    <Label Text="{Binding TarihBilgi}" Grid.Column="1" Grid.Row="0"></Label>
+                                    <Label Text="{Binding Aciklama}" Grid.Column="1" Grid.Row="1"></Label>
+
+
+                                </Grid>
+
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                   </ListView>
+
+                            </StackLayout>
+
+
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+
+
+                    <tabView:SfTabItem Title="R.Tatil-H.Sonu">
+                        <tabView:SfTabItem.Content>
+
+                            <StackLayout>
+                                 <ListView ItemsSource="{Binding ListeHaftaResmi}"
+                                          RowHeight="70" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0,15,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<Switch x:Name="chkEkle" Grid.RowSpan="2"
+                                        IsToggled="{Binding Secili}"    Grid.Row="0" Grid.Column="0"/>-->
+
+                                    <CheckBox x:Name="chkEkle" Grid.RowSpan="2" Grid.Row="0" Grid.Column="0"
+                                              IsChecked="{Binding Secili}" >
+                                                        <CheckBox.Color>
+
+                                                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                                                            </OnPlatform>
+
+                                                        </CheckBox.Color>
+
+                                                    </CheckBox>
+
+                                    <Label Text="{Binding TarihBilgi}" Grid.Column="1" Grid.Row="0"></Label>
+                                    <Label Text="{Binding Aciklama}" Grid.Column="1" Grid.Row="1"></Label>
+
+
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+
+
+                            </StackLayout>
+
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+
+
+                   </tabView:SfTabView>
+
+            
+
+                <!--<Label Text="Çakışan Haftalık İzin" FontSize="Large" HorizontalOptions="Center"></Label>-->
+                
+                  <Label IsVisible="{Binding HaftalikYazi}" Text="İzinle Çakışan Resmi Tatil Yok" TextColor="Red"
+                       HorizontalOptions="CenterAndExpand" ></Label>
+
+
+                </StackLayout>
+             </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

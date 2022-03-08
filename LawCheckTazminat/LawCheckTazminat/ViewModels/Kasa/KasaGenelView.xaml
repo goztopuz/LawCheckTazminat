@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+      xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+
+             x:Class="LawCheckTazminat.ViewModels.Kasa.KasaGenelView">
+         <!--<ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Kasa İşlemleri"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>-->
+
+    
+    <ContentPage.Content >
+ <sfPopup:SfPopupLayout x:Name="popupLayout" Padding="0,30,0,0">
+<sfPopup:SfPopupLayout.PopupView>
+                    <sfPopup:PopupView AppearanceMode="TwoButton" HeaderTitle="Kasa Arama"
+                                           AcceptButtonText="ARA" Margin="0,0,0,0"
+                                           DeclineButtonText="İptal">
+                       
+                        <sfPopup:PopupView.ContentTemplate>
+                            <DataTemplate>
+                                <ScrollView>
+                                <Grid BackgroundColor="White" Padding="15,20,15,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="AUTO"/>
+                                        <RowDefinition Height="AUTO"/>
+                                        <RowDefinition Height="AUTO"/>
+                                        <RowDefinition Height="AUTO"/>
+                                        <RowDefinition Height="AUTO"/>
+                                        <RowDefinition>
+                                            <RowDefinition.Height>
+                                                <OnPlatform x:TypeArguments="GridLength" Android="55" iOS="55">
+                                                    <On Platform="UWP" Value="75"/>
+                                                </OnPlatform>
+                                            </RowDefinition.Height>
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                             <ColumnDefinition Width="5*"/>
+                                             <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+           <Label Text=" Son" Padding="0,5,0,0" VerticalOptions="Center"
+                  TextColor="Gray" Grid.Column="0"></Label>
+           <combobox:SfComboBox HeightRequest="30" BackgroundColor="White" HorizontalOptions="FillAndExpand"
+                      Grid.Column="1"   SelectedItem="{Binding YY.ss}"    x:Name="drpSonGun">
+                <combobox:SfComboBox.ComboBoxSource>
+                    <ListCollection:List x:TypeArguments="x:String">
+
+                                <x:String>1 Gün</x:String>
+                                <x:String>7 Gün</x:String>
+                                <x:String>14 Gün</x:String>
+                                <x:String>30 Gün</x:String>
+                                <x:String>180 Gün</x:String>
+
+            	</ListCollection:List>
+            </combobox:SfComboBox.ComboBoxSource>
+        </combobox:SfComboBox>
+
+                                        <Button Text="ARA" FontSize="Large" TextColor="Red"
+                                          Grid.Column="3"      HorizontalOptions="Start" ></Button>
+                                    </Grid>
+
+                                
+                <Grid Grid.Row="1"  BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                             <RowDefinition></RowDefinition>
+                                             <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                    <Label Grid.Column="0"  Grid.Row="0" Text="Başlangıç" Margin="0,10,0,0"/>
+                                     <Label Grid.Column="1" Grid.Row="0" Text="Bitiş" Margin="0,10,0,0"/>
+                                      <DatePicker x:Name="dtBaslangic" Grid.Column="0" Grid.Row="1" FontSize="Small"/>
+                                      <DatePicker x:Name="dtBitis" Grid.Column="1" Grid.Row="1" FontSize="Small"/>
+                                    <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                                         HorizontalOptions="CenterAndExpand"  Text="Miktar Aralığı" Margin="0,10,0,0"/>
+
+                      <syncfusion1:SfNumericTextBox x:Name="txtMik1" BackgroundColor="White"
+                                           HeightRequest="45" Grid.Row="3" Grid.Column="0"
+                                             Value="{Binding YY.VergiMatrah , Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+                  <syncfusion1:SfNumericTextBox x:Name="txtMik2" BackgroundColor="White"
+                                           HeightRequest="45" Grid.Row="3" Grid.Column="1"
+                                             Value="{Binding YY.VergiMatrah2 , Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+                                    </Grid>
+
+                     <Grid Grid.Row="2" BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                           
+                                        </Grid.ColumnDefinitions>
+                  
+                                    <Grid.RowDefinitions>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                        <Label Text="Gelire Göre" FontSize="Large" HorizontalOptions="Center"
+                                      Padding="0,10,0,0"    Grid.ColumnSpan="2"     Grid.Column="0" Grid.Row="0"></Label>
+
+                                        <Label Text="Gelir Türü" VerticalOptions="Center"
+                                               Grid.Column="0" Grid.Row="1"></Label>
+                                          <combobox:SfComboBox  BackgroundColor="White" HorizontalOptions="FillAndExpand"
+                      Grid.Column="1"   Grid.Row="1"  SelectedItem="{Binding YY.ss}"    x:Name="drpGelirTur">
+                <combobox:SfComboBox.ComboBoxSource>
+                    <ListCollection:List x:TypeArguments="x:String">
+
+                                <x:String>Gelir Türü 1</x:String>
+                                <x:String>Gelir Türü 2</x:String>
+                                <x:String>Gelir Türü 3</x:String>
+                                <x:String>Gelir Türü 4</x:String>
+                                <x:String>180 Gün</x:String>
+
+            	</ListCollection:List>
+            </combobox:SfComboBox.ComboBoxSource>
+        </combobox:SfComboBox>
+
+                                    <Label Text="Gelir(Elle)" VerticalOptions="Center"
+                                           Grid.Column="0" Grid.Row="2"></Label>
+                                    <Entry x:Name="txtGelirElle" Grid.Column="1" Grid.Row="2"></Entry>
+
+                                    <Label Text="Ödeme Yapan" VerticalOptions="Center"
+                                           Grid.Column="0" Grid.Row="3"></Label>
+                                    <Entry x:Name="txtOdemeYapan" Grid.Column="1" Grid.Row="3"></Entry>
+
+                                    <Label Text="Ödeme Alan" Grid.Column="0" Grid.Row="4"
+                                       VerticalOptions="Center"     Padding="0,0,0,25"></Label>
+                                    <Entry x:Name="txtOdemeAlan" Grid.Column="1" Grid.Row="4" ></Entry>
+
+                                </Grid>
+
+
+
+
+                                                        <!--Gidere Göre-->
+<Grid Grid.Row="3" BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+                                        <Grid.ColumnDefinitions >
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                           
+                                        </Grid.ColumnDefinitions>
+                  
+                                    <Grid.RowDefinitions>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                          <RowDefinition/>
+                                    </Grid.RowDefinitions>
+      <Label Text="Gidere Göre" FontSize="Large" HorizontalOptions="Center"
+                                          Grid.ColumnSpan="2"     Grid.Column="0" Grid.Row="0"></Label>
+    <Label Text="Gider Türü :" VerticalOptions="Center"
+           Grid.Column="0" Grid.Row="1"></Label>
+
+
+                 <combobox:SfComboBox HeightRequest="30"
+                                      BackgroundColor="White" HorizontalOptions="FillAndExpand"
+                      Grid.Column="1"   Grid.Row="1"  SelectedItem="{Binding YY.cc}"
+                                      x:Name="drpGiderTur">
+                <combobox:SfComboBox.ComboBoxSource>
+                    <ListCollection:List x:TypeArguments="x:String">
+
+                                <x:String>Gider Türü 1</x:String>
+                                <x:String>Gider Türü 2</x:String>
+                                <x:String>Gider Türü 3</x:String>
+                                <x:String>Gider Türü 4</x:String>
+                                <x:String>180 Gün</x:String>
+
+            	</ListCollection:List>
+            </combobox:SfComboBox.ComboBoxSource>
+        </combobox:SfComboBox>
+
+    <Label Text="Gider(Elle) :" VerticalOptions="Center"
+           Grid.Column="0" Grid.Row="2"></Label>
+    <Entry x:Name="txtGiderElle" Grid.Column="1" Grid.Row="2"  ></Entry>
+
+    <Label Text="Gider Yapan :" VerticalOptions="Center"
+           Grid.Column="0" Grid.Row="3"></Label>
+    <Entry x:Name="txtGiderYapan" Grid.Column="1" Grid.Row="3"></Entry>
+
+
+
+    <!--<Label Text="Gider Türü Ek :" Grid.Row="4" Grid.Column="0"></Label>-->
+
+
+    </Grid>
+
+                                                     <!--Gidere Göre-->
+<Grid Grid.Row="4" BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*"></ColumnDefinition>
+        <ColumnDefinition Width="3*"></ColumnDefinition>
+         <ColumnDefinition Width="*"></ColumnDefinition>
+
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+
+    <Label Text="Dosya No:" Grid.Row="0" Grid.Column="0"></Label>
+    <Entry  x:Name="txtDosyaNo" Grid.Row="0" Grid.Column="1"></Entry>
+    <Button Text=" ARA" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center"></Button>
+
+</Grid>
+
+<Grid Grid.Row="5" BackgroundColor="#F3F3F9" Margin="0,15,0,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="3*"></ColumnDefinition>
+         <ColumnDefinition Width="*"></ColumnDefinition>
+
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+
+    <Label Text="İçinde Geçene Göre Ara" Grid.Row="0" Grid.Column="0"
+          Grid.ColumnSpan="2" ></Label>
+
+    <Entry Grid.Column="0" Grid.Row="0"></Entry>
+    <Button Text="ARA" Grid.Column="1" Grid.Row="1">
+    </Button>
+
+</Grid>
+                                 
+ </Grid>
+
+</ScrollView>
+
+                                </DataTemplate>
+                        </sfPopup:PopupView.ContentTemplate>
+                    </sfPopup:PopupView>
+                </sfPopup:SfPopupLayout.PopupView>
+   <sfPopup:SfPopupLayout.Content>
+
+  <ScrollView>
+        <StackLayout>
+
+        <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+            <Button  x:Name="btnAra" Text="Ara" HorizontalOptions="Start"  FontSize="Large"
+            Padding="15,0,0,0"         Clicked="btnAra_Clicked" ></Button>
+           <Button x:Name="btnIptal" Text="İptal" TextColor="Red" TranslationY="-30" FontSize="Large"
+             Padding="0,0,15,0"  HorizontalOptions="End"    Clicked="btnIptal_Clicked"></Button>
+                <Label   TranslationY="-50"
+                    Text="Kasa İşlemleri"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+            </StackLayout>
+     <StackLayout x:Name="mainLayout" Padding="0,5,0,0" >
+
+
+       
+     </StackLayout>
+    </StackLayout>
+    </ScrollView>
+    </sfPopup:SfPopupLayout.Content>
+  </sfPopup:SfPopupLayout>
+    </ContentPage.Content>
+</ContentPage>

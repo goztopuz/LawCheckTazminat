@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="LawCheckTazminat.Views.FazlaMesaiV.Basamak3FMView">
+       <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hafta Sonu Hesaplama Bilgileri (3/11)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+                <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+         <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button BackgroundColor="Transparent" Padding="0,-10,0,0"
+                    Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+                  <!--      Başlangıç Tarihi       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Haftalık İzin Başlangıç Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <DatePicker x:Name="startDatePicker"
+                            Format="D" HeightRequest="50"
+                            FontSize="Large" TextColor="Black"
+                            Margin="0, 0, 0, 15"  BackgroundColor="WhiteSmoke"
+                            Date="{Binding FM.BasTarihHaftaSonu, Mode=TwoWay}"
+                            />
+
+
+                    <!--      Bitiş Tarihi       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Haftalık İzin Bitiş Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+                 <DatePicker x:Name="endDatePicker"
+                            Format="D" BackgroundColor="WhiteSmoke"
+                             FontSize="Large" TextColor="Black" 
+                            Margin="0, 0, 0, 15" HeightRequest="50"
+                            Date="{Binding FM.BitTarihHaftaSonu, Mode=TwoWay}"
+                            />
+
+
+              <!--      Hafatlık İzin Günü       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Haftalık İzin Günü"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Picker x:Name="drpIzinGun" HeightRequest="50"  BackgroundColor="WhiteSmoke"
+                 FontSize="Large"  TextColor="Black"    SelectedItem="{Binding FM.TatilGunu}"> 
+                    <Picker.Items>
+                                <x:String>Pazar</x:String>
+                                <x:String>Pazartesi</x:String>
+                                <x:String>Salı</x:String>
+                                <x:String>Çarşamba</x:String>
+                                <x:String>Perşembe</x:String>
+                                <x:String>Cuma</x:String>
+                                <x:String>Cumartesi</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                
+            <!--     İkinci Tatil Günü        -->
+
+                <!--<StackLayout Orientation="Horizontal">
+
+                    <Switch x:Name="chkIkinciTatil"></Switch>
+                    <Label Text="İkinci İzin Günü Var"></Label>
+
+                </StackLayout>-->
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+
+                        <CheckBox  HeightRequest="50" Color="Blue"
+                                   WidthRequest="50" IsChecked="{Binding FM.TumHaftaSonlarindaCalisti}"></CheckBox>
+
+                        <Label Text="Tüm Haftalıkİzinlerinde Çalıştı" FontSize="Medium" VerticalOptions="Center"></Label>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
+                    <CheckBox x:Name="chkHSonuFMCakisma" Color="blue" IsChecked="{Binding FMDus}"
+                     
+                         CheckedChanged="chkHSonuFMCakisma_CheckedChanged"      >
+
+                    </CheckBox>
+
+                    
+                    <Label Text="Haftalık İzin-Fazla Mesai Çakışmalarını Fazla Mesai'den Düş" FontSize="Medium">
+
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Padding="0,15,0,0">
+                    <Label Text="Haftalık İzinlerde Çalışılan Haftalarda Fazla Mesai Saati" FontSize="Medium"></Label>
+                   
+                  <border:SfBorder
+                    Padding="6,0,0,0" BackgroundColor="WhiteSmoke"
+                    BorderColor="{Binding Source={x:Reference txtFazlaMesai2}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtFazlaMesai2"   Placeholder="Kullanılacak Fazla Mesai"
+                          WidthRequest="70"    Keyboard="Numeric" FontSize="Large" TextColor="Black"
+                           Text="{Binding FMSaat2, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                </StackLayout>
+
+       <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+                <!--   İlerle       -->
+                <Button IsVisible="false" Command="{Binding IlerleCommand}" Text=" İlerle"/>
+
+                   <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                       HeightRequest="55"
+                        WidthRequest="200" />
+
+
+
+            </StackLayout>
+
+    </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

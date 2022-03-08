@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="LawCheckTazminat.Views.IsgucuKayipV.MaasOranlaViewIsgucu">
+       <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,8,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="NET MAAŞ - Asgari Ücrete Oranla"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+                
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            
+        <StackLayout>
+                <Button Text="İptal" BackgroundColor="Transparent"  HeightRequest="40"
+                       Padding="0,6,10,0" FontSize="Large"  Command="{Binding IptalCommand}" 
+             TextColor="Red"      HorizontalOptions="End">
+                </Button>
+
+                <!--<StackLayout Orientation="Horizontal" Padding="0,15,0,0">
+
+                    <Label Text="Dönemi :"></Label>
+
+                    <Label   x:Name="txtAy"  Padding="15,0,0,0"
+                         FontSize="Medium"    VerticalOptions="CenterAndExpand"  TextColor="OrangeRed"   
+                                 Text="{Binding  Ay , Converter={StaticResource AyToIntConverter}}">
+                      </Label>
+
+                         <Label  x:Name="txtYil"   VerticalOptions="CenterAndExpand"
+                                 TextColor="DarkRed" Padding="10,0,0,0"
+                            FontSize="Medium"     Text="{Binding  Yil}">
+                        </Label>
+
+                    --><!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtAy}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">
+                     
+
+                    </border:SfBorder>-->
+
+                    <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtYil}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">
+                   
+                    </border:SfBorder>--><!--
+                </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="0,5,0,0">
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="18" 
+                        FontSize="Medium"
+                        Text="Dönemki Net Asgari Ücret : "
+                         />
+                    <Label x:Name="txtAsgari"  VerticalOptions="CenterAndExpand" FontSize="Medium"
+                      TextColor="DarkRed"
+                      Text="{Binding  OAykiAsgari}">
+                    </Label>
+                    
+                </StackLayout>-->
+
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Text="Dönemi :" Grid.Row="0" Grid.Column="0" TextColor="{StaticResource Gray-800}" ></Label>
+                    <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="1">
+                        <Label   x:Name="txtAy" 
+                         FontSize="Medium"    VerticalOptions="CenterAndExpand"   
+                                 Text="{Binding  Ay , Converter={StaticResource AyToIntConverter}}">
+                        </Label>
+                        <Label Text=" - "></Label>
+                        <Label  x:Name="txtYil"   VerticalOptions="CenterAndExpand"
+                                 
+                            FontSize="Medium"     Text="{Binding  Yil}">
+                        </Label>
+                    </StackLayout>
+                    <Label Text="Brut Asgari :" Grid.Row="1" Grid.Column="0" TextColor="{StaticResource Gray-800}"></Label>
+                    <Label x:Name="txtAsgari"   FontSize="Medium" 
+                   Grid.Row="1" Grid.Column="1"   Text="{Binding  OAykiAsgari}">
+                    </Label>
+                </Grid>
+
+
+
+
+                <Label
+                        Margin="0,10,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium" TextColor="{StaticResource Gray-800}"
+                        Text="Olay Tarihindeki Net  Ücret"
+                        />
+                <syncfusion1:SfNumericTextBox x:Name="txtNetUcret" BackgroundColor="WhiteSmoke"
+                        FontSize="Medium" TextAlignment="Start" HeightRequest="50"
+                        Margin="0,3,3,5"   Value="{Binding OlayTarihiMaas, 
+                        Mode=TwoWay}" FormatString="c">
+                </syncfusion1:SfNumericTextBox>
+
+                <StackLayout Padding="5,15,0,10" Orientation="Horizontal" BackgroundColor="WhiteSmoke">
+                    <Label Text="AGİ Net Ücrete Dahil" VerticalOptions="Center" FontSize="Medium"></Label>
+                    <CheckBox x:Name="chkAgi" IsChecked="{Binding AgiDahil}" HeightRequest="60">
+
+                        <CheckBox.Color>
+
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                          
+                        </CheckBox.Color>
+                        
+                        
+                    </CheckBox>
+
+                </StackLayout>
+
+
+                <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtNetUcret}, Path=IsFocused}"
+                    HeightRequest="70"
+                    Style="{StaticResource FormBorderStyle}">
+                
+                </border:SfBorder>-->
+                <Button  BackgroundColor="Transparent"
+                    Text="Oranla" FontSize="Title"   Command="{Binding OranlaCommand}">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="AGİ : "></Label>
+                    <Label Text="{Binding AgiDegeri}" FontSize="Medium"></Label>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Net Ücret AGi'siz :"></Label>
+                    <Label Text="{Binding OlayTarihiAgisiz}" FontSize="Medium"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Brüt Ücret :"></Label>
+                    <Label Text="{Binding BrutUcret}" FontSize="Medium"></Label>
+                </StackLayout>
+
+
+
+
+
+                <Label
+                        Margin="5,5,0,4"
+                        HeightRequest="35" 
+                        FontSize="Medium" 
+                        HorizontalOptions="Center"
+                        Text=" Oran" TextColor="{StaticResource Gray-800}"
+                        />
+                <syncfusion1:SfNumericTextBox x:Name="txtOran" FontSize="Large" MaximumNumberDecimalDigits="14"
+                            TextColor="Red"      TextAlignment="Start"    HeightRequest="50"
+                        Margin="0,3,3,0" BackgroundColor="WhiteSmoke"   Value="{Binding Oran, 
+                        Mode=TwoWay}">
+                </syncfusion1:SfNumericTextBox>
+                <!--<border:SfBorder
+                    Padding="6,25,0,0"
+                    BorderColor="{Binding Source={x:Reference txtNetUcret}, Path=IsFocused}"
+                    HeightRequest="70"
+                    Style="{StaticResource FormBorderStyle}">
+                  
+                </border:SfBorder>-->
+                <Button Text="TAMAM-KULLAN" HeightRequest="50"
+                       BackgroundColor="Transparent" Padding="0,0,0,0" FontSize="Large"
+                IsVisible="false"       Command="{Binding KullanCommand}">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                <StackLayout Padding="0,3,0,0">
+                    <buttons:SfButton 
+                        Command="{Binding KullanCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Tamam-Kullan"
+                        WidthRequest="200" />
+                </StackLayout>
+
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

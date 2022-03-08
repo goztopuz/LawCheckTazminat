@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak3IGView">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Dosya İşlemleri (3/7)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+
+                <Button Text="İptal" HeightRequest="50" BackgroundColor="Transparent"
+                        FontSize="Large"  Command="{Binding IptalCommand}"  TranslationY="-10"
+                    TextColor="Red"    HorizontalOptions="End"></Button>
+
+
+
+                <!--   Trafik Kazasımı       -->
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Trafik Kazasımı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Picker x:Name="drpTrafikKazasi"   HeightRequest="50"
+                        FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                        Margin="0,0,0,0" SelectedItem="{Binding Trafik, Mode=TwoWay}"
+                        SelectedIndexChanged="drpTrafikKazasi_SelectedIndexChanged"    >
+                    <Picker.Items>
+                        <x:String>Hayır</x:String>
+                        <x:String>Evet</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <StackLayout BackgroundColor="WhiteSmoke"
+                    Padding="0,15,0,15" IsVisible="{Binding Trafik, Converter={StaticResource TrafiktoVisibleConverter}}">
+                    <buttons:SfRadioGroup>
+                        <buttons:SfRadioButton Text="Yeni Kasım 2020(Sonrası) PMF"  IsChecked="{Binding TrafikPMF}" />
+                        <buttons:SfRadioButton Text="Eski 2017-2020 Arası- TRH"  IsChecked="{Binding TrafikTRH}"/>
+
+                    </buttons:SfRadioGroup>
+                </StackLayout>
+
+
+
+
+                <!--   Rapor Tarihi      -->
+                <Label
+                        Margin="0,0,0,4" Padding="0,0,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Rapor Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                <DatePicker x:Name="dtRapor" HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Date="{Binding IsGucu.raporTarihi , Mode=TwoWay}"  FontSize="Large" TextColor="Black" VerticalOptions="CenterAndExpand">
+
+                </DatePicker>
+                <!--<StackLayout Orientation="Horizontal" Padding="0,7,0,10">
+
+               
+
+            
+
+
+                    <Picker x:Name="drpRaporGun" Title="Gün"  HeightRequest="50"
+                           FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                        SelectedItem="{Binding RaporGun, Mode=TwoWay, Converter={StaticResource IntStringConverter}}" WidthRequest="75"
+                            Margin="0,0,10,0" VerticalOptions="CenterAndExpand"
+                        SelectedIndexChanged="drpRaporGun_SelectedIndexChanged"  >
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                            <x:String>11</x:String>
+                            <x:String>12</x:String>
+                            <x:String>13</x:String>
+                            <x:String>14</x:String>
+                            <x:String>15</x:String>
+                            <x:String>16</x:String>
+                            <x:String>17</x:String>
+                            <x:String>18</x:String>
+                            <x:String>19</x:String>
+                            <x:String>20</x:String>
+                            <x:String>21</x:String>
+                            <x:String>22</x:String>
+                            <x:String>23</x:String>
+                            <x:String>24</x:String>
+                            <x:String>25</x:String>
+                            <x:String>26</x:String>
+                            <x:String>27</x:String>
+                            <x:String>28</x:String>
+                            <x:String>29</x:String>
+                            <x:String>30</x:String>
+                            <x:String>31</x:String>
+
+                        </Picker.Items>
+                    </Picker>
+
+
+
+                  
+
+                    <Picker x:Name="drpRaporAy" Title="Ay" WidthRequest="75"
+                        Margin="0,0,10,0"  HeightRequest="50" VerticalOptions="CenterAndExpand"
+                        SelectedItem="{Binding RaporAy,Mode=TwoWay,Converter={StaticResource IntStringConverter}}" 
+                        FontSize="Large" TextColor="Black"       BackgroundColor="WhiteSmoke"       
+                            SelectedIndexChanged="drpRaporAy_SelectedIndexChanged">
+                        <Picker.Items>
+
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                            <x:String>11</x:String>
+                            <x:String>12</x:String>
+
+                        </Picker.Items>
+                    </Picker>
+
+                    <StackLayout>
+                        <Entry  x:Name="txtRaporYil" Placeholder="Yıl"
+                                FontSize="Large"  TextColor="Black" BackgroundColor="WhiteSmoke"
+                            HeightRequest="50" VerticalOptions="CenterAndExpand"
+                                Keyboard="Numeric"     WidthRequest="120"          
+                                 Text="{Binding  RaporYil , Mode=TwoWay}">
+
+                        </Entry>
+                    </StackLayout>
+
+
+                </StackLayout>-->
+
+                <!--   Karşı Taraf Kusur Oranı       -->
+                <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Kusur Oranı(% Yüzde)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="0,0,0,0" Margin="0,0,0,0"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtKusurOranı" Placeholder="Küsürat %(Yüzde)"
+                                 TextColor="Black" FontSize="Large"
+                                Keyboard="Numeric"     WidthRequest="120"  MaxLength="3"       
+                                 Text="{Binding  IsGucu.kusurOrani , Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+
+
+                <StackLayout x:Name="stckYTablo" IsVisible="{Binding Trafik,Converter={StaticResource TrafikToTersVisibleConverter}}">
+
+                <!--   Yaşam Tablosu       -->
+                <Label
+                        Margin="0,10,0,2"
+                        HeightRequest="20" 
+                        FontSize="16"
+                        Text="Yaşam Tablosu"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder HeightRequest="40" BackgroundColor="WhiteSmoke"
+                                  Style="{StaticResource FormBorderStyle}">
+                    
+                        <!--BorderColor="{Binding Source={x:Reference txtRaporYil}, Path=IsFocused}"-->
+                      
+                    <controls:BorderlessEntry x:Name="txtYasamTablosu"
+                       HeightRequest="40" Placeholder="Trafik Kazasi" 
+                         FontSize="Large" TextColor="Black"
+                       IsReadOnly="True"
+                 Text="{Binding IsGucu.yasamTablosu }, Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+                </StackLayout> 
+                <!--   Yaş Yuvarlama       -->
+                <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Yaşı Yuvarla"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Picker x:Name="drpKusurat"   Margin="0,0,0,0" HeightRequest="50"
+                        FontSize="Medium" TextColor="Black" BackgroundColor="WhiteSmoke"
+                        SelectedItem="{Binding IsGucu.yasiYuvarla, Converter={StaticResource YasiYuavarlaToString} }"
+                        SelectedIndexChanged="drpKusurat_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>Yaşı YuvarlaMA(32,6=32)</x:String>
+                        <x:String>Yaşı Yuvarla(32,6=33)</x:String>
+
+                    </Picker.Items>
+                </Picker>
+
+
+                <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+                <!--   İlerle       -->
+                <Button IsVisible="false" Command="{Binding IlerleCommand}" Text=" İlerle"/>
+
+                   <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                       HeightRequest="55"
+                        WidthRequest="200" />
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.Ayarlar.AsgariUcretYeni">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Asgari Ücret Ekle-Düzenle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+                  <ScrollView >
+            <StackLayout  Spacing="0" Padding="0,20">
+                
+                <Button Text="İptal"  Padding="0,0,10,0"  TextColor="Red"
+                                 BackgroundColor="Transparent"
+                                FontSize="Large" HorizontalOptions="End"
+                                Command="{Binding IptalCommand}"></Button>
+
+                <Button Text="Sil" Grid.Column="0" Padding="5,0,0,0"
+                            IsVisible="{Binding Gorunum}"    BackgroundColor="Transparent"
+                           TextColor="Red"     FontSize="Large"  HorizontalOptions="Start"
+                           TranslationY="-50"   Command="{Binding SilCommand}"/>
+
+
+
+             
+                <Label
+                          Margin="10,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Asgari Ücret Yıl"
+                        TextColor="{StaticResource Gray-800}" />
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtYil}, Path=IsFocused}"
+                    HeightRequest="50" Margin="10,3,3,10" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtYil" Placeholder="Yıl"
+                                               WidthRequest="70"  TextColor="Black"
+                           Margin="10,3,3,3"     Keyboard="Numeric"     MaxLength="4"       
+                             FontSize="Large"     Text="{Binding  Yil , Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                           <Label
+                        Margin="10,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Dönemi"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+               
+            
+
+
+             <Picker x:Name="drpDonemi" Title="Dönemi"
+                     SelectedItem="{Binding Donemi, Mode=TwoWay}"
+                     HeightRequest="50" FontSize="Large" TextColor="Black"
+                      Margin="10,3,3,10"   BackgroundColor="WhiteSmoke"
+                     SelectedIndexChanged="drpDonemi_SelectedIndexChanged" >
+                    <Picker.Items>
+                        <x:String>Ocak-Haziran</x:String>
+                        <x:String>Temmuz-Aralık</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+                    <!--<controls:BorderlessEntry x:Name="txtDonemi" Focused="txtDonemi_Focused"
+                                              Placeholder="Dönemi"
+                                 Margin="10,3,3,10"      Text="{Binding Donemi, Mode=TwoWay}">
+                    </controls:BorderlessEntry>-->
+
+   
+      
+
+                <Label
+                        Margin="10,0,0,2"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Brüt Ücret"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtBrutUcret"  HeightRequest="50"
+                         FontSize="Large"    Margin="10,3,3,10"  TextColor="Black" BackgroundColor="WhiteSmoke"
+                         Value="{Binding BrutMiktar, 
+                        Mode=TwoWay}" FormatString="c">
+                    </syncfusion1:SfNumericTextBox>
+
+
+                <Label
+                          Margin="10,0,0,2"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Net Ücret"
+                        TextColor="{StaticResource Gray-800}" />
+                
+
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtNetUcret"  HeightRequest="50"
+                                FontSize="Large"    Margin="10,3,3,10" TextColor="Black"  BackgroundColor="WhiteSmoke"
+                                                  Value="{Binding NetMiktar, 
+                        Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+
+
+
+                <Label x:Name="lblHata" Margin="10,3,3,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+
+                  <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+                      HeightRequest="60"
+                        WidthRequest="200" />
+
+            </StackLayout>
+
+            </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

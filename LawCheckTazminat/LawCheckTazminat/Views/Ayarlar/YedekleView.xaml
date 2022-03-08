@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LawCheckTazminat.Views.Ayarlar.YedekleView">
+     
+      <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Verileri Yedekle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+
+
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+
+         <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+                <Button x:Name="btnYedekle" Padding="0,30,0,0"
+                      BackgroundColor="Transparent"  Text="YEDEKLE"
+               TextColor="Gray" FontSize="24"       Clicked="btnYedekle_Clicked"   ></Button>
+
+                </StackLayout>
+       </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

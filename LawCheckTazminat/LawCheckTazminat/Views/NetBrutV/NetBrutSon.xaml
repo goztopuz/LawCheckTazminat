@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" x:Class="LawCheckTazminat.Views.NetBrutV.NetBrutSon">
+
+           <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hesaplama Sonucu"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+
+                <ScrollView>
+                <StackLayout  Padding="10,5,10,40">
+
+                <Button HorizontalOptions="End" Text="Bitti"
+                        BackgroundColor="Transparent"
+                        FontSize="Large"   TextColor="Red" Padding="0,0,5,0"
+                        Command="{Binding BitisCommand}" >
+                </Button>
+
+
+                <Button HorizontalOptions="Start" FontSize="Large" TranslationY="-45"
+                        Padding="0,0,0,10"    Command="{Binding YenidenHesaplaCommand}"
+                          BackgroundColor="Transparent"
+                        Text="Yeniden Hesapla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                    
+                </Button>
+
+                    <Label Text="Netten Brüt Hesap"></Label>
+                    
+                      <syncfusion:SfDataGrid x:Name="dataGrid" BackgroundColor="Transparent"
+                                ColumnSizer="Star" AutoGenerateColumns="False"
+                                 ItemsSource="{Binding Liste}" >
+                        <syncfusion:SfDataGrid.Columns>
+
+                            <syncfusion:GridTextColumn HeaderText="Ay "
+                                                        MappingName="ay">
+                            </syncfusion:GridTextColumn>
+                            <syncfusion:GridTextColumn HeaderText="Brüt"
+                                    Format="C"           MappingName="brut">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="Net"
+                                    Format="C"             MappingName="net">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="Net(AGİ'li)"
+                                     Format="C"        MappingName="netAgili">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="Gelir Vergisi"
+                                        Format="C"           MappingName="gelirVergisi">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="SGK(İşci)"
+                                         Format="C"           MappingName="sgk">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="Damga Verg."
+                                        Format="C"              MappingName="damgaVergisi">
+                            </syncfusion:GridTextColumn>
+                             <syncfusion:GridTextColumn HeaderText="İşsizlik"
+                                        Format="C"         MappingName="issizlik">
+                            </syncfusion:GridTextColumn>
+
+
+
+                        </syncfusion:SfDataGrid.Columns>
+
+                    </syncfusion:SfDataGrid>
+
+                            <Button Text="Rapor Al" FontSize="Large" Padding="10,20,10,10"
+                                    BackgroundColor="Transparent"
+                             Command="{Binding RaporAlCommand}">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+                          
+
+                    </StackLayout>
+                </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
+             x:Class="LawCheckTazminat.Views.AracDegerKaybi.KaskoDegerinden">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Kasko Değerinden Hesaplama"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Button Text="İptal" BackgroundColor="Transparent"
+                            HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+                <StackLayout  Spacing="0" Padding="16,24"  >
+                    
+
+                    <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Araç Markası"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <Picker ItemsSource="{Binding ListeMarka}" ItemDisplayBinding="{Binding Marka}"  SelectedItem="{Binding Marka}"
+                           BackgroundColor="WhiteSmoke" HeightRequest="50"
+                        FontSize="Large" TextColor="Black"    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                    </Picker>
+                    <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Araç Modeli"
+                        TextColor="{StaticResource Gray-800}" />
+                    <Picker ItemsSource="{Binding ListeModel}" ItemDisplayBinding="{Binding Model}"  SelectedItem="{Binding Model}"
+                            BackgroundColor="WhiteSmoke" HeightRequest="50"
+                    FontSize="Large" TextColor="Black"         x:Name="drpModel" >
+                    </Picker>
+
+                    <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Araç Model Yılı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <!--<syncfusion1:SfNumericTextBox x:Name="txtModelYil" BackgroundColor="White"
+                                           HeightRequest="45" MaximumNumberDecimalDigits="0"
+                                             Value="{Binding Yil , Mode=TwoWay}">
+                    </syncfusion1:SfNumericTextBox>-->
+
+                    <border:SfBorder
+                    Padding="6,0,0,0" 
+                    BorderColor="{Binding Source={x:Reference txtSozlesmeSaati}, Path=IsFocused}"
+                    HeightRequest="50"  BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                        <!--<border:SfBorder.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color" Android="WhiteSmoke">
+
+                            </OnPlatform>
+                        </border:SfBorder.BackgroundColor>-->
+                        <controls:BorderlessEntry  x:Name="txtSozlesmeSaati"   Placeholder="Yıl"
+                                                  HeightRequest="50"
+                          WidthRequest="70"    Keyboard="Numeric" FontSize="Large" TextColor="Black"
+                                               Text="{Binding Yil, Mode=TwoWay}">
+                        </controls:BorderlessEntry>
+                    </border:SfBorder>
+                    <buttons:SfButton
+                        Command="{Binding ModelSecimCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,0,0,10"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Değeri Bul"
+                        HeightRequest="60"
+                        WidthRequest="200" />
+
+                    <BoxView HeightRequest="1" 
+                        BackgroundColor="{StaticResource Gray-200}"/>
+                    
+                    <Label
+                        Margin="0,8,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Değeri"
+                        TextColor="{StaticResource Gray-800}" />
+                    
+                    <syncfusion1:SfNumericTextBox x:Name="txtKaskoDegeri"  
+                                                  BackgroundColor="WhiteSmoke"
+                                 Margin="0,5,0,0"          HeightRequest="60"   FontSize="Large" TextColor="Black"
+                                                  Value="{Binding Deger , Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+
+                    <buttons:SfButton
+                        Command="{Binding KullanCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,20,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Kullan"
+                        HeightRequest="60"
+                        WidthRequest="200" />
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

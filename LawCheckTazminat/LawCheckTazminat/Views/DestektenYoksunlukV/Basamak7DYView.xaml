@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak7DYView">
+    
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                  
+                <Label  
+                    Text="  Maaş Bilgi (7/7)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20,0,0" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <Button Text="İptal" HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}"
+                        BackgroundColor="Transparent"
+              Clicked="Button_Clicked"     TextColor="Red"  Padding="0,-4,20,10"    HorizontalOptions="End"></Button>
+
+
+  
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+
+            
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Olay Tarihi     : " FontSize="Medium"></Label>
+                    <Label Text="{Binding AktifDestek.vefatTarihi, Converter={StaticResource  DateTosStringConverter}}"
+                            FontSize="Medium"></Label>
+                    
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Rapor Tarihi  : " FontSize="Medium"></Label>
+                    <Label Text="{Binding AktifDestek.raporTarihi, Converter={StaticResource  DateTosStringConverter} }"
+                            FontSize="Medium"></Label>
+
+                </StackLayout>
+
+
+                <Button x:Name="btnAsgariOlarakAta"  Command="{Binding AsgariBelirleCommand}" IsVisible="False"
+                        BackgroundColor="Transparent"
+                     FontSize="Small"    Text="Bu Dönemdeki Maaşları  Asgari Ücret Olarak Belirle">
+                    <Button.TextColor>
+                    <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                    </OnPlatform>
+                    </Button.TextColor>
+
+
+                </Button>
+                <Button x:Name="btnNetOranlaDagit" Command="{Binding NetOranlaCommand}" IsVisible="False"
+                        BackgroundColor="Transparent"
+                       FontSize="Small" Text="NET Maaşını Asgari Ücrete Oranlayıp Dağıt">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+                <Button x:Name="btnBrutOranlaDagit" Command="{Binding BrutOranlaCommand}" IsVisible="False"
+                        BackgroundColor="Transparent"
+                     FontSize="Small"   Text="BRÜT Maaşı Asgari Ücrete Oranla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+
+                <combobox:SfComboBox HeightRequest="40" HorizontalOptions="FillAndExpand" 
+            TextSize="Small"     DropDownTextSize="Small"   Margin="0,10,0,0"
+                                     IsSelectedItemsVisibleInDropDown="True"    SelectedItem="{Binding MaasSecim,  Mode=TwoWay}"
+                                     x:Name="drpSecenek" >
+                    <combobox:SfComboBox.ComboBoxSource>
+                        <ListCollection:List x:TypeArguments="x:String">
+                            <x:String>(Secim Yok)</x:String>
+                            <x:String>Asgari Ücret Olarak Belirle</x:String>
+                            <x:String>NET Maaşı Asg. Ücrete Oranla</x:String>
+                            <x:String>BRÜT Maaşı Asg. Ücrete Oranla</x:String>
+         
+                        </ListCollection:List>
+                    </combobox:SfComboBox.ComboBoxSource>
+                </combobox:SfComboBox>
+                <Button x:Name="btnSecimYap" Command="{Binding SecimCommand}"
+                        BackgroundColor="Transparent"
+                    FontSize="Medium"   Text="Seç">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+   
+                <StackLayout Padding="0,15,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0" Grid.Row="0">
+                            <Label Text="Dönemi"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Grid.Row="0">
+                            <Label Text="Brüt"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Grid.Row="0">
+                            <Label Text="Net"  HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>
+
+
+                </StackLayout>
+                <ListView x:Name="lstMaas"  RowHeight="60"
+                          ItemsSource="{Binding MaasListe2}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid  >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" Grid.Row="0" >
+                                    <!--<border:SfBorder
+                            
+                                    
+                                    HeightRequest="45"
+                                    Style="{StaticResource FormBorderStyle}">-->
+
+                                        <Entry IsReadOnly="True" HeightRequest="40" 
+                                             Text="{Binding yil, Mode=TwoWay}">
+
+                                        </Entry>
+
+                                    <!--</border:SfBorder>-->
+                                        
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <!--<border:SfBorder
+                            
+                                  
+                                    HeightRequest="45"
+                                    Style="{StaticResource FormBorderStyle}">-->
+
+                                            <syncfusion1:SfNumericTextBox x:Name="numericTextBox2"
+                                                            HeightRequest="40"              Value="{Binding brutMaas, Mode=TwoWay}" FormatString="c">
+                                                
+                                            </syncfusion1:SfNumericTextBox>
+
+                                        <!--</border:SfBorder>-->
+
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="2" Grid.Row="0">
+                                        <!--<border:SfBorder
+                            
+                                 
+                                    HeightRequest="45"
+                                    Style="{StaticResource FormBorderStyle}">-->
+
+                                        
+                                            <!--<Entry Text="{Binding netMaas, Mode=TwoWay}" Keyboard="Numeric">
+
+                                            </Entry>-->
+
+                                            <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   
+                                       HeightRequest="40" Value="{Binding netMaas, Mode=TwoWay}" FormatString="c">
+                                                
+                                            </syncfusion1:SfNumericTextBox>
+                                        <!--</border:SfBorder>-->
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </ViewCell>
+
+
+                                
+                        </DataTemplate>
+                        
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                
+                <!--   İşleyecek Dönem Maaş      -->
+                <Label
+                        Margin="0,10,0,4"
+                        Padding="0,0,0,0"
+                        HeightRequest="27" 
+                        FontSize="Medium"
+                        Text="İşleyecek Dönem Net Maaşı"
+                        TextColor="{StaticResource Gray-800}" />
+                
+                <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtIsleyecekMaas}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">-->
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtIsleyecekMaas"  TextColor="Black"
+                               HeightRequest="55"      FontSize="Large"     Value="{Binding IsleyecekDonemMaas, 
+                        Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+                    <CheckBox IsChecked="{Binding AgiVar}">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                                
+                    </CheckBox>
+                    <Label Text="Destekteki Çocuk Sayısına Göre Gelecek AGi'yi Düş ve Yeniden Hesapla"
+                           FontSize="Small">
+                    </Label>
+                </StackLayout>
+                <!--</border:SfBorder>-->
+
+                <!--  Emekli Maaş     -->
+                <Label
+                        Margin="0,3,0,3"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Bugün Emekli Olsaydı Maaşı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtIsleyecekMaas}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">-->
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtEmekliMaas"
+                            FontSize="Large" TextColor="Black"     Margin="0,3,0,0"          HeightRequest="55"  
+                             Value="{Binding EmekliMaas , Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+                    
+                <!--</border:SfBorder>-->
+
+
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}" TextColor="Red"></Label>
+        
+
+                   <buttons:SfButton
+                        Command="{Binding KaydetBitirCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="SONLANDIR(BİTİR)"
+                        WidthRequest="200" />
+
+
+            </StackLayout>
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

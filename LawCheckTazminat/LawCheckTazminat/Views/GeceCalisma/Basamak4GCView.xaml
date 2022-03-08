@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak4GCView">
+
+   <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hesaplanacak Gece Mesai Saat Bilgisi (4/8)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+        
+         <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button  BackgroundColor="Transparent"
+                    Text="İptal" 
+                         HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+                <StackLayout  Padding="0,8,0,20" Orientation="Horizontal">
+                <Label
+                       
+                        HeightRequest="30" VerticalTextAlignment="End"
+                         VerticalOptions="End"
+                        Text="Çalışma Saati = " FontSize="Medium"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Label TextColor="Red" FontSize="Large" VerticalTextAlignment="Start"
+                       Text="{Binding CalisilanSaat}"></Label>
+                </StackLayout>
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Uygulama Tarafından Hesaplanan Fazla Saat"
+                        TextColor="{StaticResource Gray-800}" />
+                <StackLayout Padding="10,10,0,10" Orientation="Horizontal"  >
+                    <Label  VerticalOptions="End" FontSize="Medium"
+                       Text="{Binding CalisilanSaat}"></Label>
+
+                    <Label  VerticalOptions="End" FontSize="Medium"
+                       Text="- ( 7.5 +"></Label>
+                    <Label  VerticalOptions="End" TextColor="Red" FontSize="Medium"
+                       Text="{Binding DinlenmeSaat}"></Label>
+                    <Label  VerticalOptions="End"  FontSize="Medium"
+                       Text=") = "></Label>
+
+                    <Label  TextColor="Red" FontSize="Large" VerticalOptions="Start"
+                       Text="{Binding GeceFazlaSaat}"></Label>
+                    
+                </StackLayout>
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="15"
+                        Text="Hesaplanacak Olan Saat (Elle Değiştirebilirsiniz)"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <!--<Entry x:Name="txtSaatElle" Text="{Binding A1,Mode=TwoWay}" Keyboard="Numeric"></Entry>-->
+
+                <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   HeightRequest="50"
+                                  BackgroundColor="WhiteSmoke"            FontSize="Large"
+                                Margin="0,10,0,0"        Value="{Binding GeceFazlaSaatElle, Mode=TwoWay}" FormatString="n">
+
+                </syncfusion1:SfNumericTextBox>
+
+
+                <!--   Vergi Yılı       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Vergi Yılı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSozlesmeSaati}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtSozlesmeSaati"   Placeholder="Yıl"
+                          WidthRequest="70"    Keyboard="Numeric"
+                            FontSize="Large"                   Text="{Binding VergiYil, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <!--  Yıl İçindeki Gelir Toplamı      -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Yıl İçindeki Gelir Toplamı"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                <syncfusion1:SfNumericTextBox x:Name="txtVergiMatrah" 
+                                     BackgroundColor="WhiteSmoke"         
+                                 FontSize="Large"           HeightRequest="50"        Value="{Binding Matrah , Mode=TwoWay}" FormatString="c">
+
+                </syncfusion1:SfNumericTextBox>
+
+
+                <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+                <!--   İlerle       -->
+
+                  <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                      HeightRequest="55"
+                        WidthRequest="200" />
+               </StackLayout>
+             </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LawCheckTazminat.Views.FazlaMesaiV.Basamak11FMView">
+      <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Genel Rapor"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+          
+        <ScrollView>
+            <StackLayout Padding="10,5,10,40">
+
+                <Button HorizontalOptions="End" HeightRequest="50"
+                      BackgroundColor="Transparent"  Text="Bitti"
+                        FontSize="Large"   TextColor="Red" Padding="0,0,5,0"
+                        Command="{Binding BitisCommand}" >
+                </Button>
+
+            
+                    <Button BackgroundColor="Transparent" HeightRequest="50"
+                        HorizontalOptions="Start" FontSize="Large" TranslationY="-47"
+                        Padding="0,0,0,10"    Command="{Binding YenidenHesaplaCommand}"
+                        Text="Yeniden Hesapla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+                <!--FAZLA MESAİ BÖLÜMÜ-->
+
+
+                <Label Text="Fazla Mesai" TextDecorations="Underline" FontSize="Large"
+                      Padding="0,0,0,15"  HorizontalOptions="StartAndExpand"></Label>
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                            <Label  Text="Toplam Brüt :" Grid.Column="0"  Grid.Row="0"
+                   Padding="0,5,0,0"   FontSize="Medium" ></Label>
+                 <Label Text="{Binding FM.Toplam, StringFormat='{0:C}'}" Grid.Column="1" Grid.Row="0"
+                    FontSize="Medium"  TextColor="Black"    Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                  <Label  Text="SGK :" Grid.Column="0" Grid.Row="1" FontSize="Medium"
+                      Padding="0,5,0,0"    HorizontalOptions="Start"></Label>
+                  <Label Text="{Binding FM.ToplamSGK, StringFormat='{0:C}'}" Grid.Column="1" Grid.Row="1"
+                    FontSize="Medium"  TextColor="Black" Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                 <Label  Text="Vergi :" Grid.Row="2" Grid.Column="0"
+                      FontSize="Medium"   Padding="0,5,0,0" HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamVergi, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="1"
+                      FontSize="Medium"  TextColor="Black"  Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                 <Label  Text="Damga Vergisi:" Grid.Row="3" Grid.Column="0"
+                    FontSize="Medium"  Padding="0,5,0,0"  HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamDamgaVergi, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"
+                  FontSize="Medium"  TextColor="Black"   Padding="0,5,0,0"      FontAttributes="Bold"></Label>
+
+
+                 <Label  Text="İşsizlik Sigortası :" Grid.Row="4" Grid.Column="0"
+                         Padding="0,5,0,0" FontSize="Medium"
+                         HorizontalOptions="Start" ></Label>
+                    <Label Text="{Binding FM.ToplamIssizlik, StringFormat='{0:C}'}"
+                         FontSize="Medium"  TextColor="Black"   Padding="0,5,0,0" Grid.Row="4" Grid.Column="1"
+                             FontAttributes="Bold"></Label>
+
+                <BoxView HeightRequest="1" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,5,0,0" BackgroundColor="{StaticResource Gray-200}"/>
+
+                     <Label  Text="Net :" Grid.Row="6" Grid.Column="0"
+                         FontSize="Medium"    HorizontalOptions="Start" Padding="0,5,0,0"></Label>
+                    <Label Text="{Binding FM.ToplamNet, StringFormat='{0:C}'}" Grid.Row="6" Grid.Column="1"
+                          FontSize="Large" 
+                           Padding="0,5,0,0" TextColor="Black" FontAttributes="Bold"></Label>
+
+                </Grid>
+
+        
+
+
+
+            
+            
+                    <!--<Label
+                        Margin="0,8,0,4"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text="Hesaplanan Net Gün Sayısı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Label Text="{Binding }" TextColor="OrangeRed"
+                      HorizontalOptions="Center" FontSize="Large"></Label>-->
+
+         
+
+
+            
+
+
+                
+                <!--Haftalık İzinde Çalışma BÖLÜMÜ-->
+                <Label Text="Hafta İzninde Çalışma" TextDecorations="Underline" FontSize="Large"
+                      Padding="0,18,0,15"  HorizontalOptions="StartAndExpand"></Label>
+
+
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label  Text="Toplam Brüt :" Grid.Row="0"  Grid.Column="0"
+                       FontSize="Medium"     Padding="0,5,0,0"  HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamHsonu, StringFormat='{0:C}'}" Grid.Row="0" Grid.Column="1"
+                      FontSize="Medium"  TextColor="Black"      Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                      <Label  Text="SGK :" Grid.Row="1" Grid.Column="0"
+                          FontSize="Medium"    Padding="0,5,0,0"  HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamHsonuSGK, StringFormat='{0:C}'}" Grid.Row="1" Grid.Column="1"
+                       FontSize="Medium"  TextColor="Black"     Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                    <Label  Text="Vergi :" Grid.Row="2" Grid.Column="0"
+                       FontSize="Medium"    Padding="0,5,0,0"   HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamHsonuVergi, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="1"
+                         FontSize="Medium"  TextColor="Black"   Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+                     <Label  Text="Damga Vergi :" Grid.Row="3" Grid.Column="0"
+                      FontSize="Medium"    Padding="0,5,0,0"   HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamHsonuDamgaVergi, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"
+                        FontSize="Medium"  TextColor="Black"  Padding="0,5,0,0"     FontAttributes="Bold"></Label>
+
+                    <Label  Text="İşsizlik Sigortası :" Grid.Row="4" Grid.Column="0"
+                       FontSize="Medium"  Padding="0,5,0,0"     HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamHsonuIssizlik, StringFormat='{0:C}'}" Grid.Row="4" Grid.Column="1"
+                       FontSize="Medium"  TextColor="Black"   Padding="0,5,0,0"    FontAttributes="Bold"></Label>
+
+                    <BoxView HeightRequest="1" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                         Margin="0,5,0,0"    BackgroundColor="{StaticResource Gray-200}"/>
+
+                      <Label  Text="Net :" Grid.Row="6" Grid.Column="0"
+                        FontSize="Medium"      HorizontalOptions="Start"  Padding="0,5,0,0"  ></Label>
+                    <Label Text="{Binding FM.ToplamHsonuNet, StringFormat='{0:C}'}"
+                           Grid.Row="6" Grid.Column="1" FontSize="Large"
+                           TextColor="Black" FontAttributes="Bold"></Label>
+
+
+                    </Grid>
+
+               
+             
+
+
+              
+         
+
+
+
+                
+                <!--Resmi Tatil Bayramlarda Çalışma-->
+                <Label Text="Resmi Tatil-Dini Bayramlar" TextDecorations="Underline" FontSize="Large"
+                      Padding="0,18,0,15"  HorizontalOptions="StartAndExpand"></Label>
+
+
+                     <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label  Text="Toplam Brüt :" Grid.Row="0" Grid.Column="0"
+                         FontSize="Medium" Padding="0,5,0,0"   HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamResmiTatil, StringFormat='{0:C}'}" Grid.Row="0" Grid.Column="1"
+                    FontSize="Medium"  TextColor="Black"   Padding="0,5,0,0"     FontAttributes="Bold"></Label>
+
+                    <Label  Text="SGK :" Grid.Row="1" Grid.Column="0"
+                      FontSize="Medium"   Padding="0,5,0,0"    HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamResmiTatilSGK, StringFormat='{0:C}'}" Grid.Row="1"  Grid.Column="1"
+                       FontSize="Medium"  TextColor="Black"  Padding="0,5,0,0"    FontAttributes="Bold"></Label>
+
+                      <Label  Text="Vergi :" Grid.Row="2" Grid.Column="0"
+                      FontSize="Medium"      Padding="0,5,0,0" HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamResmiTatilVergi, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="1"
+                     FontSize="Medium"  TextColor="Black"    Padding="0,5,0,0"   FontAttributes="Bold"></Label>
+
+                    <Label  Text="Damga Vergi :" Grid.Row="3" Grid.Column="0"
+                       FontSize="Medium"  Padding="0,5,0,0"   HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamResmiTatilDamgaVergi, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"
+                      FontSize="Medium"  TextColor="Black"  Padding="0,5,0,0"   FontAttributes="Bold"></Label>
+
+                    <Label  Text="İşsizlik Sigortası :" Grid.Row="4" Grid.Column="0"
+                        FontSize="Medium"  Padding="0,5,0,0"   HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding FM.ToplamResmiTatilIssizlik, StringFormat='{0:C}'}" Grid.Row="4" Grid.Column="1"
+                      FontSize="Medium"  TextColor="Black"     Padding="0,5,0,0"  FontAttributes="Bold"></Label>
+
+               <BoxView HeightRequest="1" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,5,0,0" BackgroundColor="{StaticResource Gray-200}"/>
+
+                    <Label  Text="Net :" Grid.Row="6" Grid.Column="0"
+                     FontSize="Medium"      Padding="0,5,0,0"  HorizontalOptions="Start"></Label>
+                        <Label Text="{Binding FM.ToplamResmiTatilNet, StringFormat='{0:C}'}"
+                            Padding="0,5,0,0"    Grid.Row="6" Grid.Column="1" FontSize="Large"
+                           TextColor="Black" FontAttributes="Bold"></Label>
+
+                    </Grid>
+
+                    <Button  BackgroundColor="Transparent" HorizontalOptions="Center"
+                        Text="Fazla Mesai - Rapor Al" Padding="10,25,10,10" FontSize="Large"
+                        Command="{Binding RaporFazlaMesaiCommand}" >
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+                       <Button  BackgroundColor="Transparent" HorizontalOptions="Center"
+                        Text="Haftalık İzinde Çalışma - Rapor Al" Padding="10,15,10,10" FontSize="Large"
+                        Command="{Binding RaporHaftalikIzinCommand}" >
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+               
+                <Button  BackgroundColor="Transparent"
+                    Text="Resmi Tatil - Rapor Al" Padding="10,15,10,10" FontSize="Large"
+                        Command="{Binding  RaporResmiTatilCommand}" >
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+            </StackLayout>
+            </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

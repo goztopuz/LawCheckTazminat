@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:LawCheckTazminat.Controls" 
+             xmlns:behavior="clr-namespace:LawCheckTazminat.Behaviors" 
+             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+             xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="LawCheckTazminat.Views.Contacts.KisiAramaView">
+    <ContentPage.Content>
+        <StackLayout>
+          
+     
+
+            <!--<ListView x:Name="lstKisiler"  ItemsSource="{Binding Kisiler}" 
+                       SeparatorVisibility="Default" SeparatorColor="AliceBlue">
+                <ListView.Header>
+                    <StackLayout>
+                        <Label Text="AAAAA"></Label>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Ad}"></Label>
+                            -
+                                <Label Text="{Binding Soyad}"></Label>
+                            </StackLayout>
+                     
+                        </ViewCell>
+                    </DataTemplate>
+                    
+                </ListView.ItemTemplate>
+                
+            </ListView>-->
+            
+
+            <StackLayout  Padding="10,30,0,0">
+             
+                <!--<Button Text="Kişi Seçmeden Devam Et" Command="{Binding }" 
+                    FontSize="Large"    IsVisible="{Binding ButtonVisible}">
+                </Button>-->
+                <StackLayout Orientation="Horizontal">
+                    
+
+                      <Button Text="Yeni Kişi " HeightRequest="60" FontSize="Large"
+                                                         BackgroundColor="Transparent" 
+                              Padding="0,0,0,0" Command="{Binding YeniKisiCommand}" 
+                        HorizontalOptions="StartAndExpand">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                           
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+                    <Button Text="İptal" HeightRequest="60" FontSize="Large" TextColor="Red"
+                           BackgroundColor="Transparent"
+                             Padding="0,0,15,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="EndAndExpand"></Button>
+                </StackLayout>
+                
+
+
+                <!--<StackLayout Margin="0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Button Text="Yeni Kişi " HeightRequest="60" FontSize="Large"
+                               Padding="0,0,0,0" Command="{Binding YeniKisiCommand}" 
+                   Grid.Column="0"     HorizontalOptions="Start"></Button>
+
+                        <Button Text="İptal" HeightRequest="60" FontSize="Large"
+                             Padding="0,0,10,0"   Command="{Binding IptalCommand}" 
+                       Grid.Column="2"  HorizontalOptions="End"></Button>
+
+
+                    </Grid>
+                </StackLayout>-->
+                <StackLayout HeightRequest="60">
+                <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,0,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Kişi Seçmeden İlele"
+                        HeightRequest="45"
+                        WidthRequest="250" />
+                </StackLayout>
+                <Grid RowSpacing="0" ColumnSpacing="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                  
+                    
+                    <StackLayout x:Name="ContactsTitleView"  Padding="8,8" Grid.Row="0" HeightRequest="64"
+                         BackgroundColor="{StaticResource Gray-White}" Spacing="0"
+                         HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+                        <StackLayout x:Name="ContactsTitle" HorizontalOptions="FillAndExpand"  IsVisible="True"
+                             Orientation="Horizontal"  VerticalOptions="FillAndExpand"  Spacing="0">
+
+                            <!--  Back button command  -->
+                            <!--<buttons:SfButton  x:Name="backButton"  Command="{Binding BackButtonCommand}"
+                                       CommandParameter="{x:Reference backButton}" CornerRadius="4"
+                                        Text="Geri"/>-->
+
+                            <!--   Contacts List page Title  -->
+                            <Label  Margin="16,0"  FontSize="24"
+                            HorizontalOptions="CenterAndExpand" TextColor="{StaticResource Gray-900}"
+                            LineHeight="1.25"  Text="Kişi Listesi"  VerticalOptions="Center" VerticalTextAlignment="Center" />
+
+                        </StackLayout>
+
+                        <StackLayout  x:Name="Search" HorizontalOptions="EndAndExpand" IsVisible="False"
+                                Orientation="Horizontal" Spacing="0">
+
+                            <!--  Back to title layout  -->
+                            <!--<buttons:SfButton  x:Name="BackToTitle" Clicked="BackToTitle_Clicked_1"  Text="İptal"
+                                      />-->
+                            <Button x:Name="BackToTitle" Padding="0,0,5,0" TextColor="Red" FontSize="Large"
+                                    BackgroundColor="Transparent"
+                                    Clicked="BackToTitle_Clicked_1"  Text="İptal"></Button>
+
+                            <!--  Rounded Search Entry  -->
+                            <border:SfBorder Style="{StaticResource SfBorderStyle}">
+                                <controls:BorderlessEntry x:Name="SearchEntry"  BindingContext="{x:Reference ContactList}"
+                                                  Text="{Binding SearchText, Mode=TwoWay}" Placeholder="Aranacak Kelimeyi Girin"
+                                                  HorizontalOptions="FillAndExpand"  />
+                            </border:SfBorder>
+                        </StackLayout>
+
+                        <!--  Search Button  -->
+                        <Button  x:Name="SearchButton" Text="Ara"
+                           BackgroundColor="Transparent"                          
+                          Clicked="SearchButton_Clicked_1" FontSize="Large"
+                            IsVisible="True">
+
+                            <Button.TextColor>
+                                <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                                </OnPlatform>
+                            </Button.TextColor>
+
+
+
+                        </Button>
+                        <!--<buttons:SfButton  x:Name="SearchButton" IsVisible="True"
+                                           Clicked="SearchButton_Clicked_1" 
+                                   Text="Ara" />-->
+                    </StackLayout>
+
+                    <!-- Seperator -->
+                    <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Grid.Row="2" Padding="0,-10,0,0">
+                    
+                        <controls:SearchableContactsList x:Name="ContactList"
+                                                 IsScrollBarVisible="False"
+                                                 AllowSwiping="True"
+                                                 AutoFitMode="Height"
+                                                 ItemSpacing="0"
+                                                 SelectionGesture="Tap"
+                                                 SelectionMode="Single"
+                                                 VerticalOptions="FillAndExpand"
+                                                 SearchText="{Binding SearchText}"
+                                               BackgroundColor="White"
+                                                 ItemsSource="{Binding Kisiler}"
+                                                 SelectionBackgroundColor="{StaticResource TappedBackgroundColor}"
+                                                 >
+
+                        <controls:SearchableContactsList.DataSource>
+                            <data:DataSource>
+                                <data:DataSource.SortDescriptors>
+                                    <data:SortDescriptor PropertyName="Ad" Direction="Ascending"/>
+                                </data:DataSource.SortDescriptors>
+                            </data:DataSource>
+                        </controls:SearchableContactsList.DataSource>
+
+                        <!--Group Header-->
+                        <controls:SearchableContactsList.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout Spacing="0" 
+                                                 Orientation="Horizontal" 
+                                                 HeightRequest="40" 
+                                                 BackgroundColor="{StaticResource Gray-100}">
+
+                                            <Label Text="{Binding Key}" 
+                                               FontSize="16" 
+                                               TextColor="{StaticResource Gray-900}"
+                                               VerticalOptions="Center" 
+                                               HorizontalOptions="Start" 
+                                               Margin="16,0" />
+
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:SearchableContactsList.GroupHeaderTemplate>
+
+                        <controls:SearchableContactsList.Behaviors>
+                            <behavior:ContactsListViewBehavior/>
+                            <behavior:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding KisiTappedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                            </behavior:EventToCommandBehavior>
+
+                        </controls:SearchableContactsList.Behaviors>
+
+                        <controls:SearchableContactsList.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="70">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!--Contact name avatar-->
+                                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+                                                <sfavatar:SfAvatarView  
+                                                                ContentType="Initials"
+                                                                 InitialsType="DoubleCharacter"
+                                                                InitialsColor="#ffffff"
+                                                                 AvatarShape="Circle"
+                                                                AvatarSize="Medium"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                BorderWidth="0"
+                                                               Margin="16,8"
+                                                               AvatarName="{Binding FullName}"
+                                                               BackgroundColor="{Binding BackgroundColor}" />
+
+                                            </StackLayout>
+
+                                            <!--Contact name-->
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                                <Label
+                                               Text="{Binding Ad}" FontSize="Large"
+                                               Margin="0,0"
+                                               Style="{StaticResource ContactsLabelStyle}" />
+                                                <Label
+                                               Text="{Binding Soyad}" FontSize="Large"
+                                               Margin="5,0"
+                                               Style="{StaticResource ContactsLabelStyle}" />
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                                <Label
+                                               Text="{Binding Kurumu}" FontSize="Medium"
+                                               Margin="0,5"
+                                               Style="{StaticResource ContactsLabelStyle}" />
+                                                <Label
+                                               Text=" - "
+                                               Margin="5,5"
+                                               Style="{StaticResource ContactsLabelStyle}" />
+                                                <Label
+                                               Text="{Binding Aciklama}" FontSize="Medium"
+                                               Margin="3,5"  LineBreakMode="TailTruncation"
+                                               Style="{StaticResource ContactsLabelStyle}" />
+                                            </StackLayout>
+
+                                            <!--Seperator-->
+                                            <BoxView Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource SeparatorStyle}" />
+
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:SearchableContactsList.ItemTemplate>
+                    </controls:SearchableContactsList>
+                   
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

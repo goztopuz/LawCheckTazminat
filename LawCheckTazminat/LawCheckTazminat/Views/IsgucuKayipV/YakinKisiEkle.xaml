@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
+             x:Class="LawCheckTazminat.Views.IsgucuKayipV.YakinKisiEkle">
+        <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,50,0,0"
+                         BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Yeni Yakın Ekle"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+                <StackLayout>
+            <ScrollView>
+                <StackLayout  Spacing="0" Padding="16,24">
+                    <Button Text="İptal" BackgroundColor="Transparent"
+                            HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+                        TextColor="Red" HorizontalOptions="End"></Button>
+
+
+                    <!-- Yakınlık Derecesi-->
+                    <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Yakınlık Durumu"
+                        TextColor="{StaticResource Gray-800}" />
+                    <!--<border:SfBorder
+                        BorderColor="{Binding Source={x:Reference drpYakinlik}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">-->
+
+                        <!--<controls:BorderlessEntry x:Name="txtYakinlik" Focused="txtYakinlik_Focused"  
+                                                  Placeholder="Yakınlık" IsVisible="False"
+                                          WidthRequest="70"  Text="{Binding Yakin.yakinlik, Mode=TwoWay}">
+
+                        </controls:BorderlessEntry>-->
+
+                    <!--</border:SfBorder>-->
+                    
+                    <Picker x:Name="drpYakinlik"  Margin="0,0,0,0"
+                           FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                        SelectedIndexChanged="drpYakinlik_SelectedIndexChanged"
+                      SelectedItem="{Binding Yakin.yakinlik}"   WidthRequest="150" HeightRequest="50">
+                        <Picker.Items>
+                            <x:String>Eş</x:String>
+                            <x:String>Çocuk</x:String>
+                            <x:String>Anne</x:String>
+                            <x:String>Baba</x:String>
+                            <x:String>Kardeş</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <!--      Ad       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Ad"
+                        TextColor="{StaticResource Gray-800}" />
+                    <border:SfBorder
+                    Padding="6,0,0,0" BackgroundColor="WhiteSmoke"
+                    BorderColor="{Binding Source={x:Reference txtAd}, Path=IsFocused}"
+                    HeightRequest="50"
+                    Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtAd" Placeholder="Ad"
+                                   FontSize="Large" TextColor="Black"
+                                   WidthRequest="120"          HeightRequest="45"
+                                 Text="{Binding  Yakin.ad , Mode=TwoWay}">
+
+                        </controls:BorderlessEntry>
+                    </border:SfBorder>
+
+                    <!--      Soyad       -->
+                    <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Soyad"
+                        TextColor="{StaticResource Gray-800}" />
+                    <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSoyad}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                        <controls:BorderlessEntry  x:Name="txtSoyad" Placeholder="Soyad"
+                                   FontSize="Large" TextColor="Black"              
+                                   WidthRequest="120"    HeightRequest="47"
+                                 Text="{Binding  Yakin.soyad , Mode=TwoWay}">
+                        </controls:BorderlessEntry>
+                    </border:SfBorder>
+                    
+                    
+                    <!-- Cinsiyet -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30"
+                        FontSize="Medium"
+                        Text="Cinsiyet"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <!--<border:SfBorder
+                        BorderColor="{Binding Source={x:Reference drpCinsiyet}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">-->
+
+
+                        <!--<controls:BorderlessEntry x:Name="txtCinsiyet" Focused="txtCinsiyet_Focused"  Placeholder="Cinsiyet"
+                                         IsVisible="False"   WidthRequest="70"  Text="{Binding Yakin.cinsiyet, Mode=TwoWay}">
+
+                        </controls:BorderlessEntry>-->
+                    <Picker x:Name="drpCinsiyet"    WidthRequest="150"
+                            FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                          SelectedItem="{Binding Cinsiyet, Mode=TwoWay}" HeightRequest="50">
+                   
+                        <Picker.Items>
+                            <x:String>Erkek</x:String>
+                            <x:String>Kadın</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <!--</border:SfBorder>-->
+                  
+
+
+                    <!--   Doğum Tarihi      -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Doğum Tarihi"
+                        TextColor="{StaticResource Gray-800}" />
+                    <StackLayout Orientation="Horizontal">
+                        <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSoyad}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">-->
+                            <!--<controls:BorderlessEntry x:Name="txtDogumTarihi" Focused="txtDogumTarihi_Focused"  Placeholder="Gün"
+                                      IsVisible="False"      WidthRequest="70"  Text="{Binding DogumGun, Mode=TwoWay}">
+
+                            </controls:BorderlessEntry>-->
+
+                        <StackLayout>
+
+                            <Label Text="Gün" FontSize="Medium"></Label>
+
+                        <Picker x:Name="drpDogumGun" Title="Gün"  HeightRequest="50"
+                                FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                                SelectedItem="{Binding DogumGun,Mode=TwoWay, Converter={StaticResource IntStringConverter}}"
+                                WidthRequest="80" 
+                                 >
+                            <Picker.Items>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>6</x:String>
+                                <x:String>7</x:String>
+                                <x:String>8</x:String>
+                                <x:String>9</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                                <x:String>13</x:String>
+                                <x:String>14</x:String>
+                                <x:String>15</x:String>
+                                <x:String>16</x:String>
+                                <x:String>17</x:String>
+                                <x:String>18</x:String>
+                                <x:String>19</x:String>
+                                <x:String>20</x:String>
+                                <x:String>21</x:String>
+                                <x:String>22</x:String>
+                                <x:String>23</x:String>
+                                <x:String>24</x:String>
+                                <x:String>25</x:String>
+                                <x:String>26</x:String>
+                                <x:String>27</x:String>
+                                <x:String>28</x:String>
+                                <x:String>29</x:String>
+                                <x:String>30</x:String>
+                                <x:String>31</x:String>
+
+                            </Picker.Items>
+                        </Picker>
+
+                        </StackLayout>
+
+                        <!--</border:SfBorder>-->
+                        <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSoyad}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">-->
+                        <!--<controls:BorderlessEntry x:Name="txtDogumAy" Focused="txtDogumAy_Focused"  Placeholder="Ay"
+                                   IsVisible="False"         WidthRequest="70"  Text="{Binding DogumAy, Mode=TwoWay}">
+                        </controls:BorderlessEntry>-->
+
+                        <StackLayout>
+
+                            <Label Text=" Ay " FontSize="Medium"></Label>
+
+                        <Picker x:Name="drpDogumAy" Title="Ay"
+                                FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                                HeightRequest="50" SelectedItem="{Binding DogumAy, Mode=TwoWay,Converter={StaticResource IntStringConverter}}"
+                                WidthRequest="80"
+                                >
+                            <Picker.Items>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>6</x:String>
+                                <x:String>7</x:String>
+                                <x:String>8</x:String>
+                                <x:String>9</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+
+                            </Picker.Items>
+                        </Picker>
+
+                        </StackLayout>
+
+
+
+
+                        <!--</border:SfBorder>-->
+                        <!--<border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSoyad}, Path=IsFocused}"
+                    HeightRequest="40"
+                    Style="{StaticResource FormBorderStyle}">-->
+
+                        <StackLayout>
+                            <Label Text="Yıl" FontSize="Medium"></Label>
+                            <Entry  x:Name="txtDogumYil"  HeightRequest="50"
+                                 FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                                 Keyboard="Numeric"     WidthRequest="120"          
+                                 Text="{Binding  DogumYil , Mode=TwoWay}">
+
+                            </Entry>
+                        </StackLayout>
+                           
+
+                  
+
+                    </StackLayout>
+
+                    <StackLayout x:Name="stackCocuk" IsVisible="False">
+
+
+                        <!--   Çocuk Eğitim      -->
+                        <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Alacağı Eğitim"
+                        TextColor="{StaticResource Gray-800}" />
+
+                     
+
+
+                            <!--<controls:BorderlessEntry x:Name="txtCocukOkuma" Focused="txtCocukOkuma_Focused"  Placeholder="Alacağı Eğitim"
+                                         IsVisible="False"
+                                                     WidthRequest="70"  
+                                                      Text="{Binding Yakin.okumaDurum, Mode=TwoWay}">
+
+                            </controls:BorderlessEntry>--> 
+
+
+                        <Picker x:Name="drpCocukOkuma" HeightRequest="50"
+                                TextColor="Black" FontSize="Large" BackgroundColor="WhiteSmoke"
+                                SelectedItem="{Binding Yakin.okumaDurum, Mode=TwoWay}"
+                                >
+                            <Picker.Items>
+                                <x:String>Üniversite</x:String>
+                                <x:String>Lise</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                      
+                            <Entry  x:Name="txtDestekCikis" Placeholder="Yaş"
+                                Keyboard="Numeric"     WidthRequest="120"  HeightRequest="50"
+                                   FontSize="Large"  TextColor="Black" BackgroundColor="WhiteSmoke"
+                                 Text="{Binding  Yakin.okulBitisYas , Mode=TwoWay}">
+
+                            </Entry>
+
+
+                    </StackLayout>
+
+                    <StackLayout  x:Name="stackEs" IsVisible="false">
+
+
+                        <!-- Eş Çalışıyor mu? -->
+                        <Label
+                        Margin="0,24,0,4"
+                        HeightRequest="30"
+                        FontSize="Medium"
+                        Text="Eş Çalışıyor mu?"
+                        TextColor="{StaticResource Gray-800}" />
+
+                        <!--<border:SfBorder 
+                        BorderColor="{Binding Source={x:Reference txtEsCalisma}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">-->
+
+                            <!--<controls:BorderlessEntry x:Name="txtEsCalisma" 
+                                            IsVisible="False"          Focused="txtEsCalisma_Focused"  Placeholder="Çalışma"
+                              Text="{Binding EsCalisma, Mode=TwoWay}">
+
+                            </controls:BorderlessEntry>-->
+
+
+                        <!--</border:SfBorder>-->
+                        <Picker x:Name="drpEsCalisiyor"  SelectedItem="{Binding EsCalisma, Mode=TwoWay}"
+                                TextColor="Black" FontSize="Large" BackgroundColor="WhiteSmoke"
+                                WidthRequest="150" HeightRequest="50"
+                                >
+                            <Picker.Items>
+                                <x:String>Çalışıyor</x:String>
+                                <x:String>ÇalışMIyor</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        
+                        <!-- Eş Evlenme Durumu --><!--
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="chkAyim" IsChecked="{Binding Yakin.esEvlenmeeDurumAyim}"></CheckBox>
+                            <Label Text="AYİM"></Label>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="chkMoser" IsChecked="{Binding Yakin.esEvlenmeDurumMoser}"  ></CheckBox>
+                            <Label Text="Moser"></Label>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="chkStaauffer" IsChecked="{Binding Yakin.esEvlenmeDurumStaauffer}"  ></CheckBox>
+                            <Label Text="Staauffer/Schaetzle"></Label>
+                        </StackLayout>
+
+                        <StackLayout  Orientation="Horizontal">
+
+                            <Switch x:Name="chkEvlenmeTablodan">
+                                <Switch.Behaviors>
+                                    <local:SwitchBehavior Command="{Binding EvlenmeTablodanHesapla}" />
+                                </Switch.Behaviors>
+                            </Switch>
+                            <Label Text="Evlenme İhtimali Tablodan Hesapla"></Label>
+                            
+                        </StackLayout>
+                        <Label x:Name="lblEvlenmeOrani" Text=""></Label>
+
+                        <StackLayout  Orientation="Horizontal">
+                            <Switch x:Name="chkEvlenmeElle">
+                                <Switch.Behaviors>
+                                    <local:SwitchBehavior Command="{Binding EvlenmeElleGir}" />
+                                </Switch.Behaviors>
+                            </Switch>
+                            <Label Text="Evlenme İhtimalini Elle Gir"></Label>
+                        </StackLayout>
+
+                        <border:SfBorder x:Name="borderElle" IsVisible="{Binding ElleGirVisible}"
+                        BorderColor="{Binding Source={x:Reference txtEsCalisma}, Path=IsFocused}"
+                        Style="{StaticResource FormBorderStyle}">
+                            <controls:BorderlessEntry x:Name="txtEsEvlenmeElle"  Placeholder="Eş Evlenme Oranı Gir"  IsVisible="{Binding ElleGirVisible}"
+                                Text="{Binding Yakin.esEvlenmeElle, Mode=TwoWay}">
+                            </controls:BorderlessEntry>
+
+                        </border:SfBorder>-->
+
+
+
+
+                    </StackLayout>
+
+                    <StackLayout x:Name="stackAnneBaba" IsVisible="false">
+
+                        <!--  Anne-Baba Destek? -->
+                        <Label
+                        Margin="0,24,0,4"
+                        HeightRequest="30"
+                        FontSize="Medium"
+                        Text="Anne Baba Destek Durumu?"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    
+
+                            <!--<controls:BorderlessEntry x:Name="txtAnneBabaDestekDurumu" 
+                             Focused="txtAnneBabaDestekDurumu_Focused"  Placeholder="Anne Baba Destek"
+                             IsVisible="False"  Text="{Binding Yakin.anneBabaMaasDurumu, Mode=TwoWay}">
+                                
+                            </controls:BorderlessEntry>-->
+
+
+                        <Picker x:Name="drpAnneBabaMaas"   HeightRequest="50"
+                                FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
+                                SelectedItem="{Binding Yakin.anneBabaMaasDurumu, Mode=TwoWay}"
+                             >
+                            <Picker.Items>
+                                <x:String>Yok</x:String>
+                                <x:String>Yarım</x:String>
+                                <x:String>Tam</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+
+                    </StackLayout>
+                  
+                    <Label x:Name="lblHata"  Padding="0,15,0,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+                    <Button Command="{Binding KaydetCommand}"
+                       IsVisible="false"     Padding="0,15,0,0" FontSize="Large" Text=" KAYDET"/>
+
+                        <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+                         HeightRequest="55"
+                        WidthRequest="200" />
+
+                </StackLayout>
+            </ScrollView>
+
+         
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

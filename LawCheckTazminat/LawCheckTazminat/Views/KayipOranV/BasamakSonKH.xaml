@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             x:Class="LawCheckTazminat.Views.KayipOranV.BasamakSonKH">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Hesaplama Sonuçları"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Padding="10,5,10,40">
+
+                <Button HorizontalOptions="End" Text="Bitti" BackgroundColor="Transparent"
+                        FontSize="Large"   TextColor="Red" Padding="0,0,5,0"
+                        Command="{Binding BitisCommand}" >
+                </Button>
+
+                <Button HorizontalOptions="Start" FontSize="Large" TranslationY="-45"
+                        Padding="0,0,0,10"    Command="{Binding YenidenHesaplaCommand}"
+                        BackgroundColor="Transparent" Text="Yeniden Hesapla">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
+
+
+                <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" 38/39 Yaş İtibariyle Oran (TabloD) "          
+                        TextColor="{StaticResource Gray-800}" />
+                
+               
+                    <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   TextColor="Red"
+                                 HeightRequest="45" BackgroundColor="White"  FontSize="Large" 
+                                Margin="0,10,0,0"   Value="{Binding KayipMiktar, Mode=TwoWay}" FormatString="n">
+
+                    </syncfusion1:SfNumericTextBox>
+        
+
+                <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Yaş İtibariyle İşgücü Kaybı(TabloE) "          
+                        TextColor="{StaticResource Gray-800}" />
+
+                <syncfusion1:SfNumericTextBox x:Name="numericTextBox2"   TextColor="Red"
+                                 HeightRequest="45" BackgroundColor="White"  FontSize="Large" 
+                                Margin="0,10,0,0"   Value="{Binding KayipMiktar3738, Mode=TwoWay}" FormatString="n">
+
+                </syncfusion1:SfNumericTextBox>
+
+
+                <Label Text="{Binding KH.AnaKategoriAciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <Label Text="{Binding KH.AltKategori1Aciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <Label Text="{Binding KH.AltKategori2Aciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <Label Text="{Binding KH.AltKategori3Aciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <BoxView HeightRequest="2" BackgroundColor="{StaticResource Gray-200}"/>
+                <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Meslek Bilgi "          
+                        TextColor="{StaticResource Gray-800}" />
+                <Label Text="{Binding KH.IsKoluAnaAciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <Label Text="{Binding KH.IsKoluAltDetay1Aciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium"></Label>
+
+                <Label Text="{Binding KH.IsKoluAltDetay2Aciklama}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold" FontSize="Medium">
+                </Label>
+                <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" Yaş "          
+                        TextColor="{StaticResource Gray-800}" />
+                <Label Text="{Binding KH.KazaTarihindekiYasi}"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                           FontAttributes="Bold"  FontSize="Medium">
+                </Label>
+                <Label
+                        Margin="0,8,0,20"
+                        HeightRequest="18" 
+                        FontSize="16"
+                        Text=" İşgöremezlik Simgesi(Tablo-C) "          
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Label Text="{Binding KayipSimge }"   Padding="0,10,0,15"  LineBreakMode="WordWrap"
+                         TextColor="Red"  FontAttributes="Bold"  FontSize="Medium">
+                </Label>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

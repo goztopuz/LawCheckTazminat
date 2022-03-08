@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak3YYView">
+
+     <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Maaş - Açıklama (3/6)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+    <ScrollView>
+            <StackLayout Spacing="0" Padding="0,20">
+
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="End"></Button>
+
+
+                <!--      Brüt Maaş       -->
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Hesap Tarihindeki Brüt Maaş"
+                        TextColor="{StaticResource Gray-800}" />
+
+                 <syncfusion1:SfNumericTextBox x:Name="txtBrutMaas"  Margin="0,5,0,0"
+                               HeightRequest="50"    FontSize="Large" TextColor="Black" 
+                                BackgroundColor="WhiteSmoke"               Value="{Binding BrutUcret, 
+                        Mode=TwoWay}" FormatString="c">
+
+                  </syncfusion1:SfNumericTextBox>
+
+                <!--<Button Text="Netten Brüt Hesapla" BackgroundColor="Transparent"
+                        Command="{Binding NetBrutCommand}"
+                        FontSize="Large" HorizontalOptions="Start" Padding="0,5,0,10">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>-->
+
+
+                <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
+
+                    <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.YerAltiCalisani }">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+
+                    <Label  FontSize="Medium"
+                            Text="Yer altı işlerinde çalışan işçi" VerticalOptions="Center"></Label>
+
+                </StackLayout>
+
+                <!--      Açıklama       -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Açıklama"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+                <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtAciklama}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtAciklama" Placeholder="Açıklama"
+                                   WidthRequest="120"           FontSize="Large"
+                                 Text="{Binding  YY.Aciklama , Mode=TwoWay}">
+
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+                <!--      Hafatlık İzin Günü       --><!--
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="26" 
+                        FontSize="Medium"
+                        Text="Haftalık İzin Günü"
+                        TextColor="{StaticResource Gray-800}" />
+
+         
+             <combobox:SfComboBox HeightRequest="48" BackgroundColor="Transparent"
+                           TextSize="Large"           SelectedItem="{Binding YY.TatilGunu}"    x:Name="comboBox">
+                <combobox:SfComboBox.ComboBoxSource>
+                    <ListCollection:List x:TypeArguments="x:String">
+
+                                <x:String>Pazar</x:String>
+                                <x:String>Pazartesi</x:String>
+                                <x:String>Salı</x:String>
+                                <x:String>Çarşamba</x:String>
+                                <x:String>Perşembe</x:String>
+                                <x:String>Cuma</x:String>
+                                <x:String>Cumartesi</x:String>
+
+            	</ListCollection:List>
+            </combobox:SfComboBox.ComboBoxSource>
+        </combobox:SfComboBox>  
+                 
+               --><!--      Rapor Gün Toplamı       --><!--
+                <Label
+                        Margin="0,18,0,4"
+                        HeightRequest="27" 
+                        FontSize="Medium"
+                        Text="İzindeyken Alının Rapor Toplamı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtRaporGun}, Path=IsFocused}"
+                    HeightRequest="45"
+                    Style="{StaticResource FormBorderStyle}">
+
+                    <controls:BorderlessEntry  x:Name="txtRaporGun"   Placeholder="İzindeki Raporlar"
+                          WidthRequest="70"    Keyboard="Numeric" FontSize="Large" TextColor="Black"
+                           Text="{Binding YY.izindeAlinanRaporSayisi, Mode=TwoWay}">
+                    </controls:BorderlessEntry>
+
+                </border:SfBorder>
+
+                 <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+
+                        <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.haftalikIizinYillikIzindenDusme }">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+
+                        <Label  FontSize="Medium"
+                            Text="İzin İçindeki Hafta İzinleri -Yıllık İzinden Düşülecektir." VerticalOptions="Center"></Label>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+
+                        <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.resmiTatilYillikIzindenDusme }">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+
+                        <Label  FontSize="Medium"
+                            Text="İzin İçindeki Resmi Tatiller-Yıllık İzinden Düşülecektir." VerticalOptions="Center"></Label>
+
+                </StackLayout>
+
+                   <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+
+                        <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.raporlarinYillikIzindenDusme }">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+
+                        <Label  FontSize="Medium"
+                            Text="İzin Süresinden Alınan Raporlar -Yıllık İzinden Düşülecektir." VerticalOptions="Center"></Label>
+
+                </StackLayout>-->
+
+           <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+
+           <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+            </StackLayout>
+     </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

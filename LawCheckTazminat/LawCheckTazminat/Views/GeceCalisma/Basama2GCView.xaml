@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.Basama2GCView">
+   <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Gün-Saat Bilgileri (2/8)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+          
+         <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+         <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İş Başı Saati"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+             <TimePicker  x:Name="timeIsBasi"  FontSize="Large"
+                          BackgroundColor="WhiteSmoke" TextColor="Black"
+                          Time="{Binding Saat1}" />
+
+           <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İşten Çıkış Saati"
+                        TextColor="{StaticResource Gray-800}" />
+
+         
+                <TimePicker  x:Name="timeIsCikis"  FontSize="Large"
+                             BackgroundColor="WhiteSmoke" TextColor="Black"
+                             Time="{Binding Saat2 }" />
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Dinlenme Saati"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   HeightRequest="50" 
+                             BackgroundColor="WhiteSmoke" TextColor="Black" 
+                            FontSize="Large"     Margin="0,10,0,0"        Value="{Binding DinlenmeSure, Mode=TwoWay}" FormatString="n">
+
+                </syncfusion1:SfNumericTextBox>
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Large"
+                        Text="Gece Çalışma Günleri"
+                        TextColor="{StaticResource Gray-800}" />
+
+                <Grid Padding="0,10,0,0" BackgroundColor="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+                    <CheckBox x:Name="chkPztSali" IsChecked="{Binding GC.PSal}"
+                              Grid.Row="0" Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Pazartesi - Salı"  FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="1"></Label>
+
+                    <CheckBox x:Name="chkSaliCars" IsChecked="{Binding GC.SCar}"
+                              Grid.Row="1" Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Salı - Çarşamba" FontSize="Large"  TextColor="Black" Grid.Row="1" Grid.Column="1"></Label>
+
+                    <CheckBox x:Name="chkCarsPers" IsChecked="{Binding GC.CPer}"
+                              Grid.Row="2" Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Çarşamba-Perşembe" FontSize="Large" TextColor="Black" Grid.Row="2" Grid.Column="1"></Label>
+
+                    <CheckBox x:Name="chkPersCuma"  IsChecked="{Binding GC.PCum}"
+                              Grid.Row="3" Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Perşembe - Cuma" FontSize="Large" TextColor="Black" Grid.Row="3" Grid.Column="1"></Label>
+
+                    <CheckBox x:Name="chkCumCmtesi" IsChecked="{Binding GC.CCmt}"
+                              Grid.Row="4" Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Cuma - Cumartesi" Grid.Row="4" Grid.Column="1" FontSize="Large" TextColor="Black"></Label>
+
+                    <CheckBox x:Name="chkCmtPaz" IsChecked="{Binding GC.CPzr}"
+                              Grid.Row="5" Grid.Column="0" >
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Cumartesi - Pazar"  FontSize="Large" TextColor="Black"  Grid.Row="5" Grid.Column="1"></Label>
+
+                    <CheckBox x:Name="chkPazPztsi" IsChecked="{Binding GC.PPzt}"
+                              Grid.Row="6"  Grid.Column="0">
+                        <CheckBox.Color>
+                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            </OnPlatform>
+                        </CheckBox.Color>
+                    </CheckBox>
+                    <Label Text="Pazar - Pazartesi" FontSize="Large" TextColor="Black" Grid.Row="6" Grid.Column="1"></Label>
+
+                </Grid>
+
+                
+                  <Label
+                        Margin="0,18,0,0"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Hafta Tatili Günü"
+                        TextColor="{StaticResource Gray-800}" />
+                
+                <Picker x:Name="drpIzinGun" HeightRequest="50 " BackgroundColor="WhiteSmoke"
+                  FontSize="Large"      SelectedItem="{Binding GC.TatilGunu}">
+                    <Picker.Items>
+                                <x:String>Pazar</x:String>
+                                <x:String>Pazartesi</x:String>
+                                <x:String>Salı</x:String>
+                                <x:String>Çarşamba</x:String>
+                                <x:String>Perşembe</x:String>
+                                <x:String>Cuma</x:String>
+                                <x:String>Cumartesi</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+                   <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+                <!--   İlerle       -->
+
+                  <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                      HeightRequest="55"
+                        WidthRequest="200" />
+
+
+
+</StackLayout>
+</ScrollView>
+    </ContentPage.Content>
+
+
+</ContentPage>

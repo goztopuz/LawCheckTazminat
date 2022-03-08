@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="LawCheckTazminat.Views.FazlaMesaiV.FMHaftalikIzınView">
+  <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="  Haftalık İzin Duzenle "
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+           <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"      HorizontalOptions="End"/>
+
+                <StackLayout Padding="5,10,0,10">
+                                    <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"
+                         FontSize="Medium"   Text="Başlangıç Tar." >
+                  </Label>
+                        <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="Black"
+                         Text="{Binding Hafta.BasTarih, Converter={StaticResource DateTosStringConverter}}"></Label>
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Hafta Son Günü:" FontSize="Medium"></Label>
+                    <Label Grid.Column="1" Grid.Row="1" FontSize="Medium"  TextColor="Black"
+                           Text="{Binding Hafta.BitTarih, Converter={StaticResource DateTosStringConverter}}"></Label>
+                </Grid>
+
+                </StackLayout>
+
+                            <!--İzin Günü-->
+                     <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="İzin Günü"
+                        TextColor="{StaticResource Gray-800}" />
+
+                        <Picker x:Name="drpIzinGun" FontSize="Large" TextColor="Black"
+                                BackgroundColor="WhiteSmoke"
+                 HeightRequest="50"        SelectedItem="{Binding Hafta.IzinGunu}">
+                    <Picker.Items>
+                                <x:String>Pazar</x:String>
+                                <x:String>Pazartesi</x:String>
+                                <x:String>Salı</x:String>
+                                <x:String>Çarşamba</x:String>
+                                <x:String>Perşembe</x:String>
+                                <x:String>Cuma</x:String>
+                                <x:String>Cumartesi</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+
+                          <!--      Brüt Ücret      -->
+               
+                 <Label
+                        Margin="0,0,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium" Padding="0,0,0,0"
+                        Text="Haftadaki Brüt Ücret"
+                        TextColor="{StaticResource Gray-800}" />
+
+                    <syncfusion1:SfNumericTextBox x:Name="txtBrutMaas"  Margin="0,5,0,0"
+                               HeightRequest="50" BackgroundColor="WhiteSmoke"       FontSize="Large" TextColor="Black"
+                       Value="{Binding Hafta.BrutUcret, Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+
+                <Label x:Name="lblIzinYazi"  Padding="0,15,0,10" Text="{Binding IzinYazi}" TextColor="DarkRed"></Label>       
+
+
+                <Label x:Name="lblHata"  Padding="0,15,0,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>       
+
+                    <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET"
+                        HeightRequest="55"
+                        WidthRequest="200" />
+
+                </StackLayout>
+               </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

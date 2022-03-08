@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak5YYView">
+        <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Vergi Bilgileri (6/6)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+
+             <ScrollView>
+            <StackLayout  Spacing="0" Padding="16,24">
+                <Button BackgroundColor="Transparent"
+                    Text="İptal" HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End"></Button>
+
+
+              
+
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Vergi Yılı"
+                        TextColor="{StaticResource Gray-800}" />
+
+                   <border:SfBorder
+                    Padding="6,0,0,0"
+                    BorderColor="{Binding Source={x:Reference txtSozlesmeSaati}, Path=IsFocused}"
+                    HeightRequest="50" BackgroundColor="WhiteSmoke"
+                    Style="{StaticResource FormBorderStyle}">
+                    <controls:BorderlessEntry  x:Name="txtSozlesmeSaati"   Placeholder="Yıl"
+                        FontSize="Large"  WidthRequest="70"    Keyboard="Numeric"
+                                               Text="{Binding YY.VergiYil, Mode=TwoWay}">                        
+                    </controls:BorderlessEntry>
+                </border:SfBorder>
+
+
+                <!--  Yıl İçindeki Gelir Toplamı      -->
+                <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Yıl İçindeki Gelir Toplamı"
+                        TextColor="{StaticResource Gray-800}" />
+
+
+               <syncfusion1:SfNumericTextBox x:Name="txtVergiMatrah" 
+                                  BackgroundColor="WhiteSmoke"  HeightRequest="50" FontSize="Large"
+                                             Value="{Binding YY.VergiMatrah , Mode=TwoWay}" FormatString="c">
+
+                    </syncfusion1:SfNumericTextBox>
+
+
+                
+
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+        
+
+                   <buttons:SfButton
+                        Command="{Binding KaydetCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="KAYDET-BİTİR"
+                       HeightRequest="55"
+                        WidthRequest="200" />
+
+              </StackLayout>
+             </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors" x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak2YYView">
+     <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Kişi İzinleri (2/6)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="26"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+
+                <ScrollView>
+            <StackLayout Spacing="0" Padding="0,20">
+
+                <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="End"></Button>
+
+                 <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0" TranslationY="-17"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        WidthRequest="200" />
+
+                     <Button Text="Yeni İzin " BackgroundColor="Transparent"
+                             HeightRequest="48" FontSize="Large"  Command="{Binding YeniIzinCommand}" 
+                        TranslationY="-118"       Padding="6,0,0,0"   HorizontalOptions="Start">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+
+                        </OnPlatform>
+                    </Button.TextColor>
+
+                </Button>
+
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+
+
+                      <ListView x:Name="lstIzinler"
+                            ItemsSource="{Binding Liste}" 
+                            ItemSelected="lstIzinler_ItemSelected"
+                            RowHeight="120" TranslationY="-35"
+                            SeparatorVisibility="Default"
+                            HasUnevenRows="True">
+
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                    EventName="ItemTapped"  
+                    Command="{Binding IzinTappedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                        </behaviors:EventToCommandBehavior>
+                    </ListView.Behaviors>
+
+
+
+                    <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                <ViewCell.ContextActions>
+                                    
+                                    <MenuItem x:Name="menuItemCikar" Text="Sil"
+                                              Clicked="menuItemCikar_Clicked"
+                                              IsDestructive="True" 
+                                          CommandParameter="{Binding}">
+                                    </MenuItem>
+                                    
+                                </ViewCell.ContextActions>
+                                <Grid Padding="0,10,0,0" BackgroundColor="WhiteSmoke">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="AUTO"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                   
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                        <Label Text="Başlangıç. Tar. "  FontSize="Medium"></Label>
+                                        <Label Text="  "></Label>
+                                        <Label Text="{Binding BaslangicTar, Converter={StaticResource DateTosStringConverter}}" 
+                                               TextColor="Black" FontSize="Large"></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                                        <Label Text="Bitiş Tar.            " FontSize="Medium"></Label>
+                                        <Label Text="  " FontSize="Medium"></Label>
+                                        <Label Text="{Binding BitisTar,Converter={StaticResource DateTosStringConverter}}"
+                                                TextColor="Black" FontSize="Large"></Label>
+                                    </StackLayout>
+                                   
+                                   <Label Text="{Binding  Aciklama}" Grid.Row="0" FontSize="Large"
+                                     TextColor="IndianRed"     Margin="5,0,0,0" ></Label>
+
+                                    <StackLayout Grid.Row="3">
+                                        <BoxView HeightRequest="7" BackgroundColor="White"/>
+
+                                    </StackLayout>
+
+                                                                                                     
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        
+                    
+                </ListView>
+
+
+                </StackLayout>
+            </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

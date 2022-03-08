@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak3GVView">
+       <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+
+                <Label  
+                    Text="Haftalık Tatil Günü  Çakışması (3/8)"
+                    TextColor="{StaticResource Gray-900}"
+                    FontSize="Large"
+                    Margin="0,20" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+
+         <ScrollView>
+            <StackLayout Spacing="0" Padding="16,24">
+                <Button Text="İptal" BackgroundColor="Transparent"
+                        HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="End">
+                </Button>
+
+
+                
+    <StackLayout x:Name="stckPazarCakisms" IsVisible="{Binding CakismaVar}">
+              <Label
+                        Margin="0,8,0,4"
+                        HeightRequest="30" 
+                        FontSize="Medium"
+                        Text="Hafta Tatili Günü - Çalışma Çakışması"
+                        TextColor="{StaticResource Gray-800}" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="35"></ColumnDefinition>
+                       <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                    <CheckBox x:Name="chkCakismaDus" IsChecked="{Binding GC.TatilVardiyaiDus}"
+                             CheckedChanged="chkCakismaDus_CheckedChanged"  Grid.Row="0"  Grid.Column="0">
+                            <CheckBox.Color>
+                                <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                                </OnPlatform>
+                            </CheckBox.Color>
+                        </CheckBox>
+                     <Label Text="Gece Çalışmasından Hafta İznini Düş (Fazla Mesai de Hesaplanacak)"
+                        FontSize="Medium"    Grid.Column="1" Grid.Row="0"></Label>
+
+                         <CheckBox x:Name="chkCakismaEkle" IsChecked="{Binding GC.TatilVardiyaEkle}"
+                              CheckedChanged="chkCakismaEkle_CheckedChanged"      Grid.Row="1"  Grid.Column="0">
+                            <CheckBox.Color>
+                                <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                                </OnPlatform>
+                            </CheckBox.Color>
+                        </CheckBox>
+                     <Label Text="Gece Çalışmasından Hafta İznini DüşME"  VerticalOptions="Center"
+                          FontSize="Medium"   Grid.Column="1" Grid.Row="1"></Label>
+
+            </Grid>
+                
+    </StackLayout>
+
+
+         <Label x:Name="lblHata"  Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+                <!--   İlerle       -->
+
+                  <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        Margin="0,24,0,0"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                      HeightRequest="55"
+                        WidthRequest="200" />
+
+            </StackLayout>
+             </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
