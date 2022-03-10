@@ -319,15 +319,17 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
                 if (deger != null)
                 {
                     Decimal agii = 0;
+                    Decimal sonn = 0;
+                    //Decimal oAykiAsgariUcret = 0;
+                    //oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
 
-                    Decimal oAykiAsgariUcret = 0;
-                    oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
+                    //agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
 
-                    agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
+                    //Decimal agii2 = islem2.AsgariGecimHespla(oAykiAsgariUcret, 1, 0);
 
-                    Decimal agii2 = islem2.AsgariGecimHespla(oAykiAsgariUcret, 1, 0);
+                    //Decimal sonn = agii - agii2;
 
-                    Decimal sonn = agii - agii2;
+
 
                     t.netMaas = deger.net + sonn;
                     t.brutMaas = deger.brut;

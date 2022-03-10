@@ -183,7 +183,9 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
             GC.VergiMatrah = Matrah;
 
 
-            var sayfa = new Basamak5aGCView(GC);
+            //var sayfa = new Basamak5aGCView(GC);
+
+            var sayfa = new Basamak5GCView(GC);
             await Application.Current.MainPage.Navigation.PushModalAsync(sayfa);
 
             this.HataMesaji = "";

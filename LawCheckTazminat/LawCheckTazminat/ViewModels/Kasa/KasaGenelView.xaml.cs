@@ -19,8 +19,7 @@ namespace LawCheckTazminat.ViewModels.Kasa
 
         void btnAra_Clicked(System.Object sender, System.EventArgs e)
         {
-            popupLayout.PopupView.IsFullScreen = true;
-            popupLayout.IsOpen=true;
+           
 
         }
 

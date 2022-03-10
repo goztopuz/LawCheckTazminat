@@ -41,7 +41,7 @@ namespace LawCheckTazminat
             Repository = new Repo(dbPath);
             baglantiDB = dbPath;
 
-//     Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTM3MTYxQDMxMzkyZTMzMmUzMENSRzZqQnZuR2daYVpBQkxkVnpXRkMyNDZMVVdSMDRibWdyVDcyNnVoTVk9");
+       Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTM3MTYxQDMxMzkyZTMzMmUzMENSRzZqQnZuR2daYVpBQkxkVnpXRkMyNDZMVVdSMDRibWdyVDcyNnVoTVk9");
 
 
             //Models.DestektenYoksunluk kk = new Models.DestektenYoksunluk();

@@ -23,8 +23,8 @@
          <ScrollView>
             <StackLayout  Spacing="0" Padding="16,24">
                 <Button Text="İptal"  BackgroundColor="Transparent"
-                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
-               TextColor="Red"         HorizontalOptions="End"></Button>
+                        HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+               TextColor="Red"         HorizontalOptions="EndAndExpand"></Button>
 
               
 

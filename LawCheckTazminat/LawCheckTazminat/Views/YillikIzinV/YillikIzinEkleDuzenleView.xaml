@@ -13,7 +13,6 @@
                     HorizontalOptions="CenterAndExpand">
                 </Label>
 
-
                 <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
                 <ContentPresenter />
             </StackLayout>
@@ -27,9 +26,9 @@
             <StackLayout Spacing="0" Padding="16,20">
 
                 <Button Text="İptal"  BackgroundColor="Transparent"
-                        HeightRequest="45" FontSize="Large"
+                        HeightRequest="50" FontSize="Large"
                         Command="{Binding IptalCommand}"  TranslationY="-10"
-                   TextColor="Red"      HorizontalOptions="End"></Button>
+                   TextColor="Red"      HorizontalOptions="EndAndExpand"></Button>
 
 
                 

@@ -41,7 +41,6 @@ namespace LawCheckTazminat.iOS
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Xamarin.Forms.Svg.iOS.SvgImage.Init();
-            Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
             new Syncfusion.XForms.iOS.ComboBox.SfComboBoxRenderer();
             ImageCircleRenderer.Init();
             Plugin.InAppBilling.InAppBillingImplementation.OnShouldAddStorePayment = OnShouldAddStorePayment;

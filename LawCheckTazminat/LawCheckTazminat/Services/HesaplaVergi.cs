@@ -31,7 +31,7 @@ namespace LawCheckTazminat.Services
 
             if (islemYil == null)
             {
-                islemYil = vergiDilimleri.Find(o => o.Id == DateTime.Now.Year);
+                islemYil = vergiDilimleri.Find(o => o.Id == 2021);
 
             }
 

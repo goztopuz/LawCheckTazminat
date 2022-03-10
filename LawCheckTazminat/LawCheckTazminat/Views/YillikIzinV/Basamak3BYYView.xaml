@@ -26,8 +26,8 @@
             <StackLayout Spacing="0" Padding="0,20">
 
                 <Button Text="İptal"  BackgroundColor="Transparent"
-                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
-                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="End"></Button>
+                        HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="EndAndExpand"></Button>
 
                 <!--      Hafatlık İzin Günü       -->
                 <Label

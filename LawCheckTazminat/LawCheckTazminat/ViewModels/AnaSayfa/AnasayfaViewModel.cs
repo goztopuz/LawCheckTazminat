@@ -29,23 +29,23 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
         public AnasayfaViewModel()
         {
 
-           
 
-            ////if (VersionTracking.IsFirstLaunchEver)
-            ////{
-            ////    SettingsService.FirstInstallDate = DateTime.UtcNow;
 
-            ////}
-            ////else if (VersionTracking.IsFirstLaunchForCurrentVersion)
-            ////{
-            ////    // Display update notification for current version (1.0.0)
-            ////}
-            ////else if (VersionTracking.IsFirstLaunchForCurrentBuild)
-            ////{
-            ////    // Display update notification for current build number (2)
-            ////}
+            if (VersionTracking.IsFirstLaunchEver)
+            {
+                SettingsService.FirstInstallDate = DateTime.UtcNow;
 
-      //      CheckStatus();
+            }
+            else if (VersionTracking.IsFirstLaunchForCurrentVersion)
+            {
+                // Display update notification for current version (1.0.0)
+            }
+            else if (VersionTracking.IsFirstLaunchForCurrentBuild)
+            {
+                // Display update notification for current build number (2)
+            }
+
+            CheckStatus();
 
 
         }

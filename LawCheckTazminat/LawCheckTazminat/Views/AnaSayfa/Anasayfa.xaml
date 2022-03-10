@@ -36,7 +36,7 @@
     <ContentPage.Content>
 <ScrollView>
 
-        <StackLayout Padding="10,50,10,10" BackgroundColor="GhostWhite">
+        <StackLayout Padding="10,50,10,50" BackgroundColor="GhostWhite">
             <!--<Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />-->
