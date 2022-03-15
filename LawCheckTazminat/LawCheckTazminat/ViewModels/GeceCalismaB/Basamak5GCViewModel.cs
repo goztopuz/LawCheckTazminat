@@ -209,13 +209,13 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
 
                 case "Asgari Ücret Olarak Belirle":
 
-                    var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
+                    //var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
 
-                    if (cevap1 == "Asgari Olarak Ata")
-                    {
-                        AsgariOlarakAta();
-                    }
-
+                    //if (cevap1 == "Asgari Olarak Ata")
+                    //{
+                    //    AsgariOlarakAta();
+                    //}
+                    AsgariOlarakAta();
                     break;
 
                 case "NET Maaşı Asg. Ücrete Oranla":
@@ -283,12 +283,13 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
         public ICommand AsgariBelirleCommand => new Command(OnAsgariBelirle);
         async private void OnAsgariBelirle(object obj)
         {
-            var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
+            AsgariOlarakAta();
+            //var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
 
-            if (cevap1 == "Asgari Olarak Ata")
-            {
-                AsgariOlarakAta();
-            }
+            //if (cevap1 == "Asgari Olarak Ata")
+            //{
+            //    AsgariOlarakAta();
+            //}
             // Guncelle();
         }
 
@@ -418,8 +419,8 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
                 Decimal oAykiAsgariUcret = 0;
                 oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
 
-                Decimal agii = 0;
-                agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
+                //Decimal agii = 0;
+                //agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
 
 
                 if (deger != null)
@@ -431,12 +432,14 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
 
 
                     mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
-                    mNet = islem2.BruttenNetHesapla(mBrut, agii);
+                 //   mNet = islem2.BruttenNetHesapla(mBrut, agii);
+
                     t2.brutMaas = mBrut;
+                    mNet = Convert.ToDecimal(deger.net) * Convert.ToDecimal(_oran);
 
 
                     t2.netMaas = mNet;
-                    t2.ekBilgi4 = agii;
+                    t2.ekBilgi4 = 0;
 
 
                 }

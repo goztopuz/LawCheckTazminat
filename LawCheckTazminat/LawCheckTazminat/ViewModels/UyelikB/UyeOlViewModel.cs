@@ -407,6 +407,7 @@ namespace LawCheckTazminat.ViewModels.UyelikB
         
            
         }
+
         private void RestoreCode2()
         {
             IsPro = true;
@@ -414,7 +415,7 @@ namespace LawCheckTazminat.ViewModels.UyelikB
             SettingsService.IsOutofDate = false;
             SettingsService.TransactionDate = DateTime.Now;
             App.AppStatus = "PRO";
-            App.Current.MainPage.DisplayAlert("Aboenlik", "Aboneliğiniz Geri Yüklenmiştir", "Tamam");
+            App.Current.MainPage.DisplayAlert("Abonelik", "Aboneliğiniz Geri Yüklenmiştir", "Tamam");
             App.Current.MainPage.Navigation.PopModalAsync();
 
         }
@@ -702,119 +703,7 @@ namespace LawCheckTazminat.ViewModels.UyelikB
         /// <returns></returns>
 
 
-        // ABONELiK ÜCETİ ÇEK
-
-        public async Task AbonelikUcretiCek()
-        {
-            bool hasKey = Preferences.ContainsKey("ProPrice");
-            bool hasKey2 = Preferences.ContainsKey("PriceDate");
-            bool ucretCek = false;
-            if(hasKey==true && hasKey2==true)
-            {
-                string pPrice = Preferences.Get("ProPrice", "1");
-                string priceDate2 = Preferences.Get("PriceDate", "2");
-                DateTime priceDate = Convert.ToDateTime(priceDate2);
-
-                DateTime dtt = DateTime.Now.AddDays(3);
-
-                dtt = dtt.AddHours(4);
-
-                if (priceDate.AddDays(3)>dtt && !string.IsNullOrWhiteSpace(pPrice))
-                {
-
-                    UcretYazi = pPrice;
-                    Ucret = Convert.ToDecimal(pPrice);
-                    return;
-                }
-                else
-                {
-                    ucretCek = true;
-                }
-            }
-            else
-            {
-                ucretCek = true;
-            }
-
-
-
-            if (ucretCek== true)
-            {
-
-            #if DEBUG
-
-                Preferences.Set("ProPrice", "194.98");
-                Preferences.Set("PriceDate", DateTime.Now.ToString());
-                string pPrice = Preferences.Get("ProPrice", "1");
-                UcretYazi = pPrice;
-                Ucret = Convert.ToDecimal(pPrice);
-                return;
-             #endif
-                try
-                {
-                    var connected = await CrossInAppBilling.Current.ConnectAsync();
-
-                    if (!connected)
-                    {
-                        return;
-                    }
-
-                    var items = await CrossInAppBilling.Current.GetProductInfoAsync(ItemType.Subscription, productId);
-
-
-                    var purchases = await CrossInAppBilling.Current.GetPurchasesAsync(ItemType.Subscription);
-
-
-                    foreach(var t in purchases)
-                    {
-                        
-                        
-                    }
-
-
-                   foreach(var t2 in items)
-                    {
-                       
-                    }
-
-                    var item = items.FirstOrDefault(i => i.ProductId == productId);
-                    if (item != null)
-                    {
-                        var bbb = item.LocalizedPrice;
-
-                        Ucret = Convert.ToDecimal(bbb);
-                         Preferences.Set("ProPrice", bbb);
-                         Preferences.Set("PriceDate", DateTime.Now.ToString());
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //it is alright that we couldn't get the price
-                }
-                finally
-                {
-                //    await CrossInAppBilling.Current.DisconnectAsync();
-                    IsBusy = false;
-                }
-            }
-
-
-        }
-
-
-        // ABONE OL
-
-        public async Task AboneOl()
-        {
-
-        }
-
-        // ABONELİK Aktif Et(Mevcut Uyelik)
-
-
-      //PRO'yu RESTORE
-
+     
 
         //  RetrieveProStatus
 

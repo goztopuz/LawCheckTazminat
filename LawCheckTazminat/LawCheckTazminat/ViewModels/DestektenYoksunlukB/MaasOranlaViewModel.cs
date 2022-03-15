@@ -15,7 +15,8 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
   public  class MaasOranlaViewModel:ViewModelBase
     {
 
-        public MaasOranlaViewModel(DestektenYoksunluk dY, List<AsgariUcretTablosu> aL)
+        public MaasOranlaViewModel(DestektenYoksunluk dY,
+            List<AsgariUcretTablosu> aL)
         {
             DYY = dY;
             Ay = dY.vefatTarihi.Month;
@@ -23,7 +24,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
             AgiDahil = true;
             OlayTarihiAgisiz = 0;
             AgiDegeri = 0;
-
+            
             BrutUcret = 0;
 
             int _donem = 1;
@@ -31,7 +32,9 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
             {
                 _donem = 2;
             }
-            OAykiAsgari = aL.Find(o => o.yil2 == Yil && o.donem == _donem).brut;
+            //OAykiAsgari = aL.Find(o => o.yil2 == Yil && o.donem == _donem).brut;
+
+            OAykiAsgari = aL.Find(o => o.yil2 == Yil && o.donem == _donem).net;
         }
 
         MaasHesaplaService islem2 = new MaasHesaplaService();
@@ -163,25 +166,25 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
 
             IsBusy = true;
 
-            decimal dusulecekDeger = AgiHesapla();
-            AgiDegeri = dusulecekDeger;
+            //decimal dusulecekDeger = AgiHesapla();
+            //AgiDegeri = dusulecekDeger;
 
-            if (AgiDahil==true)
-            {
+            //if (AgiDahil==true)
+            //{
 
-                OlayTarihiAgisiz = OlayTarihiMaas - dusulecekDeger;
+            //    OlayTarihiAgisiz = OlayTarihiMaas - dusulecekDeger;
 
-            }
-            else
-            {
-                OlayTarihiAgisiz = OlayTarihiMaas;
-            }
+            //}
+            //else
+            //{
+            //    OlayTarihiAgisiz = OlayTarihiMaas;
+            //}
 
 
-           BrutUcretHesapla();
+         //  BrutUcretHesapla();
           
             decimal _oran2;
-            _oran2 = BrutUcret / OAykiAsgari;
+            _oran2 = OlayTarihiMaas / OAykiAsgari;
             Oran = _oran2;
             IsBusy = false;
         }

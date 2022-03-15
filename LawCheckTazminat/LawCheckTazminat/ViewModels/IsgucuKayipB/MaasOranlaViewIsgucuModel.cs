@@ -32,7 +32,7 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
             {
                 _donem = 2;
             }
-            OAykiAsgari = aL.Find(o => o.yil2 == Yil && o.donem == _donem).brut; 
+            OAykiAsgari = aL.Find(o => o.yil2 == Yil && o.donem == _donem).net; 
 
 
         }
@@ -174,10 +174,10 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
             }
 
 
-            BrutUcretHesapla();
+           // BrutUcretHesapla();
 
             decimal _oran2;
-            _oran2 = BrutUcret / OAykiAsgari;
+            _oran2 = OlayTarihiMaas / OAykiAsgari;
             Oran = _oran2;
             IsBusy = false;
 

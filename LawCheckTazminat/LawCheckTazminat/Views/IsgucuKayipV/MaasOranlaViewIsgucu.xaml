@@ -153,13 +153,13 @@
                 </Button>
 
 
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="AGİ : "></Label>
                     <Label Text="{Binding AgiDegeri}" FontSize="Medium"></Label>
 
-                </StackLayout>
+                </StackLayout>-->
 
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="Net Ücret AGi'siz :"></Label>
                     <Label Text="{Binding OlayTarihiAgisiz}" FontSize="Medium"></Label>
                 </StackLayout>
@@ -167,9 +167,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Brüt Ücret :"></Label>
                     <Label Text="{Binding BrutUcret}" FontSize="Medium"></Label>
-                </StackLayout>
-
-
+                </StackLayout>-->
 
 
 

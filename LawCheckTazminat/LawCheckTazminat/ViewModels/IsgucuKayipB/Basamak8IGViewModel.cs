@@ -278,12 +278,14 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
                     break;
 
                 case "Asgari Ücret Olarak Belirle":
-                    var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
+                    //var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
 
-                    if (cevap1 == "Asgari Olarak Ata")
-                    {
-                        AsgariOlarakAta();
-                    }
+                    //if (cevap1 == "Asgari Olarak Ata")
+                    //{
+                    //    AsgariOlarakAta();
+                    //}
+
+                    AsgariOlarakAta();
                     break;
 
                 case "NET Maaşı Asg. Ücrete Oranla":
@@ -485,6 +487,8 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
 
         }
 
+
+
         private void BrutAsgariOranla(AsgariOran ao)
         {
             decimal _oran = Convert.ToDecimal(ao.oran);
@@ -509,22 +513,22 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
                 asgariDonem = yill.ToString() + "-1";
             }
             bool esVar = false;
-            foreach (var t in this.IsGucu.IsGucuKayipYakinlar)
-            {
-                if (t.yakinlik == "Eş")
-                {
-                    if (t.esCalisiyorMu == "Evet")
-                    {
-                        esDurum = 1;
-                    }
+            //foreach (var t in this.IsGucu.IsGucuKayipYakinlar)
+            //{
+            //    if (t.yakinlik == "Eş")
+            //    {
+            //        if (t.esCalisiyorMu == "Evet")
+            //        {
+            //            esDurum = 1;
+            //        }
 
-                    esVar = true;
-                }
-                else if (t.yakinlik == "Çocuk")
-                {
-                    hesabaKatilacakCocukSayisi = hesabaKatilacakCocukSayisi + 1;
-                }
-            }
+            //        esVar = true;
+            //    }
+            //    else if (t.yakinlik == "Çocuk")
+            //    {
+            //        hesabaKatilacakCocukSayisi = hesabaKatilacakCocukSayisi + 1;
+            //    }
+            //}
 
             if(esVar== false)
             {
@@ -538,8 +542,8 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
                 Decimal oAykiAsgariUcret = 0;
                 oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
 
-                Decimal agii = 0;
-                agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
+                //Decimal agii = 0;
+                //agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
 
 
                 if (deger != null)
@@ -552,19 +556,14 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
 
                     mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
 
+                    mNet = Convert.ToDecimal(deger.net) * Convert.ToDecimal(_oran);
 
-
-
-
-                    mNet = islem2.BruttenNetHesapla(mBrut, agii);
+                  //  mNet = islem2.BruttenNetHesapla(mBrut, agii);
                     t2.brutMaas = mBrut;
 
 
                     t2.netMaas = mNet;
-                    t2.ekBilgi4 = agii;
-
-
-
+                    t2.ekBilgi4 = 0;
 
 
                 }
@@ -582,6 +581,12 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
             //MaasListe2 = MaasListe3;
 
         }
+
+
+
+
+
+
 
         private void NetAsgariOranla(AsgariOran ao)
         {

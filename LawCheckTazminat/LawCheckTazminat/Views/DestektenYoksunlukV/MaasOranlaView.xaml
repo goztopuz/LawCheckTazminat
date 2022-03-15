@@ -48,7 +48,8 @@
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                    <Label Text="Dönemi :" Grid.Row="0" Grid.Column="0" ></Label>
+                    <Label Text="Dönemi :" Grid.Row="0" Grid.Column="0"
+                          VerticalOptions="CenterAndExpand" ></Label>
                     <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="1">
                         <Label   x:Name="txtAy" 
                          FontSize="Medium"    VerticalOptions="CenterAndExpand"   
@@ -60,8 +61,8 @@
                             FontSize="Medium"     Text="{Binding  Yil}">
                         </Label>
                     </StackLayout>
-                    <Label Text="Brüt Asgari :" Grid.Row="1" Grid.Column="0" ></Label>
-                    <Label x:Name="txtAsgari"   FontSize="Medium" 
+                    <Label Text="Asgari Ücret :" Grid.Row="1" Grid.Column="0"  VerticalOptions="CenterAndExpand"></Label>
+                    <Label x:Name="txtAsgari"   FontSize="Medium"  VerticalOptions="CenterAndExpand"
                    Grid.Row="1" Grid.Column="1"   Text="{Binding  OAykiAsgari}">
                     </Label>
                 </Grid>
@@ -93,11 +94,11 @@
                         Mode=TwoWay}" FormatString="c">
                     </syncfusion1:SfNumericTextBox>
 
-                <StackLayout Padding="5,15,0,10" Orientation="Horizontal">
+                <!--<StackLayout Padding="5,15,0,10" Orientation="Horizontal">
                     <Label Text="AGİ Net Ücrete Dahil" VerticalOptions="Center"></Label>
                     <CheckBox x:Name="chkAgi" IsChecked="{Binding AgiDahil}" HeightRequest="60"></CheckBox>
 
-                </StackLayout>
+                </StackLayout>-->
 
                 <!--<border:SfBorder
                     Padding="6,0,0,0"
@@ -119,34 +120,34 @@
                 </Button>
 
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="AGİ : "></Label>
                     <Label Text="{Binding AgiDegeri}"></Label>
                     
-                </StackLayout>
+                </StackLayout>-->
             
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="Net Ücret AGi'siz :"></Label>
                     <Label Text="{Binding OlayTarihiAgisiz}"></Label>
-                </StackLayout>
+                </StackLayout>-->
 
-                <StackLayout Orientation="Horizontal">
+                <!--<StackLayout Orientation="Horizontal">
                     <Label Text="Brüt Ücret :"></Label>
                     <Label Text="{Binding BrutUcret}"></Label>
-                </StackLayout>
+                </StackLayout>-->
 
 
 
-                <Label Padding="0,5,0,0"
+                <Label Padding="0,5,0,5"
                         HorizontalOptions="Center"
-                        HeightRequest="18" 
+                        HeightRequest="55" 
                         FontSize="Medium" 
                         Text=" Oran"
                         />
 
                 <syncfusion1:SfNumericTextBox x:Name="txtOran" FontSize="Large"  MaximumNumberDecimalDigits="14"
                               BackgroundColor="WhiteSmoke"            
-                            TextColor="Red"     TextAlignment="Start"    HeightRequest="45"
+                            TextColor="Red"     TextAlignment="Start"    HeightRequest="55"
                         Margin="0,0,3,10"   Value="{Binding Oran, 
                         Mode=TwoWay}">
 

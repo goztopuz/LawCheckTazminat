@@ -28,7 +28,7 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
 
             Ay = DateTime.Now.Month;
             Yil = DateTime.Now.Year;
-
+            
             AgiDahil = true;
 
 
@@ -195,9 +195,6 @@ namespace LawCheckTazminat.ViewModels.GeceCalismaB
 
 
         }
-
-
-
 
 
         public ICommand IptalCommand => new Command(OnIptal);

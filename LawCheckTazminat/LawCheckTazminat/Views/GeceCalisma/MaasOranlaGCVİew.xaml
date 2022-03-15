@@ -46,11 +46,11 @@
                     Margin="0,3,3,10"   Value="{Binding NetMaas, 
                         Mode=TwoWay}" FormatString="c"></syncfusion1:SfNumericTextBox>
 
-                <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+                <!--<StackLayout Padding="5,0,0,0" Orientation="Horizontal">
                     <Label Text="AGİ Net Ücrete Dahil" VerticalOptions="Center" FontSize="Medium"></Label>
                     <CheckBox x:Name="chkAgi" IsChecked="{Binding AgiDahil}" HeightRequest="60"></CheckBox>
 
-                </StackLayout>
+                </StackLayout>-->
 
                      <!-- Ücret Yıl-->
                     <Label
@@ -86,7 +86,7 @@
 
                     <Picker x:Name="drpAy"  FontSize="Large"
                             BackgroundColor="WhiteSmoke" HeightRequest="50"
-                            SelectedItem="{Binding UcretAy, Mode=TwoWay,Converter={StaticResource AyToIntConverter}}">
+                            SelectedItem="{Binding Ay, Mode=TwoWay,Converter={StaticResource AyToIntConverter}}">
                         <Picker.Items>
                             <x:String>Ocak</x:String>
                             <x:String>Şubat</x:String>
@@ -117,7 +117,18 @@
 
 
                 <StackLayout>
-                    <Grid>
+
+                 
+                        <Label Text="Seçilen Yıl-Aydai Asgari Ücret : "
+                               FontSize="Medium"></Label>
+                        <Label Text="{Binding OAykiAsgari, StringFormat='{0:C}'}"
+                               FontSize="Large"></Label>
+          
+
+
+                    <!--Eski Hesaplama-->
+
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -145,7 +156,8 @@
                         <Label FontSize="Large" TextColor="Black"
                             Text="{Binding BrutUcret, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"></Label>
 
-                    </Grid>
+                    </Grid>-->
+
                 </StackLayout>
 
                
@@ -161,10 +173,12 @@
                 <buttons:SfButton Padding="0,0,0,0"
                         Command="{Binding KullanCommand}"
                         HorizontalOptions="Center"
-                       Margin="0,24,0,0"
+                        Margin="0,24,0,0"
+                        HeightRequest="50"
                         Style="{StaticResource SfButtonStyle}"
                         Text="Tamam-Kullan"
                         WidthRequest="200" />
+
             </StackLayout>
 
 

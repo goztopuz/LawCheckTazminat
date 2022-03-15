@@ -34,7 +34,7 @@
     <ContentPage.Content>
 
         <ScrollView>
-            <StackLayout  Spacing="0" Padding="16,24">
+            <StackLayout  Spacing="0" Padding="16,24,5,25">
 
             
 
@@ -130,7 +130,7 @@
 
 
                 </StackLayout>
-                <ListView x:Name="lstMaas"  RowHeight="60"
+                <ListView x:Name="lstMaas"  RowHeight="65"
                           ItemsSource="{Binding MaasListe2}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -149,7 +149,7 @@
                                     HeightRequest="45"
                                     Style="{StaticResource FormBorderStyle}">-->
 
-                                        <Entry IsReadOnly="True" HeightRequest="40" 
+                                        <Entry IsReadOnly="True" HeightRequest="44" 
                                              Text="{Binding yil, Mode=TwoWay}">
 
                                         </Entry>
@@ -166,7 +166,7 @@
                                     Style="{StaticResource FormBorderStyle}">-->
 
                                             <syncfusion1:SfNumericTextBox x:Name="numericTextBox2"
-                                                            HeightRequest="40"              Value="{Binding brutMaas, Mode=TwoWay}" FormatString="c">
+                                                            HeightRequest="44"              Value="{Binding brutMaas, Mode=TwoWay}" FormatString="c">
                                                 
                                             </syncfusion1:SfNumericTextBox>
 
@@ -187,7 +187,7 @@
                                             </Entry>-->
 
                                             <syncfusion1:SfNumericTextBox x:Name="numericTextBox"   
-                                       HeightRequest="40" Value="{Binding netMaas, Mode=TwoWay}" FormatString="c">
+                                       HeightRequest="44" Value="{Binding netMaas, Mode=TwoWay}" FormatString="c">
                                                 
                                             </syncfusion1:SfNumericTextBox>
                                         <!--</border:SfBorder>-->
@@ -226,7 +226,7 @@
 
                     </syncfusion1:SfNumericTextBox>
 
-                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+                <!--<StackLayout Orientation="Horizontal" Padding="0,20,0,0">
                     <CheckBox IsChecked="{Binding AgiVar}">
                         <CheckBox.Color>
                             <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
@@ -237,7 +237,9 @@
                     <Label Text="Destekteki Çocuk Sayısına Göre Gelecek AGi'yi Düş ve Yeniden Hesapla"
                            FontSize="Small">
                     </Label>
-                </StackLayout>
+                </StackLayout>-->
+
+
                 <!--</border:SfBorder>-->
 
                 <!--  Emekli Maaş     -->
@@ -270,6 +272,7 @@
                         Command="{Binding KaydetBitirCommand}"
                         HorizontalOptions="Center"
                        Margin="0,24,0,0"
+                       HeightRequest="55"
                         Style="{StaticResource SfButtonStyle}"
                         Text="SONLANDIR(BİTİR)"
                         WidthRequest="200" />

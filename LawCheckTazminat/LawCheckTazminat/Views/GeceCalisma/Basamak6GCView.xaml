@@ -23,21 +23,10 @@
           <ScrollView>
             <StackLayout  Spacing="0" Padding="16,24">
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
-                        HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
-                   TextColor="Red"  TranslationY="-12"    HorizontalOptions="End"></Button>
-
-                 <buttons:SfButton
-                        Command="{Binding IlerleCommand}"
-                        HorizontalOptions="Center"
-                       Margin="0,24,0,0"
-                        Style="{StaticResource SfButtonStyle}"
-                        Text="İLERLE"
-                        WidthRequest="200" />
-
-                     <Button Text="Yeni İzin "  BackgroundColor="Transparent"
+                <StackLayout Orientation="Horizontal">
+                          <Button Text="Yeni İzin "  BackgroundColor="Transparent"
                              HeightRequest="40" FontSize="Large"  Command="{Binding YeniIzinCommand}" 
-                        TranslationY="-118"       Padding="6,0,0,0"   HorizontalOptions="Start">
+                        TranslationY="-1"       Padding="6,0,0,0"   HorizontalOptions="StartAndExpand">
 
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
@@ -46,6 +35,23 @@
                     </Button.TextColor>
 
                 </Button>
+
+                         <Button Text="İptal"  BackgroundColor="Transparent"
+                        HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
+                   TextColor="Red"  TranslationY="-1"    HorizontalOptions="EndAndExpand"></Button>
+
+                </StackLayout>
+              
+                 <buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                       Margin="0,24,0,0"
+                        HeightRequest="55"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="İLERLE"
+                        WidthRequest="200" />
+
+               
 
 
 

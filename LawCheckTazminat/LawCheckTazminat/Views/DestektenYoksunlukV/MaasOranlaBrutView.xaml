@@ -45,7 +45,6 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Text="Dönemi :" Grid.Row="0" Grid.Column="0" ></Label>
                         <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="1">
@@ -59,10 +58,10 @@
                             FontSize="Medium"     Text="{Binding  Yil}">
                             </Label>
                         </StackLayout>
-                        <Label Text="Brüt Asgari :" Grid.Row="1" Grid.Column="0" ></Label>
+                        <!--<Label Text="Brüt Asgari :" Grid.Row="1" Grid.Column="0" ></Label>
                         <Label x:Name="txtAsgari1"   FontSize="Medium" 
                    Grid.Row="1" Grid.Column="1"   Text="{Binding  OAykiAsgari}">
-                        </Label>
+                        </Label>-->
                     </Grid>
 
 
@@ -119,7 +118,7 @@
                 </border:SfBorder>-->
 
                   <syncfusion1:SfNumericTextBox x:Name="txtOran" TextColor="Red"  
-                     FontSize="Large"   Margin="0,3,3,10" HeightRequest="45" MaximumNumberDecimalDigits="14"
+                     FontSize="Large"   Margin="0,3,3,10" HeightRequest="55" MaximumNumberDecimalDigits="14"
                     BackgroundColor="WhiteSmoke"
                       Value="{Binding Oran,  Mode=TwoWay}">
                     </syncfusion1:SfNumericTextBox>
@@ -140,6 +139,7 @@
                         Command="{Binding KullanCommand}"
                         HorizontalOptions="Center"
                        Margin="0,24,0,0"
+                        HeightRequest="50"
                         Style="{StaticResource SfButtonStyle}"
                         Text="Tamam-Kullan"
                         WidthRequest="200" />

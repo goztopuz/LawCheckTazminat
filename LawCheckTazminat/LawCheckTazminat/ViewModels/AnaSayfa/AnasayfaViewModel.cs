@@ -45,7 +45,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
                 // Display update notification for current build number (2)
             }
 
-            CheckStatus();
+          //  CheckStatus();
 
 
         }
@@ -505,7 +505,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
         private async Task UyeSayfasınaGit()
         {
-            var sayfa = new UyeBilgi();
+            var sayfa = new UyelikView();
             await Application.Current.MainPage.Navigation.PushModalAsync(sayfa);
         }
         public ICommand SoruCommand => new Command(OnSoru);

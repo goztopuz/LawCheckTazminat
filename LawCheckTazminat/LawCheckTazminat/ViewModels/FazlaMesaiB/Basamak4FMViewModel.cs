@@ -63,9 +63,10 @@ namespace LawCheckTazminat.ViewModels.FazlaMesaiB
                 return;
             }
 
-         
 
-            var basamak5 = new Basamak5aFMView(FM);
+            var basamak5 = new Basamak5FMView(FM);
+
+            //var basamak5 = new Basamak5aFMView(FM);
             await Application.Current.MainPage.Navigation.PushModalAsync(basamak5);
 
             IsBusy = false;

@@ -59,6 +59,7 @@
     <Folder Include="ViewModels\Hakkimizda\" />
     <Folder Include="Views\Destek\" />
     <Folder Include="ViewModels\Destek\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -215,5 +216,8 @@
     <EmbeddedResource Update="Views\YillikIzinV\YillikIzinNetBrutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Helpers\" />
   </ItemGroup>
 </Project>

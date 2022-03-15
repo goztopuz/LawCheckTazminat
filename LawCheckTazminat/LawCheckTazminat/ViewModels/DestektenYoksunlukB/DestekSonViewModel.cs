@@ -738,6 +738,9 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 {
                     agiKontrol = true;
                 }
+
+                // Burası AGİ İşlemi için
+                agiKontrol = false;
             }
             else if(emeklilikTarihi <= _tarih)
             {

@@ -114,11 +114,15 @@ namespace LawCheckTazminat.ViewModels.FazlaMesaiB
                     break;
 
                 case "Asgari Ücret Olarak Belirle":
-                    var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
-                    if (cevap1 == "Asgari Olarak Ata")
-                    {
-                        AsgariOlarakAta();
-                    }
+
+                    //var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
+                    //if (cevap1 == "Asgari Olarak Ata")
+                    //{
+                    //    AsgariOlarakAta();
+                    //}
+
+                    AsgariOlarakAta();
+
                     break;
 
                 case "NET Maaşı Asg. Ücrete Oranla":
@@ -500,10 +504,11 @@ namespace LawCheckTazminat.ViewModels.FazlaMesaiB
 
             
 
-                        mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
-                        mNet = islem2.BruttenNetHesapla(mBrut, agii);
-                        t2.brutMaas = mBrut;
+                    mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
+                    //mNet = islem2.BruttenNetHesapla(mBrut, agii);
+                    mNet = Convert.ToDecimal(deger.net) * Convert.ToDecimal(_oran);
 
+                        t2.brutMaas = mBrut;
 
                         t2.netMaas = mNet;
                         t2.ekBilgi4 = agii;

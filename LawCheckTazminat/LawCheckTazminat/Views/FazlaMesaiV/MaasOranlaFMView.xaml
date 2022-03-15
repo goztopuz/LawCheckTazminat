@@ -132,7 +132,10 @@
 
 
                 <StackLayout>
-                    <Grid>
+                     <Label Text="Seçili Tarihteki Asgari Ücret :"  FontSize="Medium"></Label>
+                        <Label x:Name="lblAsgariUcret" Text="{Binding OAykiAsgari, StringFormat='{0:C}'}" 
+                              TextColor="Black" FontSize="Large"></Label>
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -160,7 +163,7 @@
                         <Label  Text="{Binding BrutUcret, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="1"
                                 TextColor="Black" FontSize="Large"></Label>
 
-                    </Grid>
+                    </Grid>-->
                 </StackLayout>
                 
          

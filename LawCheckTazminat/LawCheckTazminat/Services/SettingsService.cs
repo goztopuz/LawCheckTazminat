@@ -15,13 +15,12 @@ namespace LawCheckTazminat.Services
             set => Preferences.Set(nameof(IsPro), value);
         }
 
-
-
         public static bool IsOutofDate
         {
             get => Preferences.Get(nameof(IsOutofDate), false);
             set => Preferences.Set(nameof(IsOutofDate), value);
         }
+
         public static string ProPrice
         {
             get => Preferences.Get(nameof(ProPrice), string.Empty);
@@ -40,6 +39,7 @@ namespace LawCheckTazminat.Services
             get => Preferences.Get(nameof(ProReceipt), string.Empty);
             set => Preferences.Set(nameof(ProReceipt), value);
         }
+
         public static DateTime TransactionDate
         {
             get => Preferences.Get(nameof(TransactionDate), DateTime.MinValue);
@@ -50,10 +50,10 @@ namespace LawCheckTazminat.Services
         {
             get => Preferences.Get(nameof(FirstInstallDate), DateTime.MinValue);
             set => Preferences.Set(nameof(FirstInstallDate), value);
-
         }
 
-       
+       public static string  productId = "tazminapp_subscription6";
+
 
     }
 }

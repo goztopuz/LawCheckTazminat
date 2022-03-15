@@ -32,7 +32,9 @@
 
                     <Button Text="Kasko Değerinden Öğren"
                            BackgroundColor="Transparent"   x:Name="btnKaskoDeger" Padding="0,10,0,20"
-                  HorizontalOptions="Start"     FontSize="Large"       Command="{Binding KaskoDegerindenCommand}">
+                  HorizontalOptions="Start"     FontSize="Large"
+                            Clicked="btnKaskoDeger_Clicked"
+                            >
                         <Button.TextColor>
                             <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 

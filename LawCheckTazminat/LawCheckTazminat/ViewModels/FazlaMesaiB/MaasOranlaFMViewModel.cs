@@ -157,33 +157,34 @@ namespace LawCheckTazminat.ViewModels.FazlaMesaiB
             {
                 _donem = 2;
             }
-            OAykiAsgari = aL2.Find(o => o.yil2 == Yil && o.donem == _donem).brut;
+            OAykiAsgari = aL2.Find(o => o.yil2 == Yil && o.donem == _donem).net;
 
-            decimal dusulecekDeger = AgiHesapla();
-            AgiDegeri = dusulecekDeger;
+            //decimal dusulecekDeger = AgiHesapla();
+            //AgiDegeri = dusulecekDeger;
 
-            if (AgiDahil == true)
-            {
+            //if (AgiDahil == true)
+            //{
 
-                OlayTarihiAgisiz = NetMaas - dusulecekDeger;
+            //    OlayTarihiAgisiz = NetMaas - dusulecekDeger;
 
-            }
-            else
-            {
-                OlayTarihiAgisiz = NetMaas;
-            }
+            //}
+            //else
+            //{
+            //    OlayTarihiAgisiz = NetMaas;
+            //}
 
 
 
             
-            BrutUcretHesapla();
+         //   BrutUcretHesapla();
 
 
 
             decimal _oran2;
 
-            _oran2 = BrutUcret / OAykiAsgari;
+            _oran2 = NetMaas / OAykiAsgari;
             Oran = _oran2;
+
             IsBusy = false;
         }
 

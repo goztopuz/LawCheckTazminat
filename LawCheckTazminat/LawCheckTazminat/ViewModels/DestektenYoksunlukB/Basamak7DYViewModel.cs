@@ -350,13 +350,13 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     break;
 
                 case "Asgari Ücret Olarak Belirle":
+                    AsgariOlarakAta();
+                    //var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
 
-                    var cevap1 = await Application.Current.MainPage.DisplayActionSheet("Maaşlar Asgari Ücret Olarak Atanacaktır. Eminmisiniz?", "İptal", "", "Asgari Olarak Ata");
-
-                    if (cevap1 == "Asgari Olarak Ata")
-                    {
-                        AsgariOlarakAta();
-                    }
+                    //if (cevap1 == "Asgari Olarak Ata")
+                    //{
+                    //    AsgariOlarakAta();
+                    //}
                     Guncelle();
 
                     break;
@@ -631,8 +631,8 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 Decimal oAykiAsgariUcret = 0;
                 oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
 
-                Decimal agii = 0;
-                agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
+                //Decimal agii = 0;
+                //agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
 
 
                 if (deger != null)
@@ -643,18 +643,18 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
 
          
 
-                        mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
-          
+                   mBrut = Convert.ToDecimal(deger.brut) * Convert.ToDecimal(_oran);
+
+                   mNet = Convert.ToDecimal(deger.net) * Convert.ToDecimal(_oran);
 
 
-                      
 
-                        mNet = islem2.BruttenNetHesapla(mBrut, agii);
-                        t2.brutMaas = mBrut;
+                    //mNet = islem2.BruttenNetHesapla(mBrut, agii);
+                    t2.brutMaas = mBrut;
 
 
                         t2.netMaas = mNet;
-                        t2.ekBilgi4 = agii;
+                        t2.ekBilgi4 = 0;
 
                     
 
