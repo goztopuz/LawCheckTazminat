@@ -4,25 +4,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak5aGCView">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="  Maaş AGi Bilgi (5/11)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
         <ScrollView>
+             <StackLayout>
+                        <StackLayout Spacing="0" Padding="0,40,0,0"
+                   Orientation="Horizontal"      BackgroundColor="Red">
+
+                <Label  
+                    Text="  Maaş AGi Bilgi (5/11)"
+                    TextColor="White"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+        
+            </StackLayout>
+
             <StackLayout Spacing="0" Padding="16,24">
 
                 <Button Text="İptal" BackgroundColor="Transparent"
@@ -112,6 +109,9 @@
 
 
             </StackLayout>
+
+           </StackLayout>
+
         </ScrollView>
 
     </ContentPage.Content>

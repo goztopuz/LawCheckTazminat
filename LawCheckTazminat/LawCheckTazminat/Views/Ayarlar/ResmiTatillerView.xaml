@@ -2,53 +2,76 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-                          xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors"
+                          xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
 
              x:Class="LawCheckTazminat.Views.Ayarlar.ResmiTatillerView">
 
-     <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Resmi Tatiller"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-
-
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
          <ScrollView>
+<StackLayout>
+
+     <StackLayout Spacing="0" Padding="0,40,0,0"
+                      Orientation="Horizontal"   BackgroundColor="Red">
+
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                 <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text="Resmi Tatiller"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+
+         </Grid>       
+            </StackLayout>
+
             <StackLayout  Spacing="0" Padding="16,15">
-                <Button Text="İptal"  BackgroundColor="Transparent"
+
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
-               TextColor="Red"   TranslationY="-12"       HorizontalOptions="End"></Button>
+               TextColor="Red"   TranslationY="-12"       HorizontalOptions="End"></Button>-->
 
-
-                <Button Text="Yeni Kayıt" BackgroundColor="Transparent"
+                 <buttons:SfButton
+                        Command="{Binding YeniKayitCommand}"
+                        HorizontalOptions="Center"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Yeni Kayıt"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="210"/>
+                
+                <!--<Button Text="Yeni Kayıt" BackgroundColor="Transparent"
                         Grid.Column="0" Padding="0,0,0,0" HeightRequest="48"
                        FontSize="Large"  HorizontalOptions="Start"
-                       TranslationY="-60"   Command="{Binding YeniKayitCommand}">
+                         Command="{Binding YeniKayitCommand}">
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 
                         </OnPlatform>
                     </Button.TextColor>
-                </Button>
+                </Button>-->
 
                 <Label
-                        Margin="0,8,0,4" TranslationY="-40"
+                        Margin="0,8,0,4" 
                         HeightRequest="30" 
-                        FontSize="16"
+                        FontSize="Medium"
                         Text="Yıl"
                         TextColor="{StaticResource Gray-800}"
                     />
@@ -65,12 +88,28 @@
 
               <combobox:SfComboBox HeightRequest="50" x:Name="comboBox"
                              TextSize="Large" BackgroundColor="WhiteSmoke" TextColor="Black"
-                            ComboBoxSource="{Binding YillarListe}"   TranslationY="-40"
+                            ComboBoxSource="{Binding YillarListe}"   
                                 DataSource="{Binding YillarListe}" SelectedItem="{Binding Secili}"
                              DisplayMemberPath="{Binding Yill, Mode=TwoWay}"/>
 
+                <Label Text=" " HeightRequest= "8"></Label>
 
-                <Button Text="Seç" FontSize="Large"   BackgroundColor="Transparent"
+                    <buttons:SfButton
+                        Command="{Binding SecCommand}" 
+                        HorizontalOptions="CenterAndExpand"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Seç"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="200"/>
+
+
+                <!--<Button Text="Seç" FontSize="Large"   BackgroundColor="Transparent"
                         Command="{Binding SecCommand}"
                        TranslationY="-15" Padding="10,0,20,3">
                     <Button.TextColor>
@@ -78,11 +117,11 @@
 
                         </OnPlatform>
                     </Button.TextColor>
-                </Button>
+                </Button>-->
 
 
 
-                <ListView RowHeight="70"
+                <ListView RowHeight="75"
                     ItemsSource="{Binding YildakiTatiller}"
                     HasUnevenRows="True">
 
@@ -107,20 +146,34 @@
                                     
                                 </ViewCell.ContextActions>
 
-                                <StackLayout>
+                                <Grid>
+                                      <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                     <Grid BackgroundColor="{StaticResource TwitterBlue}"
+                               Grid.Row="0" Grid.Column="0" />
+
+                                <StackLayout Grid.Row="0" Grid.Column="1">
                                     <Label TextColor="Black" Padding="0,15,0,0"
                                            FontSize="Medium"
                                         Text="{Binding tarih,Converter={StaticResource DateTosStringConverter}}"></Label>
                                     <Label Text="{Binding aciklama}" Padding="0,0,0,10"></Label>
                                 </StackLayout>
-
+                                </Grid>
                             </ViewCell>
                     </DataTemplate>
                     </ListView.ItemTemplate>
 
                 </ListView>
                 </StackLayout>
-             </ScrollView>
+
+
+
+</StackLayout>
+
+         </ScrollView>
 
 
    </ContentPage.Content>

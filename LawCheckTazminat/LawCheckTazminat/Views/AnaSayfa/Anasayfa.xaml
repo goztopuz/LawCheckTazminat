@@ -10,9 +10,11 @@
 
     <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
-            <StackLayout  Spacing="0" Padding="10,50,10,0" BackgroundColor="{StaticResource Gray-White}">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                --><!--<Image Source="appicon.png" HeightRequest="50" WidthRequest="50" Opacity="0.8"></Image>--><!--
+            <StackLayout BackgroundColor="Red"
+                Spacing="0" Padding="0,30,0,0">
+                    
+                <StackLayout 
+                    Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
 
                     <Image Source="appicon.png" HeightRequest="50" WidthRequest="50"
@@ -20,13 +22,15 @@
                     </Image>
 
                         <Label  
-                    Text="Tazminat Hesaplama"
-                    TextColor="{StaticResource Gray-900}"
+                    Text="TazminApp"
+                    TextColor ="White"
                     FontSize="Title"
                     Margin="0,20" 
                     HorizontalOptions="CenterAndExpand">
                 </Label>
                 </StackLayout>
+                <Label Text="Tazminat Hesaplama" TextColor="White"
+                    FontSize="Medium"       HorizontalOptions="Center"></Label>
                 <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
            
                 <ContentPresenter />
@@ -35,274 +39,708 @@
     </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
 <ScrollView>
-
-        <StackLayout Padding="10,50,10,50" BackgroundColor="GhostWhite">
-            <!--<Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />-->
-                <StackLayout  Spacing="0" Padding="10,0,10,0" BackgroundColor="GhostWhite">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <!--<Image Source="appicon.png" HeightRequest="50" WidthRequest="50" Opacity="0.8"></Image>-->
+    <StackLayout>
+    <StackLayout BackgroundColor="Red"
+                Spacing="0" Padding="0,30,0,15">
+                    
+                <StackLayout 
+                    Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
 
-                        <Image Source="appicon.png" HeightRequest="50" WidthRequest="50"
+                    <Image Source="appicon.png" HeightRequest="50" WidthRequest="50"
                                           Opacity="0.8">
-                        </Image>
+                    </Image>
 
                         <Label  
-                    Text="Tazminat Hesaplama"
-                    TextColor="{StaticResource Gray-900}"
+                    Text="TazminApp"
+                    TextColor ="White"
                     FontSize="Title"
                     Margin="0,20" 
                     HorizontalOptions="CenterAndExpand">
-                        </Label>
-                    </StackLayout>
-                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-
-                    <ContentPresenter />
+                </Label>
                 </StackLayout>
+                <Label Text="Tazminat Hesaplama" TextColor="White"
+                    FontSize="Medium"       HorizontalOptions="Center"></Label>
+           
+            </StackLayout>
 
 
-                <!--<Button x:Name="btnSec" Command="{Binding StoreConnectCommand}" BackgroundColor="Transparent"
-                        Text="StoreConnect"></Button>-->
+        <StackLayout Padding="10,1,10,50" BackgroundColor="GhostWhite">
+      
 
-
-                <Grid  BackgroundColor="GhostWhite" Padding="0,10,0,0">
-            <Grid.ColumnDefinitions>
+            <!--<Grid BackgroundColor="GhostWhite" Padding="0,10,0,0">
+              <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3*"/>
 
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                  <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                 <RowDefinition Height="AUTO"></RowDefinition>
-                  <RowDefinition Height="AUTO"></RowDefinition>
-                   <RowDefinition Height="AUTO"></RowDefinition>
 
-                    </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                     <RowDefinition Height="200"></RowDefinition>
 
-            <ImageButton Source="destek2.png" BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="0" HorizontalOptions="End"
+                </Grid.RowDefinitions>
+
+                <StackLayout  Grid.Row="0" Grid.Column="0" Padding="10,10,5,10">
+                    <Frame>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding DestektenYoksulukCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    <Grid>
+                        
+                        <ImageButton Source="destek2.png" BackgroundColor="Transparent"
+                         HorizontalOptions="Center" Grid.Row="0"
                          Command="{Binding DestektenYoksulukCommand}"
                          HeightRequest="70" WidthRequest="70">
 
-            </ImageButton>
-            <Button Text="Destekten Yoksunluk" FontSize="22" TextColor="Gray"
-                    BackgroundColor="Transparent" Padding="0,0,0,6"
+                        </ImageButton>
+                    <Button Text="Destekten Yoksunluk" FontSize="Medium" TextColor="Gray"
+                   BackgroundColor="Transparent" Padding="0,0,0,0"
+                        VerticalOptions="Start" Grid.Row="1"
                     Command="{Binding DestektenYoksulukCommand}"
-                    Grid.Column="1" Grid.Row="0" HorizontalOptions="Start"
-                    ></Button>
+                     HorizontalOptions="Start"></Button>
+            </Grid>
+                        </Frame>
 
+                </StackLayout>
 
-                    <ImageButton Source="isgucu2.png" Padding="0,10,0,5"
-                          BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="1" HorizontalOptions="End"
-                         Command="{Binding IsGucuKayipCommand}"
-                         HeightRequest="75" WidthRequest="75">
-
-
-            </ImageButton>
-
-
-                        <Button Text="İşgücü Kaybı" FontSize="22" TextColor="Gray"
-                                Grid.Column="1" Grid.Row="1"
+                <StackLayout Grid.Row="0" Grid.Column="1" Padding="5,10,10,10">
+                    <Frame>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding IsGucuKayipCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                      
+                        <Grid>
+                            
+                          <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                 <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                            <Setter Property="Scale" Value="1" />
+                                    </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="0.6" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                       <ImageButton Source="isgucu2.png" Padding="0,0,0,0"
+                          BackgroundColor="Transparent" 
+                           HorizontalOptions="Center" Grid.Row="0"
+                      Command="{Binding IsGucuKayipCommand}"
+                         HeightRequest="65" WidthRequest="65">
+                    </ImageButton>
+                     <Button Text="İş Gücü Kaybı" FontSize="Medium" TextColor="Gray"
+                                               Grid.Row="1" TranslationY="-10"
                                               BackgroundColor="Transparent"
-
+                    
                     Command="{Binding IsGucuKayipCommand}"
                     HorizontalOptions="Start"></Button>
-                    <ImageButton Source="fazlamesai2.png" Padding="0,15,0,5"
+                </Grid>
+                        </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Grid.Column="0" Padding="10,0,5,10">
+                    <Frame HeightRequest="140">
+                      <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding FazlaMesaiCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+
+                     <ImageButton Source="fazlamesai2.png" Padding="0,0,0,0"
                             BackgroundColor="Transparent"
-
-                         Grid.Column="0" Grid.Row="2" HorizontalOptions="End"
-                         Command="{Binding FazlaMesaiCommand }"
-                         HeightRequest="75" WidthRequest="75">
-
-            </ImageButton>
-                    
-                        <StackLayout   Grid.Column="1" Grid.Row="2"  >
-
-                            <Button Text="Fazla Mesai" FontSize="22" TextColor="Gray"
+                           Command="{Binding FazlaMesaiCommand}"  
+                         HeightRequest="70" WidthRequest="70">
+                    </ImageButton>
+                           <Button Text="Fazla Mesai" FontSize="Medium" TextColor="Gray"
                            BackgroundColor="Transparent"
                     Command="{Binding FazlaMesaiCommand}"    VerticalOptions="End"         
-                   TranslationY="10"  HorizontalOptions="Start"></Button>
-                            <Button Text="(+ Haftasonu İzni, Resmi-Dini Bayramlar)" VerticalOptions="Start"
-                         BackgroundColor="Transparent"  TranslationX="-17"
-                       TextColor="Gray" FontSize="Small"  Command="{Binding FazlaMesaiCommand}"            
-                  TranslationY="-10"  HorizontalOptions="Start">
-                            </Button>
-
-                        </StackLayout>
-              
-
-
-                    <ImageButton Source="yillikizin.png" Padding="0,15,0,5"
-                          BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="3" HorizontalOptions="End"
-                         Command="{Binding YillikIzinCommand}"
-                         HeightRequest="75" WidthRequest="75">
-
-            </ImageButton>
-            <Button Text="Yıllık İzin" FontSize="22" TextColor="Gray"
-                     BackgroundColor="Transparent"
-                    Command="{Binding YillikIzinCommand}"
-                    Grid.Column="1" Grid.Row="3"
                     HorizontalOptions="Start"></Button>
+                         
+                      </StackLayout>
 
-             <ImageButton Source="kidem2.png" Padding="0,15,0,5"
+                    </Frame>
+                </StackLayout>
+
+                 <StackLayout Grid.Row="1" Grid.Column="1" Padding="5,0,10,10">
+                    <Frame HeightRequest="140">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding YillikIzinCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                      <StackLayout>
+                               <ImageButton Source="yillikizin.png" Padding="0,0,0,0"
+                          BackgroundColor="Transparent"
+                        
+                         Command="{Binding YillikIzinCommand}"
+                         HeightRequest="70" WidthRequest="70">
+
+                               </ImageButton>
+
+                              <Button Text=" Yıllık İzin" FontSize="Medium" TextColor="Gray"
+                     BackgroundColor="Transparent" Padding="0,0,0,0"
+                    Command="{Binding YillikIzinCommand}"
+               
+                    HorizontalOptions="Start"></Button>
+                            <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                     TranslationY="-10"     HorizontalOptions="Center"
+                           TextColor="CornflowerBlue"></Label>
+                      </StackLayout>
+                      </Frame>
+
+                 </StackLayout>
+                 <StackLayout Grid.Row="2" Grid.Column="0" Padding="10,0,5,5">
+                    <Frame HeightRequest="140">
+                            <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding KidemIhbarCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                        <StackLayout>
+                        <ImageButton Source="kidem2.png" Padding="0,0,0,0"
                            BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="4" HorizontalOptions="End"
                          Command="{Binding KidemIhbarCommand}"
-                         HeightRequest="75" WidthRequest="75">
+                         HeightRequest="70" WidthRequest="70">
 
-            </ImageButton>
-            <Button Text="Kıdem-İhbar " FontSize="22" TextColor="Gray"
+                    </ImageButton>
+                                  <Button Text="Kıdem- İhbar " FontSize="Medium" TextColor="Gray"
                      BackgroundColor="Transparent"
                     Command="{Binding KidemIhbarCommand}"
-                    Grid.Column="1" Grid.Row="4"
                     HorizontalOptions="Start"></Button>
+                              <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                     TranslationY="-20"     HorizontalOptions="Center"
+                           TextColor="CornflowerBlue"></Label>
+                            </StackLayout>
+                    </Frame>
+                  </StackLayout>
 
-            <ImageButton Source="gececalisma.png" Padding="0,15,0,5"
+                    <StackLayout Grid.Row="2" Grid.Column="1" Padding="5,0,10,5">
+                    <Frame HeightRequest="140">
+                         <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding GeceCalismaCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                      <StackLayout>
+
+                                <ImageButton Source="gececalisma.png" Padding="0,0,0,0"
                           BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="5" HorizontalOptions="End"
+                       
                          Command="{Binding GeceCalismaCommand}"
-                         HeightRequest="75" WidthRequest="75">
+                         HeightRequest="70" WidthRequest="70">
 
             </ImageButton>
-            <Button Text="Gece Çalışma" FontSize="22" TextColor="Gray"
+                           <Button Text="Gece Çalışma" FontSize="Medium" TextColor="Gray"
                      BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="5" HorizontalOptions="Start"
+                  HorizontalOptions="Start"
                     Command="{Binding GeceCalismaCommand}" >
 
             </Button>
-                    
-            <!--<ImageButton Source="netbrut2.png" Padding="0,15,0,5"
-                          BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="6" HorizontalOptions="End"
-                         Command="{Binding NetBrutCommand }"
-                         HeightRequest="75" WidthRequest="75">
-            </ImageButton>
-                    <Button Text="Net-Brüt " FontSize="22" TextColor="Gray"
-                             BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="6" HorizontalOptions="Start"
-                    Command="{Binding NetBrutCommand }" >
-                    </Button>-->
-
-                    <!--<ImageButton Source="kayiporan.png" Padding="0,15,0,5"
-                         Grid.Column="0" Grid.Row="7" HorizontalOptions="End"
-                         Command="{Binding  KayipOranCommand}"
-                         HeightRequest="75" WidthRequest="75">
-                    </ImageButton>
-                    <Button Text="İşGücü Kayıp Oran" FontSize="26" TextColor="Gray"
-                    Grid.Column="1" Grid.Row="7" HorizontalOptions="Start"
-                    Command="{Binding KayipOranCommand}" >
-                    </Button>-->
+                      </StackLayout>
+                        </Frame>
+                        </StackLayout>
 
 
-                    <ImageButton Source="aracdegerkayip.png" Padding="0,15,0,5"
+                <StackLayout Grid.Row="3" Grid.Column="0" Padding="10,0,5,5">
+                    <Frame HeightRequest="140">
+                      <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding AracDegerKaybiCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                                <ImageButton Source="aracdegerkayip.png" Padding="0,0,0,0"
                                   BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="7" HorizontalOptions="End"
-                         Command="{Binding AracDegerKaybiCommand}"
-                         HeightRequest="75" WidthRequest="75">
-               </ImageButton>
-                    <Button Text="Araç Değer Kaybı " FontSize="22" TextColor="Gray"
+                                  Command="{Binding AracDegerKaybiCommand}"
+                                  HeightRequest="70" WidthRequest="70">
+                            </ImageButton>
+                        <Button Text="Değer Kaybı" FontSize="Medium" TextColor="Gray"
                              BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="7" HorizontalOptions="Start"
                     Command="{Binding  AracDegerKaybiCommand}" >
                     </Button>
+                                  <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                     TranslationY="-20"     HorizontalOptions="Center"
+                           TextColor="CornflowerBlue"></Label>
+                        </StackLayout>
+                        </Frame>
+                    </StackLayout>
 
+                <StackLayout Grid.Row="3" Grid.Column="1" Padding="5,0,10,5">
+                    <Frame HeightRequest="140">
 
-                    <ImageButton Source="kisiler.png" Padding="0,15,0,5"
+                          <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding KisiAdresCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                      <StackLayout>
+                      <ImageButton Source="kisiler.png" Padding="0,0,0,0"
                                   BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="8" HorizontalOptions="End"
                          Command="{Binding  KisiAdresCommand}"
-                         HeightRequest="75" WidthRequest="75">
-            </ImageButton>
-             <Button Text="Kişiler " FontSize="22" TextColor="Gray"
-                     
+                         HeightRequest="70" WidthRequest="70">
+                    </ImageButton>
+               <Button Text="Kişiler " FontSize="Medium" TextColor="Gray"
                       BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="8" HorizontalOptions="Start"
                     Command="{Binding  KisiAdresCommand}"></Button>
+                      </StackLayout>
+                    </Frame>
+                </StackLayout>
 
-
-             <ImageButton Source="ayarlar.png" Padding="0,15,0,5"
+                <StackLayout Grid.Row="4" Grid.Column="0" Padding="10,0,5,5">
+                    <Frame HeightRequest="140">
+                        
+                          <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding AyarlarCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                        <ImageButton Source="ayarlar.png" Padding="0,0,0,0"
                            BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="9" HorizontalOptions="End"
                          Command="{Binding  AyarlarCommand}"
-                         HeightRequest="75" WidthRequest="75">
-            </ImageButton>
-             <Button Text="Ayarlar " FontSize="22" TextColor="Gray"
+                         HeightRequest="70" WidthRequest="70">
+                        </ImageButton>
+                   <Button Text="Ayarlar " FontSize="Medium" TextColor="Gray"
                       BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="9" HorizontalOptions="Start"
-                    Command="{Binding  AyarlarCommand}"></Button>
-            
-             <ImageButton Source="uyelik.png" Padding="0,15,0,5"
+                    Command="{Binding  AyarlarCommand}">
+             </Button>
+                </StackLayout>
+                    </Frame>
+                    </StackLayout>
+
+                 <StackLayout Grid.Row="4" Grid.Column="1" Padding="5,0,10,5">
+                    <Frame HeightRequest="140">
+
+                           <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding UyeBilgiCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                      <StackLayout>
+                      <ImageButton Source="uyelik.png" Padding="0,0,0,0"
                            BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="10" HorizontalOptions="End"
                          Command="{Binding UyeBilgiCommand }"
-                         HeightRequest="75" WidthRequest="75">
-            </ImageButton>
-             <Button Text="Üyelik " FontSize="22" TextColor= "Gray"
+                         HeightRequest="70" WidthRequest="70">
+                         </ImageButton>
+             <Button Text="Üyelik " FontSize="Medium" TextColor= "Gray"
                       BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="10" HorizontalOptions="Start"
-                    Command="{Binding  UyeBilgiCommand}"></Button>
+                    Command="{Binding  UyeBilgiCommand}">
+             </Button>
+                      </StackLayout>
+                    </Frame>
+                </StackLayout>
 
-            
-             <ImageButton Source="yardim.png" Padding="0,15,0,5"
+                <StackLayout Grid.Row="5" Grid.Column="0" Padding="5,0,10,5">
+                    <Frame HeightRequest="140">
+                                <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                Command="{Binding SoruCommand}">
+                               
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                      <StackLayout>
+                          <ImageButton Source="yardim.png" Padding="0,0,0,0"
                            BackgroundColor="Transparent"
-                         Grid.Column="0" Grid.Row="11" HorizontalOptions="End"
-                         Command="{Binding  SoruCommand}"
-                         HeightRequest="75" WidthRequest="75">
+                      Command="{Binding  SoruCommand}"
+                         HeightRequest="70" WidthRequest="70">
             </ImageButton>
-             <Button Text="Destek-Sorular " FontSize="22" TextColor="Gray"
+             <Button Text="Destek-  Sorular " FontSize="Medium" TextColor="Gray"
                       BackgroundColor="Transparent"
-                    Grid.Column="1" Grid.Row="11" HorizontalOptions="Start"
                     Command="{Binding  SoruCommand}"></Button>
+                          <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                     TranslationY="-20"     HorizontalOptions="Center"
+                           TextColor="CornflowerBlue"></Label>
+                      </StackLayout>
+                    </Frame>
+                    </StackLayout>
 
-        </Grid>
-
-
-                <!--<Button  Padding="10,20,10,10"
-                Text="Kişi-Adres" Command="{Binding KisiAdresCommand}"></Button>
-          
-            <Button  Padding="10,20,10,10"
-                Text="Ayarlar" Command="{Binding AyarlarCommand}"></Button>
-     
-
-            <Button  Padding="10,20,10,10" HeightRequest="60"
-                     Text=" İşgücü Kayıp" Command ="{Binding IsGucuKayipCommand}"></Button>
+            </Grid>-->
 
 
-            <Button Padding="10,20,10,10" HeightRequest="60" Text="Fazla Mesai"
-                     Command="{Binding FazlaMesaiCommand}" ></Button>
+   
+               <Grid BackgroundColor="GhostWhite"
+                 RowSpacing="15" ColumnSpacing="15"
+                  Padding="15,10,15,0">
+              <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
 
-              <Button Padding="10,20,10,10" HeightRequest="60" Text="Yıllık İzin"
-                     Command="{Binding YillikIzinCommand}" ></Button>
+            </Grid.ColumnDefinitions>
 
-            <Button Padding="10,20,10,10" HeightRequest="60" Text="Kıdem-İhbar Tazminatı"
-                     Command="{Binding KidemIhbarCommand}" ></Button>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="160"></RowDefinition>
+                     <RowDefinition Height="160"></RowDefinition>
 
-            <Button Padding="10,20,10,10" HeightRequest="60" Text="Gece Çalışma"
-                    Command="{Binding }">
+                </Grid.RowDefinitions>
 
-            </Button>
+               <!--1. Satır-->
+            <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="0"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            WidthRequest="190"
+            HeightRequest="150"
+            BorderColor="Black"
+            CornerRadius="20"
+            BackgroundColor="White"
+            Command="{Binding DestektenYoksulukCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="destek2.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Destekten Yoksunluk"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
 
 
-            <Button Padding="10,20,10,10" HeightRequest="60" Text="Brütten Nete"
-                    Command="{Binding BrutCommand}"></Button>
+               <!--1-2-->
+          <buttons:SfButton
+            Grid.Column="1"
+            Grid.Row="0"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            WidthRequest="190"
+            BorderColor="Black"
+            CornerRadius="20"
+            BackgroundColor="White"
+            Command="{Binding IsGucuKayipCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="isgucu2.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="İş Gücü Kaybı"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
 
-          <Button Padding="10,20,10,10" HeightRequest="60" Text="Netten Brüte"
-                    Command="{Binding NetCommand}"></Button>-->
+            </buttons:SfButton>
+
+              <!--2. Satır-->
+         <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="1"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding FazlaMesaiCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="fazlamesai2.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Fazla Mesai"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+               <!--2-2-->
+          <buttons:SfButton
+            Grid.Column="1"
+            Grid.Row="1"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding YillikIzinCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="yillikizin.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Yıllık İzin"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                         <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                                            TranslationY="-10"     HorizontalOptions="Center"
+                                            TextColor="{StaticResource TwitterBlue}"></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+              <!--3. Satır-->
+               <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="2"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding KidemIhbarCommand}"
+
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="kidem2.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Kıdem - İhbar"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                         <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                                            TranslationY="-10"     HorizontalOptions="Center"
+                                            TextColor="{StaticResource TwitterBlue}"></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+               <!--3-2-->
+               <buttons:SfButton
+            Grid.Column="1"
+            Grid.Row="2"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding GeceCalismaCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="gececalisma.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Gece Çalışma"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+
+               <!--4.Satır-->
+         <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="3"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding AracDegerKaybiCommand}"
+
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="aracdegerkayip.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Değer Kaybı"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                         <Label Text="(Ücretsiz)" IsVisible="{Binding UcretsizGoster}"
+                                            TranslationY="-10"     HorizontalOptions="Center"
+                                            TextColor="{StaticResource TwitterBlue}"></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+               <!--4-2-->
+                              <buttons:SfButton
+            Grid.Column="1"
+            Grid.Row="3"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding KisiAdresCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="kisiler.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Kişiler"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+               <!--5. Satır-->
+              <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="4"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding AyarlarCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="ayarlar.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Ayarlar"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+               <!--5-2-->
+                             <buttons:SfButton
+            Grid.Column="1"
+            Grid.Row="4"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+           Command="{Binding UyeBilgiCommand}"
+            ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="uyelik.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Üyelik"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+
+                   <!--6. Satır-->
+              <buttons:SfButton
+            Grid.Column="0"
+            Grid.Row="5"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            ImageWidth="70"
+            BorderWidth="0"
+            BorderColor="Black"
+            CornerRadius="20"
+            WidthRequest="190"
+            BackgroundColor="White"
+            Command="{Binding  SoruCommand}"
+             ImageAlignment="Top">
+                                <buttons:SfButton.Content>
+                                    <StackLayout Padding="20">
+                                        <Image  Source="yardim.png"
+                                               WidthRequest="55" ></Image>
+                                        <Label Text="Soru-Cevap"
+                                               FontSize="Medium" Padding="0,5,0,0"
+                                               HorizontalTextAlignment="Center"
+                                              HorizontalOptions="CenterAndExpand" ></Label>
+                                    </StackLayout>
+                                </buttons:SfButton.Content>
+
+            </buttons:SfButton>
+
+               </Grid>
+            
+                        <!--<buttons:SfButton
+                        Command="{Binding IlerleCommand}"
+                        HorizontalOptions="Center"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Yeni Kayıt"
+                        TextColor="{d:StaticResource TwitterBlue}"
+                        BorderColor ="{d:StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="120"/>-->
+
+                
+
+  
 
         </StackLayout>
 
+        
+
+    </StackLayout>
 </ScrollView>
     </ContentPage.Content>
 

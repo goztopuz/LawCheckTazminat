@@ -5,49 +5,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak1IGView">
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
 
-                <Label  
-                    Text="İşgücü Kayıp Kişi Bilgileri  (1/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-
-
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView >
+            <StackLayout>
+                     <StackLayout Spacing="0" Padding="0,35,0,5"
+                     Orientation="Horizontal"    BackgroundColor="Red">
+
+              <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                    <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center" Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                     </ImageButton>
+
+                <Label  
+                    Text="İşgücü Kayıp Kişi Bilgileri (1/7)"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+        </Grid>
+                
+            </StackLayout>
             <StackLayout  Spacing="0" Padding="16,10,5,6">
-                <Button Text="İptal" HeightRequest="40" FontSize="Large" Padding="0,-6,0,0"
-                        BackgroundColor="Transparent" Command="{Binding IptalCommand}" 
-               TextColor="Red"         HorizontalOptions="End"></Button>
+             
 
                 <!-- Vefat Tarihi -->
 
+               
                 <Label
-                        Margin="0,0,0,4"
+                 
                         HeightRequest="30" 
-                        FontSize="16"
+                        FontSize="Medium"
                         Text="Kaza Tarihi"
                         TextColor="{StaticResource Gray-800}" />
-
-
+   
+            
+                
                 <DatePicker x:Name="dtKaza" HeightRequest="50" BackgroundColor="WhiteSmoke"
                     Date="{Binding IsGucu.kazaTarihi , Mode=TwoWay}"  FontSize="Large" TextColor="Black" VerticalOptions="CenterAndExpand">
 
                 </DatePicker>
-
+            
 
                 <!--<StackLayout Orientation="Horizontal" Padding="0,5,0,0">
 
@@ -187,13 +196,19 @@
                 </StackLayout>-->
 
                 <!--      Ad       -->
+                                    <Label HeightRequest="5"></Label>
+
+             
+                    <!--<Image Source="name.png" Opacity="0.6"
+                           HeightRequest="16" WidthRequest="16"></Image>-->
                 <Label
                         Margin="0,8,0,4"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Ad"
                         TextColor="{StaticResource Gray-800}" />
-
+          
+                 
                 <border:SfBorder
                     Padding="6,0,0,0"
                     BorderColor="{Binding Source={x:Reference txtAd}, Path=IsFocused}"
@@ -205,7 +220,7 @@
 
                     </controls:BorderlessEntry>
                 </border:SfBorder>
-
+           
 
                 <!--      Soyad       -->
                 <Label
@@ -229,13 +244,23 @@
 
 
                 <!-- Cinsiyet -->
+
+                                    <Label HeightRequest="5"></Label>
+
+              
+                    <!--<Image Source="gender.png" Opacity="0.6"
+                           HeightRequest="16" WidthRequest="16"></Image>-->
+
                 <Label
                         Margin="0,10,0,4"
                         HeightRequest="30"
                         FontSize="Medium"
                         Text="Cinsiyet"
                         TextColor="{StaticResource Gray-800}" />
-                
+
+           
+            
+
                 <Picker x:Name="drpCinsiyet" IsVisible="True" HeightRequest="50"
                             TextColor="Black" FontSize="Large" BackgroundColor="WhiteSmoke"
                             SelectedItem="{Binding IsGucu.cinsiyet, Mode=TwoWay}"
@@ -246,22 +271,27 @@
                     </Picker.Items>
                 </Picker>
 
-
+ 
+                
 
 
                 <!--   Doğum Tarihi      -->
+             
+                    <Label HeightRequest="5"></Label>
                 <Label
-                        Margin="0,15,0,0" Padding="0,0,0,0" 
+                        Margin="0,10,0,0" Padding="0,0,0,0" 
                         HeightRequest="30" 
-                        FontSize="16"
+                        FontSize="Medium"
                         Text="Doğum Tarihi"
                         TextColor="{StaticResource Gray-800}" />
+          
+
 
                 <DatePicker x:Name="dtDogum" HeightRequest="50" BackgroundColor="WhiteSmoke"
                     Date="{Binding IsGucu.dogumTarihi , Mode=TwoWay}"  FontSize="Large" TextColor="Black" VerticalOptions="CenterAndExpand">
 
                 </DatePicker>
-
+              
                 <!--<StackLayout Orientation="Horizontal" Padding="0,10,0,0">
                 
                     <Picker x:Name="drpDogumGun" Margin="0,0,0,0" Title="Gün"  IsVisible="True" WidthRequest="75"
@@ -374,6 +404,9 @@
                         WidthRequest="200" />
 
             </StackLayout>
+
+            </StackLayout>
+
         </ScrollView>
 
     </ContentPage.Content>

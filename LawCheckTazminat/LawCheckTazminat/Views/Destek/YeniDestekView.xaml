@@ -1,31 +1,41 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" x:Class="LawCheckTazminat.Views.Destek.YeniDestekView">
-     <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Yeni  Destek Oluştur"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
 
+            <ScrollView x:Name="scrll">
             <StackLayout>
-            <ScrollView>
-                <StackLayout Spacing="0" Padding="16,24">
-                    <Button Text="İptal" BackgroundColor="Transparent"
+
+              <StackLayout Spacing="0" Padding="0,40,0,5"
+                    Orientation="Horizontal"     BackgroundColor="Red">
+
+       <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+           <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center" Grid.Column="0" 
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+           </ImageButton>
+                <Label  Grid.Column="1"
+                    Text="Yeni  Destek Oluştur"
+                    TextColor="White" 
+                    FontSize="Large"
+                
+                    HorizontalOptions="Start">
+                </Label>
+     </Grid>         
+            </StackLayout>
+
+
+                <StackLayout Spacing="0" Padding="16,24,5,150">
+
+                    <!--<Button Text="İptal" BackgroundColor="Transparent"
                             HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}" 
-                        TextColor="Red" HorizontalOptions="End"></Button>
+                        TextColor="Red" HorizontalOptions="End"></Button>-->
 
                              <!--      Konu       -->
                     <Label
@@ -46,11 +56,32 @@
 
                         </controls:BorderlessEntry>
                     </border:SfBorder>
+            <!--      Mesaj       -->
+                    <Label
+                        Margin="0,10,0,4"
+                        HeightRequest="30" 
+                        FontSize="16"
+                        Text="Soru"
+                        TextColor="{StaticResource Gray-800}" />
 
+                        <border:SfBorder HeightRequest="120" Style="{StaticResource SfBorderStyle}">
+
+                            <Editor
+                                HeightRequest="120"
+                                Placeholder="Mesaj"
+                                PlaceholderColor="LightGray"
+                                BackgroundColor="WhiteSmoke"
+                                TextColor="Black"
+                                Focused="Editor_Focused"
+                                Text="{Binding Mesaj, Mode=TwoWay} ">
+                     
+                    </Editor>
+
+                </border:SfBorder>
                 <!--      Eposta       -->
                     <Label
                         Margin="0,10,0,4"
-                        HeightRequest="18" 
+                        HeightRequest="25" 
                         FontSize="16"
                         Text=" Eposta(Opsiyonel)"
                         TextColor="{StaticResource Gray-800}" />
@@ -70,7 +101,7 @@
                     <!--      Telefon       -->
                     <Label
                         Margin="0,10,0,4"
-                        HeightRequest="18" 
+                        HeightRequest="25" 
                         FontSize="16"
                         Text=" Telefon(Opsiyonel)"
                         TextColor="{StaticResource Gray-800}" />
@@ -87,28 +118,7 @@
 
 
 
-                             <!--      Mesaj       -->
-                    <Label
-                        Margin="0,10,0,4"
-                        HeightRequest="30" 
-                        FontSize="16"
-                        Text="Soru"
-                        TextColor="{StaticResource Gray-800}" />
-
-
-                        <border:SfBorder HeightRequest="120" Style="{StaticResource SfBorderStyle}">
-
-                            <Editor
-                                HeightRequest="120"
-                                Placeholder="Mesaj"
-                                PlaceholderColor="LightGray"
-                                BackgroundColor="WhiteSmoke"
-                                TextColor="Black"
-                                Text="{Binding Mesaj, Mode=TwoWay} ">
-                     
-                    </Editor>
-
-                </border:SfBorder>
+                 
 
 
                     <Button Padding="0,20,0,0" Text="   GÖNDER   " BackgroundColor="Transparent"
@@ -122,7 +132,8 @@
 
             
                     </StackLayout>
-                </ScrollView>
+
                 </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -8,32 +8,37 @@
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak7DYView">
     
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
 
-                  
-                <Label  
-                    Text="  Maaş Bilgi (7/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20,0,0" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <Button Text="İptal" HeightRequest="47" FontSize="Large"  Command="{Binding IptalCommand}"
-                        BackgroundColor="Transparent"
-              Clicked="Button_Clicked"     TextColor="Red"  Padding="0,-4,20,10"    HorizontalOptions="End"></Button>
-
-
-  
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
 
         <ScrollView>
+         <StackLayout>
+                <StackLayout Spacing="0" Padding="0,40,0,0"
+                      Orientation="Horizontal"       BackgroundColor="Red">
+              <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+               <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+              </ImageButton>
+                  
+                <Label  
+                    Text="Maaş Bilgi (7/7)"
+                    TextColor="White"
+                    FontSize="Large" Grid.Column="1"
+                    HorizontalOptions="Start">
+                </Label>
+            </Grid>
+            </StackLayout>
+
+
             <StackLayout  Spacing="0" Padding="16,24,5,25">
 
             
@@ -279,6 +284,8 @@
 
 
             </StackLayout>
+
+          </StackLayout>
         </ScrollView>
 
 

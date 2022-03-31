@@ -13,5 +13,14 @@ namespace LawCheckTazminat.Views.Destek
 
             this.BindingContext = new YeniDestekViewModel();
         }
+
+        async void Editor_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var height = 40;
+                await scrll.ScrollToAsync(0,500, true);
+            });
+        }
     }
 }

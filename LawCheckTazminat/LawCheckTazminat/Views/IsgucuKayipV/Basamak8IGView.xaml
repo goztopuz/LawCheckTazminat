@@ -5,31 +5,40 @@
              xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak8IGView">
 
-        <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="  Maaş Bilgi (7/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
 
-                <ScrollView>
-            <StackLayout  Spacing="0" Padding="16,24">
+        <ScrollView>
+    <StackLayout>
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
-                        HeightRequest="45" FontSize="Large"  Command="{Binding IptalCommand}" 
-                   TextColor="Red"      HorizontalOptions="End"></Button>
+          <StackLayout Spacing="0" Padding="0,40,0,5"
+                    Orientation="Horizontal"   BackgroundColor="Red">
+
+                <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+              <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                           VerticalOptions="Center" Grid.Column="0" 
+                           Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text=" Maaş Bilgi (7/7)"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+            </Grid>
+            </StackLayout>
+
+
+            <StackLayout  Spacing="0" Padding="16,24">
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Olay Tarihi     : " TextColor="{StaticResource Gray-800}"></Label>
@@ -260,7 +269,8 @@
                 <!--</border:SfBorder>-->
 
 
-                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"
+                      FontSize="Large" TextColor="OrangeRed"></Label>
                 <!--<Button Margin="0,15,0,10" Text="SONLANDIR(BİTİR)"
                     IsVisible="false"    FontSize="Large" Command="{Binding KaydetBitirCommand}">
                     
@@ -277,6 +287,8 @@
 
 
             </StackLayout>
+
+           </StackLayout>
         </ScrollView>
 
 

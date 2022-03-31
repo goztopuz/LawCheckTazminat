@@ -6,36 +6,40 @@
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.MaasOranlaView">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                 <StackLayout Spacing="0" Padding="0,30,0,0"
+                   Orientation="Horizontal"      BackgroundColor="Red">
+        <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+              <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center" Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+              </ImageButton>
 
                 <Label  
-                    Text="NET MAAŞ - Asgari Ücrete Oranla"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
+                    Text="Net Maaş - Asgari Ücrete Oranla"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Medium"
+                    HorizontalOptions="Start">
                 </Label>
 
                
 
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
+         </Grid>     
             </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
-    <ContentPage.Content>
-        <ScrollView>
-            
         <StackLayout Padding="7,10,5,0">
-                <Button Text="İptal" HeightRequest="46"
-                       Padding="0,6,10,0" FontSize="Large"  Command="{Binding IptalCommand}" 
-                        BackgroundColor="Transparent"
-             TextColor="Red"      HorizontalOptions="End">
-                </Button>
+                
 
 
                 <StackLayout  BackgroundColor="WhiteSmoke">
@@ -175,6 +179,9 @@
 
              
             </StackLayout>
+
+            </StackLayout>
+
 
         </ScrollView>
     </ContentPage.Content>

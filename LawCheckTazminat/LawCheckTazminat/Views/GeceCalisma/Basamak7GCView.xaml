@@ -1,40 +1,59 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors" x:Class="LawCheckTazminat.Views.GeceCalisma.Basamak7GCView">
     
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label 
-                    Text=" Gece Çalışma Haftalar (7/8)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    
 
     <ContentPage.Content>
            <ScrollView>
-            <StackLayout Spacing="0" Padding="16,24">
-                <Button Text="İptal"  BackgroundColor="Transparent"
+
+                <StackLayout>
+
+       <StackLayout Spacing="0" Padding="0,40,0,5"
+                 Orientation="Horizontal"   BackgroundColor="Red">
+
+    <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+        <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label 
+                    Text="Gece Çalışma Haftalar (7/8)"
+                    TextColor="White"  Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+        </Grid>
+
+            </StackLayout>
+
+            <StackLayout Spacing="0" Padding="16,24,0,0">
+
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
-                 TranslationY="-10"  TextColor="Red"      HorizontalOptions="End"></Button>
+                 TranslationY="-10"  TextColor="Red"      HorizontalOptions="End"></Button>-->
+
+
                 <buttons:SfButton Padding="0,0,0,0"
                         Command="{Binding IlerleCommand}"
                         HorizontalOptions="Center"
-                       Margin="0,24,0,5" TranslationY="-25"
+                        HeightRequest="55"
+                       Margin="0,24,0,5" 
                         Style="{StaticResource SfButtonStyle}"
                         Text="İLERLE"
                         WidthRequest="200" />
 
-                <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
+                <Label Margin="5,2,0,5" Text="{Binding HataMesaji}"></Label>
                 
-                <Label Margin="5,10,0,13" Text="Yapılmışsa Değişiklikler-Düzenlemeler Tekrar Girilmelidir"
+                <Label Margin="5,3,0,2" Text="Yapılmışsa Değişiklikler-Düzenlemeler Tekrar Girilmelidir"
                      TextColor="Red"   IsVisible="{Binding UyariVisible}" FontSize="Micro"></Label>
 
 
@@ -144,6 +163,10 @@
 
 
                 </StackLayout>
-               </ScrollView>
+
+       </StackLayout>
+
+
+           </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,51 +1,75 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors" x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak2YYView">
-     <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Kişi İzinleri (2/6)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="26"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
 
 
-                <ScrollView>
-            <StackLayout Spacing="0" Padding="0,20">
+      <ScrollView>
+<StackLayout>
+        <StackLayout Spacing="0" Padding="0,40,0,5"
+                  Orientation="Horizontal"   BackgroundColor="Red">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
+                </Grid.ColumnDefinitions>
+              <ImageButton  HeightRequest="32" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="32"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="7,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+
+                <Label  
+                    Text="Kişi İzinleri (2/6)"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+           </Grid>  
+            </StackLayout>          
+            <StackLayout Spacing="0" Padding="10,20,2,0">
+
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
-                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="EndAndExpand"></Button>
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="EndAndExpand"></Button>-->
+
+                <buttons:SfButton
+                        Command="{Binding YeniIzinCommand}"
+                        HorizontalOptions="Center"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Yeni İzin-Rapor"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="200"/>
+
+
 
                  <buttons:SfButton
                         Command="{Binding IlerleCommand}"
                         HorizontalOptions="Center"
-                       Margin="0,24,0,0" TranslationY="-17"
+                       Margin="0,24,0,0" 
                         Style="{StaticResource SfButtonStyle}"
                         Text="İLERLE"
-                        HeightRequest="52"
+                        HeightRequest="55"
                         WidthRequest="200" />
 
-                     <Button Text="Yeni İzin " BackgroundColor="Transparent"
+                     <!--<Button Text="Yeni İzin " BackgroundColor="Transparent"
                              HeightRequest="48" FontSize="Large"  Command="{Binding YeniIzinCommand}" 
-                        TranslationY="-118"       Padding="6,0,0,0"   HorizontalOptions="Start">
+                             Padding="6,0,0,0"   HorizontalOptions="Start">
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 
                         </OnPlatform>
                     </Button.TextColor>
 
-                </Button>
+                </Button>-->
 
                 <Label Margin="5,10,0,13" Text="{Binding HataMesaji}"></Label>
 
@@ -53,17 +77,16 @@
                       <ListView x:Name="lstIzinler"
                             ItemsSource="{Binding Liste}" 
                             ItemSelected="lstIzinler_ItemSelected"
-                            RowHeight="120" TranslationY="-35"
                             SeparatorVisibility="Default"
                             HasUnevenRows="True">
 
-                    <ListView.Behaviors>
+                    <!--<ListView.Behaviors>
                         <behaviors:EventToCommandBehavior 
                     EventName="ItemTapped"  
                     Command="{Binding IzinTappedCommand}" 
                     EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
                         </behaviors:EventToCommandBehavior>
-                    </ListView.Behaviors>
+                    </ListView.Behaviors>-->
 
 
 
@@ -79,35 +102,35 @@
                                     </MenuItem>
                                     
                                 </ViewCell.ContextActions>
-                                <Grid Padding="0,10,0,0" BackgroundColor="WhiteSmoke">
+                                <Grid Padding="0,2,0,0" BackgroundColor="WhiteSmoke">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="AUTO"></RowDefinition>
+                                        <RowDefinition Height="5"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                   
+                                   <Grid.ColumnDefinitions>
+                                       <ColumnDefinition Width="4"></ColumnDefinition>
+                                       <ColumnDefinition Width="*"></ColumnDefinition>
+                                   </Grid.ColumnDefinitions>
 
-                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                                        <Label Text="Başlangıç. Tar. "  FontSize="Medium"></Label>
-                                        <Label Text="  "></Label>
-                                        <Label Text="{Binding BaslangicTar, Converter={StaticResource DateTosStringConverter}}" 
-                                               TextColor="Black" FontSize="Large"></Label>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Bitiş Tar.            " FontSize="Medium"></Label>
-                                        <Label Text="  " FontSize="Medium"></Label>
-                                        <Label Text="{Binding BitisTar,Converter={StaticResource DateTosStringConverter}}"
-                                                TextColor="Black" FontSize="Large"></Label>
-                                    </StackLayout>
-                                   
-                                   <Label Text="{Binding  Aciklama}" Grid.Row="0" FontSize="Large"
-                                     TextColor="IndianRed"     Margin="5,0,0,0" ></Label>
+                          <Grid BackgroundColor="{StaticResource TwitterBlue}"
+                               Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
 
-                                    <StackLayout Grid.Row="3">
-                                        <BoxView HeightRequest="7" BackgroundColor="White"/>
-
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                     <Image Source="calendar.png" Opacity="0.7"
+                                            HeightRequest="32" WidthRequest="32"></Image>
+                                         <Label Text="{Binding BaslangicTar, Converter={StaticResource DateTosStringConverter}}" 
+                                               TextColor="Gray" FontSize="Medium"></Label>
+                                        <Label Text="-"></Label>
+                             <Label Text="{Binding BitisTar,Converter={StaticResource DateTosStringConverter}}"
+                                              TextColor="Gray" FontSize="Medium"></Label>
                                     </StackLayout>
+                                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                        <Label Padding="35,0,0,0" Text = "Açıklama: " TextColor="Gray"></Label>
+                                        <Label Text="{Binding Aciklama}" TextColor="Gray"></Label>
+                                    </StackLayout >
+
+                                  
 
                                                                                                      
                                 </Grid>
@@ -121,7 +144,9 @@
 
 
                 </StackLayout>
-            </ScrollView>
+
+    </StackLayout>
+       </ScrollView>
 
 
     </ContentPage.Content>

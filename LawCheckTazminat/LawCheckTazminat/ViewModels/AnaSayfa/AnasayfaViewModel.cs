@@ -26,6 +26,10 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
 
         string productId = "tazminapp_subscription6";
+
+        Helpers.AbonelikYontemi ab = new Helpers.AbonelikYontemi();
+
+        Helpers.AbonelikYontemi2 ab2 = new Helpers.AbonelikYontemi2();
         public AnasayfaViewModel()
         {
 
@@ -33,7 +37,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             if (VersionTracking.IsFirstLaunchEver)
             {
-                SettingsService.FirstInstallDate = DateTime.UtcNow;
+                ab2.RestoreToPro(true);
 
             }
             else if (VersionTracking.IsFirstLaunchForCurrentVersion)
@@ -48,6 +52,33 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
           //  CheckStatus();
 
 
+        }
+
+        private bool _ucretsiz = true;
+        public bool UcretsizGoster
+        {
+            get => _ucretsiz;
+            set
+            {
+                _ucretsiz = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand UcretsizYaziCheck => new Command(OnUcretsizCheck);
+
+        private void OnUcretsizCheck()
+        {
+
+            if (SettingsService2.AppStatus == "DEMO")
+            {
+                UcretsizGoster = true;
+            }
+            else
+            {
+                UcretsizGoster = false;
+
+            }
         }
 
         public ICommand CheckStatusCommand => new Command(OnCheckStatus);
@@ -96,7 +127,8 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             }
         }
-            private async void  BootOperations()
+
+        private async void  BootOperations()
         {
             var ilkAcilis = Preferences.Get("FIRSTRUN", "");
 
@@ -217,19 +249,52 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
         async private void OnDestektenYoksunluk(object obj)
         {
 
-            if (App.AppStatus != "PRO")
+            if (SettingsService2.AppStatus == "PRO")
             {
+                // Ara Kontrolü Sağla....   
 
-                if (App.AppStatus == "OUTOFDATE")
+                ab2.RegularPROAppStatusControl();
+
+            }
+
+            if (SettingsService2.AppStatus == "NOTCONNECTED")
+            {
+                ab2.RestoreToPro(true);
+
+                int sayac = SettingsService2.NotConnectCounter;
+
+                if (SettingsService2.AppStatus == "NOTCONNECTED")
                 {
-                    //_message1 = "Süresi Geçmiş";
+                    sayac = sayac + 1;
 
-                    await UyeSayfasınaGit();
-                    return;
+                    SettingsService2.NotConnectCounter = sayac;
                 }
 
-                string _message1 = "Bu Özelliği Kullanabilmek için Abone omalısınızl";
-                
+
+            //    await App.Current.MainPage.DisplayAlert("Sayaç", sayac.ToString(), "Tamam");
+
+                if (sayac == 8)
+                    {
+
+                        string _message1 = "Lisans Kontrolü sağlanamdı. Internet bağlantınızı kontrol edip," +
+                            " Aboneliği Geri Yükleme Bölümden Aboneliğiinizi Ücretsi Aktif Edebilirsiniz!";
+                        await App.Current.MainPage.DisplayAlert("Abonelik", _message1, "Tamam");
+
+                        SettingsService2.AppStatus = "DEMO";
+                        SettingsService2.NotConnectCounter = 0;
+
+                        await UyeSayfasınaGit();
+                        return;
+                    }
+                 }
+
+                       
+
+            if(SettingsService2.AppStatus == "DEMO")
+            {
+
+                string _message1 = "Bu Özelliği Kullanabilmek için Abone omalısınızl Aboneyseniz  Aboneliği Ücretsiz Geri Yükleyebilirsiniz.";
+
                 await App.Current.MainPage.DisplayAlert("Abonelik", _message1
                          , "Tamam");
 
@@ -250,6 +315,44 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
             await Application.Current.MainPage.Navigation.PushModalAsync(sayfa);
 
             IsBusy = false;
+
+
+
+
+            // ESKİ KOD BÖLÜMÜ
+            //if (App.AppStatus != "PRO")
+            //{
+
+            //    if (App.AppStatus == "OUTOFDATE")
+            //    {
+            //        //_message1 = "Süresi Geçmiş";
+
+            //        await UyeSayfasınaGit();
+            //        return;
+            //    }
+
+            //    string _message1 = "Bu Özelliği Kullanabilmek için Abone omalısınızl";
+                
+            //    await App.Current.MainPage.DisplayAlert("Abonelik", _message1
+            //             , "Tamam");
+
+            //    await UyeSayfasınaGit();
+            //    return;
+            //}
+
+
+            //if (IsBusy == true)
+            //{
+            //    return;
+            //}
+            //IsBusy = true;
+
+
+
+            //var sayfa = new KisiAramaView("DestektenYoksunluk");
+            //await Application.Current.MainPage.Navigation.PushModalAsync(sayfa);
+
+            //IsBusy = false;
 
         }
      
@@ -280,7 +383,6 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
         //---------------
         public ICommand FazlaMesaiCommand => new Command(OnFazlaMesai);
-
         async private void OnFazlaMesai(object obj)
         {
             if (App.AppStatus != "PRO")
@@ -318,7 +420,6 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             IsBusy = false;
         }
-
 
         //KisiAdresCommand
         public ICommand KisiAdresCommand => new Command(OnKisiAdres);
@@ -394,11 +495,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
             IsBusy = false;
         }
 
-
-
         // NET Brüt
-
-
         public ICommand NetBrutCommand => new Command(OnNetBrut);
         async private void OnNetBrut(object obj)
         {
@@ -413,6 +510,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             IsBusy = false;
         }
+
         public ICommand BrutCommand => new Command(OnBrutNet);
         async private void OnBrutNet(object obj)
         {
@@ -474,7 +572,6 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
             IsBusy = false;
         }
 
-
         public ICommand AyarlarCommand => new Command(OnAyarlar);
         async private void OnAyarlar(object obj)
         {
@@ -523,9 +620,6 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
             IsBusy = false;
 
         }
-
-
-
 
         public ICommand RaporCommand => new Command(OnRapor);
         async private void OnRapor(object obj)

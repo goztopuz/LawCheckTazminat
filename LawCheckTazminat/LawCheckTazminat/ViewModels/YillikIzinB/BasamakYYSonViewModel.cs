@@ -50,6 +50,10 @@ namespace LawCheckTazminat.ViewModels.YillikIzinB
 
 
             _gunlukUcret = YY.BrutUcret / 30;
+            if (YY.Gun2 < 0)
+            {
+                YY.Gun2 = 0;
+            }
 
             YY.Toplam =(decimal) YY.Gun2 * _gunlukUcret;
 

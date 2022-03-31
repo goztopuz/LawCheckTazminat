@@ -264,7 +264,7 @@ namespace LawCheckTazminat.ViewModels.IsgucuKayipB
             }
 
             this.HataMesaji = "";
-            var sayfa = new Basamak6IGView(IsGucu);
+            var sayfa = new Basamak7IGView(IsGucu);
             await Application.Current.MainPage.Navigation.PushModalAsync(sayfa);
 
             

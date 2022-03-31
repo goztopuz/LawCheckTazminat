@@ -8,34 +8,45 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" 
              x:Class="LawCheckTazminat.Views.FazlaMesaiV.MaasOranlaFMView">
-  <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Net Maaş - Asgari Ücrete Oranla"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
 
 
     <ContentPage.Content>
            <ScrollView>
+       <StackLayout>
+
+         <StackLayout Spacing="0" Padding="0,50,0,0"
+                    Orientation="Horizontal"  BackgroundColor="Red">
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+              <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center" Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text="Net Maaş - Asgari Ücrete Oranla"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Medium"
+                    HorizontalOptions="Start">
+                </Label>
+             </Grid>
+            </StackLayout>
+
+
+
             <StackLayout Spacing="0" Padding="16,24">
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="40" FontSize="Large"
                         Padding="0,5,15,0" TextColor="Red"
                         Command="{Binding IptalCommand}" 
-                        HorizontalOptions="End"></Button>
+                        HorizontalOptions="End"></Button>-->
 
 
                     <!-- Maaş -->
@@ -192,7 +203,8 @@
 
 
                 </StackLayout>
-            </ScrollView>
+      </StackLayout>
+           </ScrollView>
 
 
     </ContentPage.Content>

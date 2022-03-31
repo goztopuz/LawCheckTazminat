@@ -2,33 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak4BekarCocukDY">
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+         <StackLayout Spacing="0" Padding="0,40,0,0"
+                   Orientation="Horizontal"      BackgroundColor="Red">
+             <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
 
-                <Label  
-                    Text=" Muhtemel Evlenme ve İş Bilgileri (5/7)"
-                    TextColor="{StaticResource Gray-900}"
+                </Grid.ColumnDefinitions>
+
+
+               <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                            Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                        VerticalOptions="Center" HorizontalOptions="Start">
+               </ImageButton>
+             <Label  
+                    Text= "Muhtemel Evlenme ve İş Bilgileri (5/7)"
+                    TextColor="White"
                     FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
+                    Grid.Column="1"
+                    HorizontalOptions="Start">
                 </Label>
 
-
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
+     </Grid>
             </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
-    <ContentPage.Content>
-
-        <ScrollView>
             <StackLayout  Spacing="0" Padding="16,24" >
-                <Button Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
+                <!--<Button Text="İptal" HeightRequest="40" FontSize="Large"  Command="{Binding IptalCommand}" 
                          BackgroundColor="Transparent"  Padding="5,-2,0,5"
-                    TextColor="Red"    HorizontalOptions="End"></Button>
+                    TextColor="Red"    HorizontalOptions="End"></Button>-->
 
 
 
@@ -264,7 +271,7 @@
 
 
             </StackLayout>
-                
+        </StackLayout>        
             
         </ScrollView>
     </ContentPage.Content>

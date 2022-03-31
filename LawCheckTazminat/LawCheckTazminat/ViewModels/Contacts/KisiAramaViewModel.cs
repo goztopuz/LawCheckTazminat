@@ -32,8 +32,49 @@ namespace LawCheckTazminat.ViewModels.Contacts
             {
                 ButtonVisible = true;
             }
+
+            if(_tur == "DestektenYoksunluk")
+            {
+                Baslik = "Destekten Yoksunluk";
+            }
+            else if(_tur == "IsGucuKayip")
+            {
+                Baslik = "İş Gücü Kaybı";
+            }
+            else if( _tur == "FazlaMesai")
+            {
+                Baslik = "Fazla Mesai";
+            }
+            else if( _tur == "YillikIzin")
+            {
+                Baslik = "Yıllık İzin";
+            }
+            else if(_tur == "KidemIhbar")
+            {
+                Baslik = "Kıdem - İhbar";
+            }
+            else if(_tur == "GeceCalisma")
+            {
+                Baslik = "Gece Çalışma";
+            }
+            else if(_tur == "Adres")
+            {
+                Baslik = "Kişi - Adres";
+            }
             kkk();
 
+        }
+
+
+        private string _baslik ="";
+        public string Baslik
+        {
+            get => _baslik;
+            set
+            {
+                _baslik = value;
+                OnPropertyChanged();
+            }
         }
 
         private ObservableCollection<Contact> _kisiListe;

@@ -15,18 +15,24 @@ namespace LawCheckTazminat.Views.AnaSayfaV
     {
 
         AnasayfaViewModel vm;
+        Helpers.AbonelikYontemi ab;
         public Anasayfa()
         {
             InitializeComponent();
             this.BindingContext = vm =new AnasayfaViewModel();
+            ab = new Helpers.AbonelikYontemi();
 
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            App.AppStatus = "PRO";
 
-            vm.CheckStatusCommand.Execute("-");
+       //     ab.RestoreCode();
+            //    ab.AbonelikKontrol();
+            //  vm.CheckStatusCommand.Execute("-");
+           vm.UcretsizYaziCheck.Execute("");
         }
     }
 }

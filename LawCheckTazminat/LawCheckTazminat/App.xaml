@@ -80,7 +80,7 @@
 
         <!--  Common style for buttons  -->
         <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
-            <Setter Property="BackgroundGradient">
+            <!--<Setter Property="BackgroundGradient">
                 <Setter.Value>
                     <graphics:SfLinearGradientBrush>
                         <graphics:SfLinearGradientBrush.GradientStops>
@@ -88,6 +88,16 @@
                             <graphics:SfGradientStop Offset="1" Color="{StaticResource PrimaryGradient}" />
                         </graphics:SfLinearGradientBrush.GradientStops>
                     </graphics:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>-->
+                 <Setter Property="BackgroundGradient">
+                <Setter.Value>
+                    <graphics:SfRadialGradientBrush>
+                        <graphics:SfRadialGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Offset="1" Color="REd" />
+                            <graphics:SfGradientStop Offset="0" Color="Red" />
+                        </graphics:SfRadialGradientBrush.GradientStops>
+                    </graphics:SfRadialGradientBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="TextColor" Value="{StaticResource Gray-White}" />
@@ -98,6 +108,29 @@
             <Setter Property="CornerRadius" Value="20" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
         </Style>
+
+<Style x:Key="SfButtonStyle2" TargetType="buttons:SfButton">
+         
+                 <!--<Setter Property="BackgroundGradient">
+                <Setter.Value>
+                    <graphics:SfLinearGradientBrush>
+                        <graphics:SfLinearGradientBrush.GradientStops>
+                            <graphics:SfGradientStop Offset="0" Color="White" />
+                            <graphics:SfGradientStop Offset="1" Color="White" />
+                        </graphics:SfLinearGradientBrush.GradientStops>
+                    </graphics:SfLinearGradientBrush>
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="TextColor" Value="{StaticResource TwitterBlue}" />
+            <!--<Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />-->
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+
 
         <!--  Common style for flat buttons  -->
         <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">

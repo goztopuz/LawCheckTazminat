@@ -222,6 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\aracdegerkayip.png" />
+    <BundleResource Include="Resources\prev.png" />
+    <BundleResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\name.png" />
+    <BundleResource Include="Resources\gender.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\DestektenYoksunluk.png" />

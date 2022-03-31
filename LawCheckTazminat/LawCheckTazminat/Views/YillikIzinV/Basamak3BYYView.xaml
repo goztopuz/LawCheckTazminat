@@ -5,29 +5,39 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
              x:Class="LawCheckTazminat.Views.YillikIzinV.Basamak3BYYView">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="10,40,10,0" BackgroundColor="{StaticResource Gray-White}">
+    <ContentPage.Content>
+        <ScrollView>
+   <StackLayout>
+        <StackLayout Spacing="0" Padding="0,40,0,5"
+                  Orientation="Horizontal"   BackgroundColor="Red">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+
+              <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
 
                 <Label  
                     Text="Rapor-Hafta İzni (4/6)"
-                    TextColor="{StaticResource Gray-900}"
+                    TextColor="White" Grid.Column="1"
                     FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
+                    HorizontalOptions="Start">
                 </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
+           </Grid>   
             </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Spacing="0" Padding="0,20">
+            <StackLayout Spacing="0" Padding="12,20,2,0">
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="50" FontSize="Large"  Command="{Binding IptalCommand}" 
-                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="EndAndExpand"></Button>
+                   TextColor="Red"  TranslationY="-14"    HorizontalOptions="EndAndExpand"></Button>-->
 
                 <!--      Hafatlık İzin Günü       -->
                 <Label
@@ -58,7 +68,7 @@
 
                 <!--      Rapor Gün Toplamı       -->
                 <Label
-                        Margin="0,18,0,4"
+                        Margin="15,18,0,4"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="İzindeyken Alının Rapor Toplamı"
@@ -81,7 +91,7 @@
 
                     <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.haftalikIizinYillikIzindenDusme }">
                         <CheckBox.Color>
-                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            <OnPlatform x:TypeArguments="Color" Android="{StaticResource TwitterBlue}">
                             </OnPlatform>
                         </CheckBox.Color>
                     </CheckBox>
@@ -95,7 +105,7 @@
 
                     <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.resmiTatilYillikIzindenDusme }">
                         <CheckBox.Color>
-                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            <OnPlatform x:TypeArguments="Color" Android="{StaticResource TwitterBlue}">
                             </OnPlatform>
                         </CheckBox.Color>
                     </CheckBox>
@@ -109,7 +119,7 @@
 
                     <CheckBox  HeightRequest="50" WidthRequest="50" IsChecked="{Binding YY.raporlarinYillikIzindenDusme }">
                         <CheckBox.Color>
-                            <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                            <OnPlatform x:TypeArguments="Color" Android="{StaticResource TwitterBlue}">
                             </OnPlatform>
                         </CheckBox.Color>
                     </CheckBox>
@@ -132,6 +142,8 @@
 
 
             </StackLayout>
+
+</StackLayout>
         </ScrollView>
 
     </ContentPage.Content>

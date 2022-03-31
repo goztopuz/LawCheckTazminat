@@ -15,10 +15,36 @@ namespace LawCheckTazminat.ViewModels.UyelikB
 
         string productId = "tazminapp_subscription6";
 
+        Helpers.AbonelikYontemi2 ab = new Helpers.AbonelikYontemi2();
+
+       
+
         public UyelikViewModel()
         {
 
-            SayfaDurum();
+            AbonelikDurum();
+        }
+
+        bool _isAndroid;
+        public bool IsAndroid
+        {
+            get => _isAndroid;
+            set
+            {
+                _isAndroid = value;
+                OnPropertyChanged();
+            }
+        }
+        bool _isIos;
+        public bool IsIos
+        {
+            get => _isIos;
+            set
+            {
+                _isIos = value;
+                OnPropertyChanged();
+
+            }
         }
 
         // Properties
@@ -124,7 +150,185 @@ namespace LawCheckTazminat.ViewModels.UyelikB
         }
 
 
+
+
+
+        public ICommand PurchaseCommand => new Command(OnPurchaseNew);
+
+        private async void OnPurchaseNew()
+        {
+
+         await   ab.SubscripteToApp();
+
+            if(SettingsService2.AppStatus == "PRO")
+            {
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+
+            }
+
+        }
+        private async void OnPurchase()
+        {  
+            if (!await CheckConnectivity("Çevrimdışı", "İnternet bağlantınızı kontrol edip, tekrar deneyin.."))
+                return;
+            BusyTitle = "";
+
+            try
+            {
+                var connected = await CrossInAppBilling.Current.ConnectAsync();
+
+
+                //Check Offline
+                if (!connected)
+                {
+                    await App.Current.MainPage.DisplayAlert("Bağlantı Hatası", "Uygulama Mağza Bağlantı Hatası", "Tamam");
+                    return;
+                }
+                //check purchases
+
+                var purchase = await CrossInAppBilling.Current.PurchaseAsync(productId, ItemType.Subscription);
+
+                if (purchase == null)
+                {
+
+                    return;
+
+                }
+                else if (purchase.State == PurchaseState.Purchased)
+                {
+
+                    SettingsService.ProReceipt = purchase.PurchaseToken ?? string.Empty;
+
+                    SettingsService.IsPro = true;
+                    IsPro = true;
+                    SettingsService.IsOutofDate = false;
+
+                    SettingsService.TransactionDate = purchase.TransactionDateUtc;
+
+                    try
+                    {
+                        await CrossInAppBilling.Current.AcknowledgePurchaseAsync(purchase.PurchaseToken);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                    return;
+                }
+                throw new InAppBillingPurchaseException(PurchaseError.GeneralError);
+
+
+
+
+            }
+            catch (InAppBillingPurchaseException purchaseEx)
+            {
+
+                var _message = string.Empty;
+
+                switch (purchaseEx.PurchaseError)
+                {
+
+                    case PurchaseError.AppStoreUnavailable:
+                        _message = " Uygulama Mağzasına Bağlanamadı. ";
+                        break;
+                    case PurchaseError.BillingUnavailable:
+                        _message = " Ödeme Servisinde Sorun Oluştu. ";
+                        break;
+                    case PurchaseError.PaymentInvalid:
+                        _message = " Ödeme Geçersiz. ";
+                        break;
+                    case PurchaseError.PaymentNotAllowed:
+                        _message = " Ödeme Kabul Edilmedi. ";
+                        break;
+                    case PurchaseError.UserCancelled:
+                        _message = " İşlem Edildi. ";
+                        break;
+
+                    default:
+                        _message = "";
+                        break;
+                }
+
+
+                if (string.IsNullOrWhiteSpace(_message))
+                    return;
+
+
+                Console.WriteLine("Issue connecting: " + purchaseEx);
+                await App.Current.MainPage.DisplayAlert("Hata !", _message, "Tamam");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Issue connecting: " + ex);
+
+                await App.Current.MainPage.DisplayAlert("Hata !", $"Hata Oluştu. Kod: {ex.Message}", "Tamam");
+
+            }
+            finally
+            {
+                await CrossInAppBilling.Current.DisconnectAsync();
+                IsBusy = false;
+            }
+
+
+
+        }
+
+        public ICommand RestoreCommand => new Command(OnRestoreNew);
+
+        private void OnRestoreNew()
+        {
+            ab.RestoreToPro(false);
+            if (SettingsService2.AppStatus == "PRO")
+            {
+                return;
+            }
+
+        }
+
+        private async void OnRestore()
+        {
+
+            RestoreCode();
+
+
+        }
+
+
         // Fonksiyon- Kod Modülleri
+        private void AbonelikDurum()
+        {
+            if(SettingsService2.AppStatus ==  "DEMO")
+            {
+                DemoDurum = true;
+                ProDurum = false;
+            }
+            else
+            {
+                DemoDurum = false;
+                ProDurum = true;
+               
+            }
+
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                IsAndroid = true;
+                IsIos = false;
+
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                IsAndroid = false;
+                IsIos = true;
+
+
+            }
+
+
+            }
+
         private async void SayfaDurum()
         {
 
@@ -157,7 +361,6 @@ namespace LawCheckTazminat.ViewModels.UyelikB
 
 
         }
-
 
         private async void RestoreCode()
         {
@@ -195,24 +398,34 @@ namespace LawCheckTazminat.ViewModels.UyelikB
 
                 if (purchases?.Any(p => p.ProductId == productId) ?? false)
                 {
+                    var purchase = purchases.FirstOrDefault(p => p.ProductId == productId);
+
+
+                    if(purchase.AutoRenewing == false)
+                    {
+                        await App.Current.MainPage.DisplayAlert("İptal", "Aboneliğiniz İptal Edilmiş" , "Tamam");
+                        return;
+                    }
+
 
                     //--------------------------------
 
                     SettingsService.IsPro = true;
                     IsPro = true;
+
                     SettingsService.IsOutofDate = false;
 
-                    var purchase = purchases.FirstOrDefault(p => p.ProductId == productId);
 
+                    
                     SettingsService.TransactionDate = purchase.TransactionDateUtc;
 
                     SettingsService.ProReceipt = purchase?.PurchaseToken ?? string.Empty;
-
+                    SettingsService.TransactionDate = DateTime.UtcNow;
 
 
                     App.AppStatus = "PRO";
                     await App.Current.MainPage.DisplayAlert("a1",
- purchase.State.ToString() + " - " + purchase.TransactionDateUtc.ToString(), "Tamam");
+                        purchase.State.ToString() + " - " + purchase.TransactionDateUtc.ToString(), "Tamam");
                     var ack = purchase?.IsAcknowledged ?? true;
                     if (!ack)
                     {
@@ -269,6 +482,8 @@ namespace LawCheckTazminat.ViewModels.UyelikB
             await App.Current.MainPage.DisplayAlert(title, message, "Tamam");
             return false;
         }
+
+
 
     }
 }

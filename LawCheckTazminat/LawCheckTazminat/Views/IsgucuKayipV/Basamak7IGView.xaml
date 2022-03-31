@@ -2,43 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:behaviors="clr-namespace:LawCheckTazminat.Behaviors"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak7IGView">
-        <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Margin="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
+   
+
+    <ContentPage.Content>
+   <ScrollView>
+<StackLayout>
+
+    <StackLayout Spacing="0" Padding="0,40,0,5"
+                Orientation="Horizontal" BackgroundColor="Red">
+          <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+
+            <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center" Grid.Column="0" 
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+            </ImageButton>
 
                 <Label  
                     Text="  Masraflar (6/7)"
-                    TextColor="{StaticResource Gray-900}"
+                    TextColor="White" Grid.Column="1"
                     FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
+                    HorizontalOptions="Start">
                 </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
+
+            </Grid>
             </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
-    <ContentPage.Content>
-                <ScrollView>
-            <StackLayout  Spacing="0" Padding="16,24">
 
 
-                <Button Text="İptal" HeightRequest="50" FontSize="Large"
-                        BackgroundColor="Transparent"
-                           TextColor="Red"    Padding="10,0,0,0" Command="{Binding IptalCommand}" 
-                        HorizontalOptions="End"></Button>
-                        <Button Text="Yeni Masraf " BackgroundColor="Transparent"
-                                HeightRequest="50" FontSize="Large"
+        <StackLayout  Spacing="0" Padding="16,24">
+              <buttons:SfButton
+                        Command="{Binding YeniMasrafCommand}"
+                        HorizontalOptions="Center"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Yeni Masraf"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="220"/>
+
+
+                        <!--<Button Text="Yeni Masraf " BackgroundColor="Transparent"
+                        HeightRequest="50" FontSize="Large"
                         Command="{Binding YeniMasrafCommand}" 
-                        TranslationY="-45"    HorizontalOptions="Start">
+                        HorizontalOptions="Start">
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 
                         </OnPlatform>
                     </Button.TextColor>
 
-                </Button>
+                </Button>-->
           
 
               
@@ -48,7 +72,7 @@
                              TranslationY="105"  Grid.Column="0"     HorizontalOptions="Start"></Button>-->
 
 
-                <StackLayout Padding=" 0,0,0,0" TranslationY="-25">
+                <StackLayout Padding=" 0,0,0,0" >
 
                         <ListView x:Name="lstYakinlar"
                     ItemsSource="{Binding  MasrafListe}"
@@ -76,17 +100,23 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
+                                         <RowDefinition Height="5"></RowDefinition>
+
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <StackLayout Orientation="Horizontal" Grid.Row="0" >
+                                    <Grid BackgroundColor="{StaticResource TwitterBlue}"
+                               Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
                                         <Label Text="Masraf  : " FontSize="Medium"></Label>
                                         <Label Text="  "></Label>
                                         <Label Text="{Binding masraftur2}" FontSize="Large"></Label>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="1" >
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" >
                                         <Label Text="Miktar  : " FontSize="Medium"></Label>
                                         <Label Text="  "></Label>
                                         <Label Text="{Binding miktar}" FontSize="Medium"></Label>
@@ -105,17 +135,19 @@
                 <!--<Button Text="İlerle" Command="IlerleCommand"></Button>-->
 
                 
-                   <buttons:SfButton TranslationY="-30"
+                   <buttons:SfButton 
                         Command="{Binding IlerleCommand}"
                         HorizontalOptions="Center"
                        Margin="0,24,0,0"
                         Style="{StaticResource SfButtonStyle}"
                         Text="İLERLE"
                                      HeightRequest="55"
-                        WidthRequest="200" />
+                        WidthRequest="220" />
 
             </StackLayout>
-        </ScrollView>
+
+      </StackLayout>
+   </ScrollView>
 
 
 

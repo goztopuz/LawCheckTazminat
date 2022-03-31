@@ -182,6 +182,18 @@ namespace LawCheckTazminat.ViewModels.KidemIhbarB
             }
         }
 
+        private bool _islemde = false;
+        public bool Islemde
+        {
+            get => _islemde;
+            set
+            {
+                _islemde = value;
+                OnPropertyChanged();
+            }
+
+        }
+
         bool _isBusy = false;
         public bool IsBusy
         {
@@ -195,6 +207,7 @@ namespace LawCheckTazminat.ViewModels.KidemIhbarB
 
         private async void RaporAl()
         {
+            //Islemde = true;
 
             Assembly assembly = typeof(App).GetTypeInfo().Assembly;
 

@@ -5,37 +5,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.Basamak2DYView">
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0"  Margin="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Çalışma -  Askerlik  (2/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
         <ScrollView>
+            <StackLayout>
+            
+            
+                   <StackLayout Spacing="0"  Padding="0,35,0,5"
+                        Grid.Column="0"
+                      Orientation="Horizontal"   BackgroundColor="Red">
+                <Grid >
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>       
+          <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start"></ImageButton>
+                <Label   Grid.Column="1"
+                    Text="Çalışma -  Askerlik  (2/7)"
+                    TextColor = "White"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+                </Grid>
+            </StackLayout>
+
             <StackLayout Spacing="0" Padding="16,24">
                
 
 
-                <Button Text="İptal" HeightRequest="40" FontSize="Large" 
+                <!--<Button Text="İptal" HeightRequest="40" FontSize="Large" 
                         BackgroundColor="Transparent" Padding="0,-4,0,0"
                         Command="{Binding IptalCommand}" 
-                        TextColor="Red" HorizontalOptions="End"></Button>
+                        TextColor="Red" HorizontalOptions="End"></Button>-->
 
                 <!-- Tahmin Edilen Emeklilik Yaşı -->
                 <Label
-                        Margin="0,0,0,4"
+                        Margin="0,0,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Tahmini Emeklilik Yaşı"
@@ -57,7 +66,7 @@
 
                 <!-- Çalışma Durumu -->
                 <Label
-                        Margin="0,10,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Çalışma Durumu"
@@ -72,7 +81,7 @@
 
                     <Picker x:Name="drpCalisma" IsVisible="True"  
                             FontSize="Large" TextColor="Black" BackgroundColor="WhiteSmoke"
-                        SelectedItem="{Binding Calisma}"   Margin="5,0,0,0" HeightRequest="50"
+                        SelectedItem="{Binding Calisma}"   Margin="0,0,0,0" HeightRequest="50"
                         SelectedIndexChanged="drpCalisma_SelectedIndexChanged">
                         <Picker.Items>
                             <x:String>Çalışıyor</x:String>
@@ -93,7 +102,7 @@
 
                 <!-- Meslek Durumu -->
                 <Label
-                        Margin="0,10,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="26" 
                         FontSize="Medium"
                         Text="Meslek(Opsiyonel)"
@@ -114,7 +123,7 @@
                 
                 <!-- Askerlik -->
                 <Label
-                        Margin="0,0,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Askerlik"
@@ -237,13 +246,13 @@
                
                 </StackLayout>
                
-                <Button Margin="0,20,0,0"
+                <!--<Button Margin="0,20,0,0"
                        FontSize="Large"  IsVisible="false"
                         Command="{Binding IlerleCommand}" Text=" İlerle">
 
-                </Button>
+                </Button>-->
 
-     <Label x:Name="lblHata" Padding="5,15,0,5" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+     <Label x:Name="lblHata" Padding="5,10,0,5" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
 
 
                      <buttons:SfButton
@@ -256,6 +265,7 @@
                         WidthRequest="200" />
 
             </StackLayout>
+             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -6,33 +6,41 @@
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak3IGView">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
 
-                <Label  
-                    Text="  Dosya İşlemleri (3/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-    
     <ContentPage.Content>
         <ScrollView>
+            <StackLayout>
+
+            <StackLayout Spacing="0" Padding="0,40,0,5"
+                   Orientation="Horizontal"      BackgroundColor="Red">
+
+                  <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+                    <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                            VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                    </ImageButton>
+                    <Label  
+                    Text="  Dosya İşlemleri (3/7)"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                    </Label>
+            </Grid>
+            </StackLayout>
+
+
+
             <StackLayout Spacing="0" Padding="16,24">
 
-                <Button Text="İptal" HeightRequest="50" BackgroundColor="Transparent"
-                        FontSize="Large"  Command="{Binding IptalCommand}"  TranslationY="-10"
-                    TextColor="Red"    HorizontalOptions="End"></Button>
-
-
+ 
 
                 <!--   Trafik Kazasımı       -->
                 <Label
@@ -62,6 +70,7 @@
                 </StackLayout>
 
 
+                             <Label HeightRequest="6"></Label>
 
 
                 <!--   Rapor Tarihi      -->
@@ -164,6 +173,7 @@
 
 
                 </StackLayout>-->
+                             <Label HeightRequest="6"></Label>
 
                 <!--   Karşı Taraf Kusur Oranı       -->
                 <Label
@@ -187,6 +197,7 @@
                 </border:SfBorder>
 
 
+                             <Label HeightRequest="6"></Label>
 
                 <StackLayout x:Name="stckYTablo" IsVisible="{Binding Trafik,Converter={StaticResource TrafikToTersVisibleConverter}}">
 
@@ -206,7 +217,7 @@
                        HeightRequest="40" Placeholder="Trafik Kazasi" 
                          FontSize="Large" TextColor="Black"
                        IsReadOnly="True"
-                 Text="{Binding IsGucu.yasamTablosu }, Mode=TwoWay}">
+                 Text="{Binding IsGucu.yasamTablosu , Mode=TwoWay}">
 
                     </controls:BorderlessEntry>
 
@@ -247,6 +258,9 @@
 
 
             </StackLayout>
+
+
+        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

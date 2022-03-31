@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.Ayarlar.AsgariUcretYeni">
-    <ContentPage.ControlTemplate>
+    <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0" Padding="0,50,0,0"
                          BackgroundColor="{StaticResource Gray-White}">
@@ -21,21 +21,51 @@
                 <ContentPresenter />
             </StackLayout>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
 
     <ContentPage.Content>
                   <ScrollView >
+        <StackLayout>
+
+             <StackLayout Spacing="0" Padding="0,40,0,5"
+                      Orientation="Horizontal"   BackgroundColor="Red">
+    <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+
+                   <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text="Asgari Ücret Ekle-Düzenle"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+
+</Grid>
+            </StackLayout>
+
+
             <StackLayout  Spacing="0" Padding="0,20">
                 
-                <Button Text="İptal"  Padding="0,0,10,0"  TextColor="Red"
+                <!--<Button Text="İptal"  Padding="0,0,10,0"  TextColor="Red"
                                  BackgroundColor="Transparent"
                                 FontSize="Large" HorizontalOptions="End"
-                                Command="{Binding IptalCommand}"></Button>
+                                Command="{Binding IptalCommand}"></Button>-->
 
-                <Button Text="Sil" Grid.Column="0" Padding="5,0,0,0"
+                <!--<Button Text="Sil" Grid.Column="0" Padding="5,0,0,0"
                             IsVisible="{Binding Gorunum}"    BackgroundColor="Transparent"
                            TextColor="Red"     FontSize="Large"  HorizontalOptions="Start"
-                           TranslationY="-50"   Command="{Binding SilCommand}"/>
+                           TranslationY="-50"   Command="{Binding SilCommand}"/>-->
 
 
 
@@ -138,6 +168,10 @@
                         WidthRequest="200" />
 
             </StackLayout>
+
+
+
+             </StackLayout>
 
             </ScrollView>
 

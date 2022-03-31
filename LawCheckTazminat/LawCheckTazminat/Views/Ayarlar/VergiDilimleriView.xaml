@@ -2,39 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              x:Class="LawCheckTazminat.Views.Ayarlar.VergiDilimleriView">
-<ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Vergi Dilimleri"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-
-
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-  </ContentPage.ControlTemplate>
 
 
 
     <ContentPage.Content>
           <ScrollView>
+    <StackLayout>
+                 <StackLayout Spacing="0" Padding="0,40,0,0"
+                     Orientation="Horizontal"    BackgroundColor="Red">
+
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+
+                     <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+
+                     <Label  
+                    Text="Vergi Dilimleri" Grid.Column="1"
+                    TextColor="White"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+        </Grid>
+            </StackLayout>
             <StackLayout  Spacing="0" Padding="16,15">
 
-                <Button Text="İptal"  BackgroundColor="Transparent"
+                <!--<Button Text="İptal"  BackgroundColor="Transparent"
                         HeightRequest="48" FontSize="Large"  Command="{Binding IptalCommand}" 
-               TextColor="Red"   TranslationY="-14"       HorizontalOptions="End"></Button>
+               TextColor="Red"   TranslationY="-14"       HorizontalOptions="End"></Button>-->
 
                 <Button BackgroundColor="Transparent" Text="Yeni Kayıt" Grid.Column="0" Padding="0,0,0,0"
                        FontSize="Large"  HorizontalOptions="Start" IsVisible="False" HeightRequest="48"
-                       TranslationY="-60"   Command="{Binding YeniVergiBilgiCommand}">
+                          Command="{Binding YeniVergiBilgiCommand}">
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 
@@ -43,7 +52,7 @@
                 </Button>
 
                     <Label
-                        Margin="0,8,0,4" TranslationY="-40"
+                        Margin="0,8,0,4" 
                         HeightRequest="26" 
                         FontSize="Medium"
                         Text="Yıl"
@@ -52,21 +61,34 @@
                 
                     <combobox:SfComboBox HeightRequest="50" x:Name="comboBox"
                              TextSize="Large" BackgroundColor="WhiteSmoke" TextColor="Black"
-                            ComboBoxSource="{Binding YillarListe}"   TranslationY="-40"
+                            ComboBoxSource="{Binding YillarListe}"  
                                 DataSource="{Binding YillarListe}" SelectedItem="{Binding Yil2}"
                              DisplayMemberPath="{Binding Yill, Mode=TwoWay}"/>
+                <Label Text=" " HeightRequest= "8"></Label>
 
-
-                    <Button Text="Seç"  BackgroundColor="Transparent"
+                         <buttons:SfButton
+                        Command="{Binding SecCommand}" 
+                        HorizontalOptions="CenterAndExpand"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Seç"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="200"/>
+                    <!--<Button Text="Seç"  BackgroundColor="Transparent"
                             FontSize="Large" Command="{Binding SecCommand}"
-                       TranslationY="-10" Padding="5,0,20,5">
+                        Padding="5,0,20,5">
                     <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
 
                         </OnPlatform>
                     </Button.TextColor>
 
-                </Button>
+                </Button>-->
 
 
                     
@@ -83,7 +105,7 @@
                         Text=" %15 Dilim Bitiş Miktarı"
                         TextColor="{StaticResource Gray-800}" />
 
-                    <syncfusion1:SfNumericTextBox x:Name="txt15Miktar"  HeightRequest="45"
+                    <syncfusion1:SfNumericTextBox x:Name="txt15Miktar"  HeightRequest="55"
                          FontSize="Large" IsEnabled="False"   Margin="10,3,3,10"
                           BackgroundColor="Transparent"
                          Value="{Binding Mik1}" FormatString="c">
@@ -96,7 +118,7 @@
                         Text=" %20 Dilim Bitiş Miktarı"
                         TextColor="{StaticResource Gray-800}" />
 
-                    <syncfusion1:SfNumericTextBox x:Name="txt20Miktar"  HeightRequest="45"
+                    <syncfusion1:SfNumericTextBox x:Name="txt20Miktar"  HeightRequest="55"
                            FontSize="Large"  IsEnabled="False"   Margin="10,3,3,10" BackgroundColor="White"
                          Value="{Binding Mik2 }
                         " FormatString="c">
@@ -109,7 +131,7 @@
                         Text=" %27 Dilim Bitiş Miktarı"
                         TextColor="{StaticResource Gray-800}" />
 
-                    <syncfusion1:SfNumericTextBox x:Name="txt27Miktar"  HeightRequest="45"
+                    <syncfusion1:SfNumericTextBox x:Name="txt27Miktar"  HeightRequest="55"
                          FontSize="Large"  IsEnabled="False"   Margin="10,3,3,10" BackgroundColor="White"
                          Value="{Binding Mik3
                         }" FormatString="c">
@@ -118,7 +140,11 @@
 
               </StackLayout>
             </StackLayout>
-         
+
+
+
+    </StackLayout>
+
            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

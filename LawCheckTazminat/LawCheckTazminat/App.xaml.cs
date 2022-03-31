@@ -7,7 +7,9 @@ using LawCheckTazminat.Views.DestektenYoksunlukV;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+//using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
+//using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace LawCheckTazminat
 {
@@ -33,6 +35,8 @@ namespace LawCheckTazminat
 
         public App(string dbPath)
         {
+         //   Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+
             InitializeComponent();
 
      VersionTracking.Track();

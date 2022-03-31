@@ -1,34 +1,42 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" x:Class="LawCheckTazminat.Views.GeceCalisma.MaasOranlaGCVİew">
-      <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0" BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Net Maaş - Asgari Ücrete Oranla"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
 
     <ContentPage.Content>
 
-
         <ScrollView>
+
+               <StackLayout>
+         <StackLayout Spacing="0" Padding="0,40,0,0"
+                Orientation="Horizontal"      BackgroundColor="Red">
+
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                             <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text="Net Maaş - Asgari Ücrete Oranla"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Medium"
+                    HorizontalOptions="Start">
+                </Label>
+           </Grid>     
+            </StackLayout>
+
             <StackLayout  Spacing="0" Padding="16,24">
 
-                <Button Text="İptal" BackgroundColor="Transparent"
+                <!--<Button Text="İptal" BackgroundColor="Transparent"
                         HeightRequest="40" FontSize="Large"
                         Padding="0,5,15,0" TextColor="Red"
                         Command="{Binding IptalCommand}" 
-                        HorizontalOptions="End"></Button>
+                        HorizontalOptions="End"></Button>-->
 
 
                     <!-- Maaş -->
@@ -104,7 +112,22 @@
 
                     </Picker>
 
-                <Button  BackgroundColor="Transparent"
+                <buttons:SfButton
+                        Command="{Binding OranlaCommand}"
+                        HorizontalOptions="Center"
+                        CornerRadius="20"
+                        Margin="0,0,0,0"
+                        BackgroundColor="White"
+                        Text="Oranla"
+                        TextColor="{StaticResource TwitterBlue}"
+                        BorderColor ="{StaticResource TwitterBlue}"
+                        BorderWidth="1"
+                        FontSize="20"
+                        HeightRequest="45"
+                        WidthRequest="125"/>
+
+
+                <!--<Button  BackgroundColor="Transparent"
                     Text="Oranla"  FontSize="Large" Padding="0,30,0,30"
                         Command="{Binding OranlaCommand}">
                     <Button.TextColor>
@@ -112,7 +135,7 @@
 
                         </OnPlatform>
                     </Button.TextColor>
-                </Button>
+                </Button>-->
 
 
 
@@ -184,7 +207,10 @@
 
 
                 </StackLayout>
-            </ScrollView>
+
+
+         </StackLayout>
+        </ScrollView>
 
 
     </ContentPage.Content>

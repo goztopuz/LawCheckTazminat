@@ -6,33 +6,36 @@
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.Basamak2IGView">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0"
-                         >
-
-                <Label  
-                    Text="Çalışma -  Askerlik  (2/7)"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <ScrollView>
+             <StackLayout>
+                 <StackLayout Spacing="0" Padding="0,35,0,5"
+                              Orientation="Horizontal" BackgroundColor="Red">
+                       <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                          <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                             VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+
+                          </ImageButton>
+                <Label  
+                    Text="Çalışma - Askerlik  (2/7)"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+              </Grid>
+            </StackLayout>
             <StackLayout Spacing="0" Padding="16,24">
 
 
-                <Button Text="İptal" HeightRequest="40" FontSize="Large"
-                              Command="{Binding IptalCommand}" Padding="0,-6,0,0"
-                                BackgroundColor="Transparent"
-                              TextColor="Red"     HorizontalOptions="End"></Button>
-                
+             
                 <!-- Tahmin Edilen Emeklilik Yaşı -->
                 <Label
                         Margin="0,0,0,4"
@@ -53,11 +56,13 @@
 
                     </controls:BorderlessEntry>
                 </border:SfBorder>
-               
+
+             <Label HeightRequest="6"></Label>
+
                 
                 <!-- Çalışma Durumu -->
                 <Label
-                        Margin="0,0,0,4"
+                        Margin="0,0,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Çalışma Durumu"
@@ -84,10 +89,11 @@
                     </Picker>
 
                 </StackLayout>
+                             <Label HeightRequest="6"></Label>
 
                 <!-- Meslek Durumu -->
                 <Label
-                        Margin="0,10,0,4"
+                       
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Meslek(Opsiyonel)"
@@ -104,10 +110,11 @@
                     </controls:BorderlessEntry>
                 </border:SfBorder>
 
+                             <Label HeightRequest="6"></Label>
 
                 <!-- Askerlik -->
                 <Label
-                        Margin="0,0,0,4"
+                       
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Askerlik"
@@ -122,11 +129,11 @@
                         <x:String>YapMAdı</x:String>
                     </Picker.Items>
                 </Picker>
+                             <Label HeightRequest="6"></Label>
 
                 <StackLayout x:Name="stckAskerlik" IsVisible="False">
                     <!-- Süresi -->
                     <Label
-                        Margin="0,0,0,4"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Askerlik"
@@ -156,7 +163,6 @@
 
                     <!-- Askere Gidiş Tarihi -->
                     <Label
-                        Margin="0,0,0,4"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Askere Gidiş Tarihi(Ay-Yıl)"
@@ -223,6 +229,9 @@
                         WidthRequest="200" />
 
             </StackLayout>
+
+            </StackLayout>
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

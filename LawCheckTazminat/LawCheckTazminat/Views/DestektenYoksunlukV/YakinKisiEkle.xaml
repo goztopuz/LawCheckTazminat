@@ -7,38 +7,47 @@
              mc:Ignorable="d"
              x:Class="LawCheckTazminat.Views.DestektenYoksunlukV.YakinKisiEkle">
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,40,0,0"
-                         BackgroundColor="{StaticResource Gray-White}">
-
-                <Label  
-                    Text="Yeni Yakın Ekle"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,20" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
+                <StackLayout>
+                    <StackLayout Spacing="0" Padding="0,36,0,5"
+                     Orientation="Horizontal"    BackgroundColor="Red">
+          <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+            <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                            VerticalOptions="Center"  Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+
+            </ImageButton>
+                <Label  
+                    Text="Yeni Yakın Ekle"
+                    TextColor="White"
+                    FontSize="Large"
+                    Grid.Column="1"
+                    HorizontalOptions="Start">
+                </Label>
+
+              </Grid>
+            </StackLayout>
+
                 <StackLayout  Spacing="0" Padding="16,24">
-                    <Button Text="İptal" HeightRequest="48" FontSize="Large"
-                           BackgroundColor="Transparent" Command="{Binding IptalCommand}" 
-                        TextColor="Red" HorizontalOptions="End"></Button>
+            
 
 
                     <!-- Yakınlık Derecesi-->
                     <Label
-                        Margin="0,0,0,4"
+                        Margin="0,0,0,1"
                         HeightRequest="30" 
-                        FontSize="16"
+                        FontSize="Medium"
                         Text="Yakınlık Durumu"
                         TextColor="{StaticResource Gray-800}" />
                     <!--<border:SfBorder
@@ -69,7 +78,7 @@
 
                     <!--      Ad       -->
                     <Label
-                        Margin="0,10,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Ad"
@@ -89,7 +98,7 @@
 
                     <!--      Soyad       -->
                     <Label
-                        Margin="0,0,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Soyad"
@@ -109,7 +118,7 @@
                     
                     <!-- Cinsiyet -->
                     <Label
-                        Margin="0,10,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30"
                         FontSize="Medium"
                         Text="Cinsiyet"
@@ -141,7 +150,7 @@
 
                     <!--   Doğum Tarihi      -->
                     <Label
-                        Margin="0,10,0,4"
+                        Margin="0,10,0,0"
                         HeightRequest="30" 
                         FontSize="Medium"
                         Text="Doğum Tarihi"
@@ -383,7 +392,7 @@
 
                     </StackLayout>
                   
-                    <Label x:Name="lblHata"  Padding="0,15,0,10" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
+                    <Label x:Name="lblHata"  Padding="0,10,0,0" Text="{Binding HataMesaji}" TextColor="DarkRed"></Label>
 
                     <Button Command="{Binding KaydetCommand}"
                        IsVisible="false"     Padding="0,15,0,0" FontSize="Large" Text=" KAYDET"/>
@@ -395,9 +404,12 @@
                         Style="{StaticResource SfButtonStyle}"
                         Text="KAYDET"
                             HeightRequest="55"
-                        WidthRequest="200" />
+                        WidthRequest="220" />
 
                 </StackLayout>
+
+</StackLayout>
+
             </ScrollView>
 
          

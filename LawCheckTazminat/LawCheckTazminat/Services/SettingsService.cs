@@ -15,6 +15,14 @@ namespace LawCheckTazminat.Services
             set => Preferences.Set(nameof(IsPro), value);
         }
 
+        public static string SubscriptionStatus
+        {
+            get => Preferences.Get(nameof(SubscriptionStatus), "DEMO");
+            set => Preferences.Set(nameof(SubscriptionStatus), value);
+
+
+        }
+        
         public static bool IsOutofDate
         {
             get => Preferences.Get(nameof(IsOutofDate), false);
@@ -41,6 +49,12 @@ namespace LawCheckTazminat.Services
         }
 
         public static DateTime TransactionDate
+        {
+            get => Preferences.Get(nameof(TransactionDate), DateTime.MinValue);
+            set => Preferences.Set(nameof(TransactionDate), value);
+        }
+
+        public static  DateTime LastCheckDateTime
         {
             get => Preferences.Get(nameof(TransactionDate), DateTime.MinValue);
             set => Preferences.Set(nameof(TransactionDate), value);

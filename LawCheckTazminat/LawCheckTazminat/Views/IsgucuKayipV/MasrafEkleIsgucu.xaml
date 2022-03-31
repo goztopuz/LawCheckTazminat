@@ -3,29 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controls="clr-namespace:LawCheckTazminat.Controls"
              x:Class="LawCheckTazminat.Views.IsgucuKayipV.MasrafEkleIsgucu">
 
-        <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0" Padding="0,50,0,0" BackgroundColor="{StaticResource Gray-White}">
 
-                <Label  
-                    Text=" Masraf Ekle-Düzenle"
-                    TextColor="{StaticResource Gray-900}"
-                    FontSize="Large"
-                    Margin="0,0" 
-                    HorizontalOptions="CenterAndExpand">
-                </Label>
-                <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray-200}"/>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-                <ScrollView>
-            <StackLayout  Spacing="0" Padding="16,24">
-                <Button Text="İptal" BackgroundColor="Transparent"
-                        FontSize="Large"  Command="{Binding IptalCommand}" 
-                  TextColor="Red"      HorizontalOptions="End"></Button>
+<ScrollView>
+ <StackLayout>
+     <StackLayout Spacing="0" Padding="0,40,0,5"
+              Orientation="Horizontal"    BackgroundColor="Red">
+           <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+           <ImageButton  HeightRequest="30" Source="prev.png"
+                        BackgroundColor="Transparent" WidthRequest="30"
+                        VerticalOptions="Center"  Grid.Column="0"
+                        Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label  
+                    Text="Masraf Ekle-Düzenle"
+                    TextColor="White" Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="Start">
+                </Label>
+
+   </Grid>
+            </StackLayout>
+
+
+    <StackLayout  Spacing="0" Padding="16,24">
+        
 
 
                 <!-- Masraf Türü -->
@@ -113,7 +122,8 @@
 
 
             </StackLayout>
-        </ScrollView>
+ </StackLayout>
+</ScrollView>
 
 
 

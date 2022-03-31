@@ -39,31 +39,47 @@
                 
             </ListView>-->
             
+            <StackLayout BackgroundColor="Red" Orientation="Horizontal"
+                         HeightRequest="60" Padding="0,40,0,0">
+                    <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
 
-            <StackLayout  Padding="10,30,0,0">
-             
-                <!--<Button Text="Kişi Seçmeden Devam Et" Command="{Binding }" 
-                    FontSize="Large"    IsVisible="{Binding ButtonVisible}">
-                </Button>-->
-                <StackLayout Orientation="Horizontal">
-                    
+                </Grid.ColumnDefinitions>
+                 <ImageButton  HeightRequest="30" Source="prev.png"
+                           BackgroundColor="Transparent" WidthRequest="30"
+                               VerticalOptions="Center"   Grid.Column="0"
+                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Start"></ImageButton>
 
-                      <Button Text="Yeni Kişi " HeightRequest="60" FontSize="Large"
-                                                         BackgroundColor="Transparent" 
-                              Padding="0,0,0,0" Command="{Binding YeniKisiCommand}" 
-                        HorizontalOptions="StartAndExpand">
-                    <Button.TextColor>
+                <Label   TextColor="White" Text="{Binding Baslik}"
+                       HorizontalOptions="Start" Grid.Column="1"
+                         FontSize="Large"> </Label>
+                </Grid>
+             </StackLayout>
+                <!--<StackLayout Orientation="Horizontal">
+                          <Button Text=" &lt;" HeightRequest="60" FontSize="Medium" TextColor="Red"
+                           BackgroundColor="Transparent" TranslationX="-10"
+                             Padding="0,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="StartAndExpand">
+                      <Button.TextColor>
                         <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
                            
                         </OnPlatform>
                     </Button.TextColor>
 
-                </Button>
-                    <Button Text="İptal" HeightRequest="60" FontSize="Large" TextColor="Red"
-                           BackgroundColor="Transparent"
-                             Padding="0,0,15,0"   Command="{Binding IptalCommand}" 
-                         HorizontalOptions="EndAndExpand"></Button>
-                </StackLayout>
+
+                          </Button>
+                
+              
+                </StackLayout>-->
+            <StackLayout  Padding="10,0,0,0">
+             
+                <!--<Button Text="Kişi Seçmeden Devam Et" Command="{Binding }" 
+                    FontSize="Large"    IsVisible="{Binding ButtonVisible}">
+                </Button>-->
+            
                 
 
 
@@ -88,13 +104,13 @@
                     </Grid>
                 </StackLayout>-->
                 <StackLayout HeightRequest="60">
-                <buttons:SfButton
+                <buttons:SfButton IsVisible="{Binding ButtonVisible}"
                         Command="{Binding IlerleCommand}"
                         HorizontalOptions="Center"
                        Margin="0,0,0,0"
                         Style="{StaticResource SfButtonStyle}"
                         Text="Kişi Seçmeden İlele"
-                        HeightRequest="45"
+                        HeightRequest="55"
                         WidthRequest="250" />
                 </StackLayout>
                 <Grid RowSpacing="0" ColumnSpacing="0" >
@@ -108,10 +124,20 @@
                     <StackLayout x:Name="ContactsTitleView"  Padding="8,8" Grid.Row="0" HeightRequest="64"
                          BackgroundColor="{StaticResource Gray-White}" Spacing="0"
                          HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Button Text=" + " HeightRequest="60" FontSize="30"
+                                                         BackgroundColor="Transparent"  TranslationX="-30"
+                              Padding="0,0,0,0" Command="{Binding YeniKisiCommand}" 
+                        HorizontalOptions="StartAndExpand">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="CornflowerBlue">
+                           
+                        </OnPlatform>
+                    </Button.TextColor>
 
+                </Button>
                         <StackLayout x:Name="ContactsTitle" HorizontalOptions="FillAndExpand"  IsVisible="True"
                              Orientation="Horizontal"  VerticalOptions="FillAndExpand"  Spacing="0">
-
+                      
                             <!--  Back button command  -->
                             <!--<buttons:SfButton  x:Name="backButton"  Command="{Binding BackButtonCommand}"
                                        CommandParameter="{x:Reference backButton}" CornerRadius="4"
