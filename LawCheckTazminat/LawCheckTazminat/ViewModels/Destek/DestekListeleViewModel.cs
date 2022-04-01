@@ -39,7 +39,7 @@ namespace LawCheckTazminat.ViewModels.Destek
                     ii.Id2 = "LawCheck1.0";
                     liste1.Add(ii);
                 }
-                Yanitlar = await islem.CevaplariAl(liste1);
+                Yanitlar = await islem.ApidanCevaplariCek(liste1);
             }
             else
             {

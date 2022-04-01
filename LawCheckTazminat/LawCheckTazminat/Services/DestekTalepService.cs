@@ -37,14 +37,17 @@ namespace LawCheckTazminat.Services
             }
         }
          
-     async  public Task<ObservableCollection<DestekYanit>> CevaplariAl(List<IdBilgi> liste)
+     //async  public Task<ObservableCollection<DestekYanit>> CevaplariAl(List<IdBilgi> liste)
+     //   {
+
+     //       var sonuc =await ApidanCevaplariCek(liste);
+     //       await App.Current.MainPage.DisplayAlert("Hata3", sonuc.ToString(), "Tamam");
+
+     //       return sonuc.ToObservableCollection();
+     //   }
+        public async Task<ObservableCollection<DestekYanit>> ApidanCevaplariCek(List<IdBilgi>liste)
         {
-            var sonuc =await ApidanCevaplariCek(liste);
-            return sonuc.ToObservableCollection();
-        }
-        private async Task<List<DestekYanit>> ApidanCevaplariCek(List<IdBilgi>liste)
-        {
-            List<DestekYanit> sonuc = new List<DestekYanit>();
+            ObservableCollection<DestekYanit> sonuc = new ObservableCollection<DestekYanit>();
             HttpClient client = new HttpClient();
             string url = Constants.SunucuSabitleri.SunucuAdresi;
             client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -57,11 +60,23 @@ namespace LawCheckTazminat.Services
 
             try
             {
-                sonuc = JsonConvert.DeserializeObject<List<DestekYanit>>(mobileResult);
+            var     sonucT = JsonConvert.DeserializeObject<List<DestekYanit>>(mobileResult);
+                //   await App.Current.MainPage.DisplayAlert("Hata1", sonuc.ToString(), "Tamam");
+
+                int sayac = 0;
+                foreach(var t in sonucT)
+                {
+                    sayac = sayac + 1;
+                    sonuc.Add(t);
+//                   await App.Current.MainPage.DisplayAlert(sayac.ToString(), t.soru, "Tamam");
+
+                }
 
             }
             catch (Exception ex)
             {
+
+               // await App.Current.MainPage.DisplayAlert("Hata2", ex.ToString(), "Tamam");
 
             }
 
