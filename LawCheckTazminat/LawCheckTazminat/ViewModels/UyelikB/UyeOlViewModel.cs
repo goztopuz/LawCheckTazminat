@@ -15,7 +15,7 @@ namespace LawCheckTazminat.ViewModels.UyelikB
 {
    public class UyeOlViewModel : ViewModelBase
     {
-        string productId = "tazminapp_subscription6";
+        string productId = "tazminapp_subscription3";
 
         public UyeOlViewModel()
         {

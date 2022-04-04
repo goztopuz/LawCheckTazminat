@@ -5,7 +5,7 @@ namespace LawCheckTazminat.Services
 {
     public class SettingsService2
     {
-        public static string productId = "tazminapp_subscription6";
+        public static string productId = "tazminapp_subscription3";
 
 
         public static string AppStatus

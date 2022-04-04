@@ -25,7 +25,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
         //--------------------------------------------------------
 
 
-        string productId = "tazminapp_subscription6";
+        string productId = "tazminapp_subscription3";
 
         Helpers.AbonelikYontemi ab = new Helpers.AbonelikYontemi();
 
@@ -292,6 +292,10 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             if(SettingsService2.AppStatus == "DEMO")
             {
+             #if !DEBUG
+                
+
+       
 
                 string _message1 = "Bu Özelliği Kullanabilmek için Abone omalısınızl Aboneyseniz  Aboneliği Ücretsiz Geri Yükleyebilirsiniz.";
 
@@ -300,6 +304,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
                 await UyeSayfasınaGit();
                 return;
+             #endif
             }
 
 

@@ -66,7 +66,7 @@ namespace LawCheckTazminat.Services
             set => Preferences.Set(nameof(FirstInstallDate), value);
         }
 
-       public static string  productId = "tazminapp_subscription6";
+       public static string  productId = "tazminapp_subscription3";
 
 
     }

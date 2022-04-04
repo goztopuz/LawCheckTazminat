@@ -290,7 +290,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 {
                     if(t.yakinlik=="Çocuk")
                     {
-                        if(t.dogumTarihi> Yakin.dogumTarihi)
+                        if(t.dogumTarihi< Yakin.dogumTarihi)
                         {
                             durum = false;
                             this.HataMesaji = "Eşin Yaşı Çocuğun Yaşından Küçük";

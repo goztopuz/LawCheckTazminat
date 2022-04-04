@@ -735,26 +735,26 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
         private void AsgariOlarakAta()
         {
 
-            int hesabaKatilacakCocukSayisi = 0;
-            int esDurum = 1;
+            //int hesabaKatilacakCocukSayisi = 0;
+            //int esDurum = 1;
 
             Decimal hesaplanacakMaas = 0;
 
 
-            foreach (var t in this.AktifDestek.DestekYoksunlukYakinlar)
-            {
-                if (t.yakinlik == "Eş")
-                {
-                    if (t.esCalisiyorMu == "Hayır")
-                    {
-                        esDurum = 0;
-                    }
-                }
-                else if (t.yakinlik == "Çocuk")
-                {
-                    hesabaKatilacakCocukSayisi = hesabaKatilacakCocukSayisi + 1;
-                }
-            }
+            //foreach (var t in this.AktifDestek.DestekYoksunlukYakinlar)
+            //{
+            //    if (t.yakinlik == "Eş")
+            //    {
+            //        if (t.esCalisiyorMu == "Hayır")
+            //        {
+            //            esDurum = 0;
+            //        }
+            //    }
+            //    else if (t.yakinlik == "Çocuk")
+            //    {
+            //        hesabaKatilacakCocukSayisi = hesabaKatilacakCocukSayisi + 1;
+            //    }
+            //}
 
 
             foreach (var t in MaasListe3)
@@ -764,20 +764,20 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 var deger = asgariListe.Find(o => o.yil == yill);
                 if (deger != null)
                 {
-                    Decimal agii = 0;
+                    //Decimal agii = 0;
 
-                    Decimal oAykiAsgariUcret = 0;
-                    oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
+                    //Decimal oAykiAsgariUcret = 0;
+                    //oAykiAsgariUcret = Convert.ToDecimal(deger.brut);
 
-                    agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
+                    //agii = islem2.AsgariGecimHespla(oAykiAsgariUcret, esDurum, hesabaKatilacakCocukSayisi);
 
-                    Decimal agii2 = islem2.AsgariGecimHespla(oAykiAsgariUcret, 1, 0);
+                    //Decimal agii2 = islem2.AsgariGecimHespla(oAykiAsgariUcret, 1, 0);
 
-                    Decimal sonn = agii - agii2;
+                    //Decimal sonn = agii - agii2;
 
-                    t.netMaas = deger.net + sonn;
+                    t.netMaas = deger.net ;
                     t.brutMaas = deger.brut;
-                    t.ekBilgi4 = agii;
+                    t.ekBilgi4 = 0;
 
                     
 

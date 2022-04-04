@@ -116,7 +116,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 KisiListe.Add(t);
             }
 
-            Yukseklik = KisiListe.Count * 90;
+            Yukseklik = (KisiListe.Count * 92) + 20;
 
 
         }
@@ -208,6 +208,10 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
             foreach(var t in AktifDestek.DestekYoksunlukYakinlar)
             {
                 if(t.yakinlik== "Eş")
+                {
+                    bekarOlmaDurumu = false;
+                }
+                if(t.yakinlik == "Çocuk")
                 {
                     bekarOlmaDurumu = false;
                 }
