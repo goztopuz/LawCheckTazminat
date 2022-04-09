@@ -43,17 +43,18 @@
                          HeightRequest="60" Padding="0,40,0,0">
                     <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
 
                 </Grid.ColumnDefinitions>
                  <ImageButton  HeightRequest="30" Source="prev.png"
                            BackgroundColor="Transparent" WidthRequest="30"
-                               VerticalOptions="Center"   Grid.Column="0"
-                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
-                         HorizontalOptions="Start"></ImageButton>
+                               VerticalOptions="Start"   Grid.Column="0"
+                             Padding="0,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Center"></ImageButton>
 
                 <Label   TextColor="White" Text="{Binding Baslik}"
+                       VerticalOptions="Start"
                        HorizontalOptions="Start" Grid.Column="1"
                          FontSize="Large"> </Label>
                 </Grid>
@@ -125,7 +126,7 @@
                          BackgroundColor="{StaticResource Gray-White}" Spacing="0"
                          HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <Button Text=" + " HeightRequest="60" FontSize="30"
-                                                         BackgroundColor="Transparent"  TranslationX="-30"
+                                                         BackgroundColor="Transparent"   TranslationX="-10"
                               Padding="0,0,0,0" Command="{Binding YeniKisiCommand}" 
                         HorizontalOptions="StartAndExpand">
                     <Button.TextColor>
@@ -135,7 +136,7 @@
                     </Button.TextColor>
 
                 </Button>
-                        <StackLayout x:Name="ContactsTitle" HorizontalOptions="FillAndExpand"  IsVisible="True"
+                        <StackLayout x:Name="ContactsTitle" HorizontalOptions="StartAndExpand"  IsVisible="True"
                              Orientation="Horizontal"  VerticalOptions="FillAndExpand"  Spacing="0">
                       
                             <!--  Back button command  -->

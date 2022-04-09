@@ -127,7 +127,7 @@
                         HorizontalOptions="CenterAndExpand"
                         CornerRadius="20"
                         BackgroundColor="White"
-                        Text="Yıllık İzin Raporu"
+                        Text="Gece Çalışma Raporu"
                         TextColor="{StaticResource TwitterBlue}"
                         BorderColor ="{StaticResource TwitterBlue}"
                         BorderWidth="1"

@@ -16,15 +16,15 @@
 
               <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
 
                 </Grid.ColumnDefinitions>
                     <ImageButton  HeightRequest="30" Source="prev.png"
                            BackgroundColor="Transparent" WidthRequest="30"
                                VerticalOptions="Center" Grid.Column="0"
-                             Padding="5,0,0,0"   Command="{Binding IptalCommand}" 
-                         HorizontalOptions="Start">
+                             Padding="0,0,0,0"   Command="{Binding IptalCommand}" 
+                         HorizontalOptions="Center">
                      </ImageButton>
 
                 <Label  

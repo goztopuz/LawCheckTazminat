@@ -38,7 +38,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
-<ScrollView>
+
     <StackLayout>
     <StackLayout BackgroundColor="Red"
                 Spacing="0" Padding="0,30,0,15">
@@ -64,7 +64,7 @@
            
             </StackLayout>
 
-
+<ScrollView>
         <StackLayout Padding="10,1,10,50" BackgroundColor="GhostWhite">
       
 
@@ -738,10 +738,9 @@
 
         </StackLayout>
 
-        
+        </ScrollView>
 
     </StackLayout>
-</ScrollView>
     </ContentPage.Content>
 
 </ContentPage>

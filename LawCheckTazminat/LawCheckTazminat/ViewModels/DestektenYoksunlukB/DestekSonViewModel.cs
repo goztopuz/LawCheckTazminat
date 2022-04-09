@@ -5420,7 +5420,11 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 string donem2 = yillarIslemis[0].yill.ToString() + "-2";
 
                 var yilMaas1 = gecmisMaasDegerleri.Find(o => o.yil == donem1);
+                
+
+                
                 var yilMaas2 = gecmisMaasDegerleri.Find(o => o.yil == donem2);
+                  
 
                 if (AktifDestek.BekarCocukDurum == true)
                 {
@@ -5430,11 +5434,20 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     // 1 - Çalışıyor mu?
                     if (AktifDestek.BekarCocuk_SuAnCalisiyor == true)
                     {
-                        var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
-                        yilMaas1.netMaas = oran1 ;
+                        if (yilMaas1 != null)
+                        {
+                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
+                      
+                            yilMaas1.netMaas = oran1;
+                        }
 
-                        var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
-                        yilMaas2.netMaas = oran2 ;
+                        if (yilMaas2 != null)
+                        {
+                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
+
+                      
+                            yilMaas2.netMaas = oran2;
+                        }
 
                     }
                     else
@@ -5444,30 +5457,52 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                         if (d1 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1 ;
+                            if (yilMaas1 != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
+
+                         
+                                yilMaas1.netMaas = oran1;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1;
+                            if (yilMaas1 != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
+
+                           
+                                yilMaas1.netMaas = oran1;
+
+                            }
                         }
 
                         // Yılın 2. Yarısı için
                         if (d2 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
-                            yilMaas2.netMaas = oran2 ;
+                            if (yilMaas2 != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
+                       
+                                yilMaas2.netMaas = oran2;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
-                            yilMaas2.netMaas = oran2;
+                            if (yilMaas2 != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
+                         
+                                yilMaas2.netMaas = oran2;
+
+                            }
                         }
 
                     }
@@ -5608,11 +5643,20 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     // 1 - Çalışıyor mu?
                     if (AktifDestek.BekarCocuk_SuAnCalisiyor == true)
                     {
-                        var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
-                        yilMaas1.netMaas = oran1 ;
+                        if (yilMaas1 != null)
+                        {
+                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
+                      
+                            yilMaas1.netMaas = oran1;
 
-                        var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
-                        yilMaas2.netMaas = oran2 ;
+                        }
+                        if (yilMaas2 != null)
+                        {
+                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
+                        
+                            yilMaas2.netMaas = oran2;
+
+                        }
 
                     }
                     else
@@ -5622,30 +5666,51 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                         if (d1 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1;
+                            if (yilMaas1 != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
+                           
+                                yilMaas1.netMaas = oran1;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1;
+                            if (yilMaas1 != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
+
+                         
+                                yilMaas1.netMaas = oran1;
+
+                            }
                         }
 
                         // Yılın 2. Yarısı için
                         if (d2 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
-                            yilMaas2.netMaas = oran2;
+                            if (yilMaas2 != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
+                        
+                                yilMaas2.netMaas = oran2;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
-                            yilMaas2.netMaas = oran2;
+                            if (yilMaas2 != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
+                         
+                                yilMaas2.netMaas = oran2;
+
+                            }
                         }
 
                     }
@@ -5853,11 +5918,20 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     // 1 - Çalışıyor mu?
                     if (AktifDestek.BekarCocuk_SuAnCalisiyor == true)
                     {
-                        var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1B, AktifDestek.vefatTarihi);
-                        yilMaas1B.netMaas = oran1 ;
+                        if (yilMaas1B != null)
+                        {
+                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1B, AktifDestek.vefatTarihi);
+                      
+                            yilMaas1B.netMaas = oran1;
 
-                        var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2B, AktifDestek.vefatTarihi);
-                        yilMaas2B.netMaas = oran2 ;
+                        }
+                        if (yilMaas2B != null)
+                        {
+                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2B, AktifDestek.vefatTarihi);
+
+                       
+                            yilMaas2B.netMaas = oran2;
+                        }
 
                     }
                     else
@@ -5867,30 +5941,51 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                         if (d1B < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1B, AktifDestek.raporTarihi);
-                            yilMaas1B.netMaas = oran1 ;
+                            if (yilMaas1B != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1B, AktifDestek.raporTarihi);
+                           
+                                yilMaas1B.netMaas = oran1;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1B, AktifDestek.raporTarihi);
-                            yilMaas1B.netMaas = oran1;
+                            if (yilMaas1B != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1B, AktifDestek.raporTarihi);
+                         
+                                yilMaas1B.netMaas = oran1;
+                            }
                         }
 
                         // Yılın 2. Yarısı için
                         if (d2B < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2B, AktifDestek.raporTarihi);
-                            yilMaas2B.netMaas = oran2 ;
+                            if (yilMaas2B != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2B, AktifDestek.raporTarihi);
+
+                           
+                                yilMaas2B.netMaas = oran2;
+                            }
+
 
                         }
                         else
                         {
                             //İşten Sonra....
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2B, AktifDestek.raporTarihi);
-                            yilMaas2B.netMaas = oran2;
+                            if (yilMaas2B != null)
+                            {
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2B, AktifDestek.raporTarihi);
+
+                           
+                                yilMaas2B.netMaas = oran2;
+
+                            }
                         }
 
                     }
@@ -6008,11 +6103,20 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     // 1 - Çalışıyor mu?
                     if (AktifDestek.BekarCocuk_SuAnCalisiyor==true)
                     {
-                        var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
-                        yilMaas1.netMaas = oran1 ;
+                        if (yilMaas1 != null)
+                        {
+                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
+                      
+                            yilMaas1.netMaas = oran1;
 
-                        var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
-                        yilMaas2.netMaas = oran2  ;
+                        }
+                        if (yilMaas2 != null)
+                        {
+                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
+                       
+                            yilMaas2.netMaas = oran2;
+
+                        }
 
                     }
                     else
@@ -6022,30 +6126,55 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                         if(d1<AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1 ;
+                            if (yilMaas1 != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
+
+                           
+                                yilMaas1.netMaas = oran1;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
                             var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
-                            yilMaas1.netMaas = oran1 ;
+
+                            if(yilMaas1 != null)
+                            {
+                                yilMaas1.netMaas = oran1;
+
+                            }
+
                         }
 
                         // Yılın 2. Yarısı için
                         if (d2 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
-                            //İşten Önce
-                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
-                            yilMaas2.netMaas = oran2 ;
+                            if (yilMaas2 != null)
+                            {
+                                //İşten Önce
+                                var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
+
+                            
+                                yilMaas2.netMaas = oran2;
+
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
+
+                            if( yilMaas2 != null)
+                            {
+
                             var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
                             yilMaas2.netMaas = oran2 ;
+
+                            }
+
                         }
 
                     }
@@ -6204,12 +6333,17 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                         // 1 - Çalışıyor mu?
                         if (AktifDestek.BekarCocuk_SuAnCalisiyor == true)
                         {
+                            if(yilMaas1X != null)
+                            {
                             var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
                             yilMaas1X.netMaas = oran1 ;
+                            }
 
+                            if(yilMaas2X != null)
+                            { 
                             var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
                             yilMaas2X.netMaas = oran2 ;
-
+                            }
                         }
                         else
                         {
@@ -6218,30 +6352,42 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                             if (d1 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                             {
                                 //İşten Önce
+                                if(yilMaas1X != null)
+                                {                             
                                 var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
                                 yilMaas1X.netMaas = oran1 ;
-
+                                }
                             }
                             else
                             {
                                 //İşten Sonra....
+                                if(yilMaas1X != null)
+                                {
                                 var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
                                 yilMaas1X.netMaas = oran1 ;
+                                }
+
                             }
 
                             // Yılın 2. Yarısı için
                             if (d2 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                             {
+
                                 //İşten Önce
+                                if(yilMaas2X != null)
+                                { 
                                 var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
                                 yilMaas2X.netMaas = oran2 ;
-
+                                }
                             }
                             else
                             {
                                 //İşten Sonra....
+                                if(yilMaas2X != null)
+                                { 
                                 var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
                                 yilMaas2X.netMaas = oran2 ;
+                                }
                             }
 
                         }
@@ -6425,11 +6571,18 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                     // 1 - Çalışıyor mu?
                     if (AktifDestek.BekarCocuk_SuAnCalisiyor == true)
                     {
-                        var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
-                        yilMaas1B.netMaas = oran1;
-
-                        var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
-                        yilMaas2B.netMaas = oran2 ;
+                        if(yilMaas1B != null)
+                        {
+                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d1, AktifDestek.vefatTarihi);
+                            yilMaas1B.netMaas = oran1;
+                        }
+                       
+                        if(yilMaas2B != null)
+                        {
+                            var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_SuAnkiUcret, d2, AktifDestek.vefatTarihi);
+                            yilMaas2B.netMaas = oran2;
+                        }
+          
 
                     }
                     else
@@ -6438,31 +6591,45 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
 
                         if (d1 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
+
+                            if(yilMaas1B != null)
+                            {
+                                var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
+                                yilMaas1B.netMaas = oran1;
+                            }
                             //İşten Önce
-                            var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d1, AktifDestek.raporTarihi);
-                            yilMaas1B.netMaas = oran1 ;
+                          
 
                         }
                         else
                         {
                             //İşten Sonra....
+                            if(yilMaas1B != null)
+                            { 
                             var oran1 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d1, AktifDestek.raporTarihi);
                             yilMaas1B.netMaas = oran1 ;
+                            }
                         }
 
                         // Yılın 2. Yarısı için
                         if (d2 < AktifDestek.BekarCocuk_CalismaBasTarihi)
                         {
                             //İşten Önce
+                            if(yilMaas2B != null)
+                            {                           
                             var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_18OncesiMaas, d2, AktifDestek.raporTarihi);
                             yilMaas2B.netMaas = oran2 ;
+                            }
 
                         }
                         else
                         {
                             //İşten Sonra....
+                            if(yilMaas2B != null)
+                            {                     
                             var oran2 = AsgariOranla1(AktifDestek.BekarCocuk_GelecekCalismaUcreti, d2, AktifDestek.raporTarihi);
                             yilMaas2B.netMaas = oran2 ;
+                            }
                         }
 
                     }

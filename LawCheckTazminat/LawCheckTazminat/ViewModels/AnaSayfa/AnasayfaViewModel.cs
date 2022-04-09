@@ -25,7 +25,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
         //--------------------------------------------------------
 
 
-        string productId = "tazminapp_subscription3";
+    //    string productId = "tazminapp_subscription3";
 
         Helpers.AbonelikYontemi ab = new Helpers.AbonelikYontemi();
 
@@ -252,8 +252,15 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
             if (SettingsService2.AppStatus == "PRO")
             {
                 // Ara Kontrolü Sağla....   
+               if( Device.RuntimePlatform == Device.Android)
+                {
+                    ab2.RegularPROAppStatusControl();
 
-                ab2.RegularPROAppStatusControl();
+                }
+                else if(Device.RuntimePlatform == Device.iOS)
+                {
+                    ab2.IOSRegularPROAppStatusControl();
+                }
 
             }
 
@@ -292,11 +299,8 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
             if(SettingsService2.AppStatus == "DEMO")
             {
-             #if !DEBUG
+             
                 
-
-       
-
                 string _message1 = "Bu Özelliği Kullanabilmek için Abone omalısınızl Aboneyseniz  Aboneliği Ücretsiz Geri Yükleyebilirsiniz.";
 
                 await App.Current.MainPage.DisplayAlert("Abonelik", _message1
@@ -304,7 +308,7 @@ namespace LawCheckTazminat.ViewModels.AnaSayfa
 
                 await UyeSayfasınaGit();
                 return;
-             #endif
+          
             }
 
 

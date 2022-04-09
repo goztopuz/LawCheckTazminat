@@ -28,7 +28,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
             KisiListe = AktifDestek.DestekYoksunlukYakinlar;
 
             kkk();
-            Yukseklik = KisiListe.Count * 120;
+            Yukseklik = (KisiListe.Count * 90) +30;
 
         }
 
@@ -53,7 +53,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
             {
                 _kisiListe = value;
                 OnPropertyChanged();
-                Yukseklik = KisiListe.Count * 90;
+                Yukseklik = (KisiListe.Count * 90) +30;
             }
         }
 
@@ -116,7 +116,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 KisiListe.Add(t);
             }
 
-            Yukseklik = (KisiListe.Count * 92) + 20;
+            Yukseklik = (KisiListe.Count * 90) + 30;
 
 
         }

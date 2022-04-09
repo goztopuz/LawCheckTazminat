@@ -307,6 +307,7 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
 
                     if (kisi2 != null)
                     {
+
                         durum = false;
                         this.HataMesaji = "Eş Bilgisi Girilmiş. 2. eş bilgisi girilemez";
                         return durum;
@@ -321,9 +322,15 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 var kisi2 = AktifDestek.DestekYoksunlukYakinlar.Where(o => o.yakinlik == "Anne").FirstOrDefault();
                 if (kisi2 != null)
                 {
+                    if(kisi2.Id != Yakin.Id)
+                    {
+
+                    
                     durum = false;
                     this.HataMesaji = "Kaytılı Anne Bilgisi Mevcut";
                     return durum;
+
+                    }
                 }
             }
 
@@ -332,10 +339,14 @@ namespace LawCheckTazminat.ViewModels.DestektenYoksunlukB
                 var kisi2 = AktifDestek.DestekYoksunlukYakinlar.Where(o => o.yakinlik == "Baba").FirstOrDefault();
                 if (kisi2 != null)
                 {
-                    durum = false;
-                    this.HataMesaji = "Kayıtlı Baba Bilgisi Mevcut";
+                    if(kisi2.Id != Yakin.Id)
+                    {
+                        durum = false;
+                        this.HataMesaji = "Kayıtlı Baba Bilgisi Mevcut";
 
-                    return durum;
+                        return durum;
+                    }
+                  
                 }
             }
 
